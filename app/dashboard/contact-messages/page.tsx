@@ -1,14 +1,16 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server';
 import { format } from 'date-fns';
 
+// This ensures the page is always rendered on the server
+export const dynamic = 'force-dynamic';
+
 export default async function ContactMessagesPage() {
   const supabase = createServerSupabaseClient();
 
   // Fetch contact messages from the "contact_messages" table
   const { data: messages, error } = await supabase
     .from('contact_messages')
-    .select('*')
-    .order('created_at', { ascending: false });
+    .select('*');
 
   if (error) {
     return (
