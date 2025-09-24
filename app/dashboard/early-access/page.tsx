@@ -1,6 +1,9 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server';
 import { format } from 'date-fns';
 
+// This ensures the page is always rendered on the server
+export const dynamic = 'force-dynamic';
+
 export default async function EarlyAccessPage() {
   const supabase = createServerSupabaseClient();
 

@@ -1,6 +1,9 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server';
 import { format } from 'date-fns';
 
+// Force server-side rendering (no prerender)
+export const dynamic = 'force-dynamic';
+
 export default async function HomeInquiriesPage() {
   const supabase = createServerSupabaseClient();
 
