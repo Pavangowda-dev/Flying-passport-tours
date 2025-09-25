@@ -141,7 +141,7 @@ export const tours = [
       "7 nights accommodation in 3★ and 4★ hotels",
       "Daily breakfast and 4 dinners",
       "Domestic flights within Turkey",
-      "English-speaking local guides",
+      "English-speaking local guide",
       "All entrance fees",
       "Hot air balloon ride",
       "Bosphorus cruise",
@@ -300,152 +300,6 @@ export const tours = [
       "Meals not mentioned",
       "Personal expenses",
       "Optional activities",
-    ],
-    singleOccupancy: 0,
-    childPrice: 0,
-  },
-  {
-    id: "6",
-    title: "13-Day European Highlights",
-    destination: "Europe",
-    image: "/images/tours/europe/europe-group-tour-1.webp",
-    gallery: [
-      "/images/tours/europe/europe-group-tour-2.webp",
-      "/images/tours/europe/europe-group-tour-3.webp",
-      "/images/tours/europe/europe-group-tour-4.webp",
-      "/images/tours/europe/europe-group-tour-5.webp",
-      "/images/tours/europe/europe-group-tour-6.webp",
-      "/images/tours/europe/europe-group-tour-7.webp",
-      "/images/tours/europe/europe-group-tour-8.webp",
-      "/images/tours/europe/europe-group-tour-9.webp",
-      "/images/tours/europe/europe-group-tour-10.webp",
-    ],
-    duration: 13,
-    groupSize: "40",
-    price: 0,
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-    description:
-      "Explore 8 iconic European countries in 13 unforgettable days with our guided group tour, covering Paris, Venice, Swiss Alps, and more. Enjoy Indian meals, 4-star stays, and seamless travel with flights, visas, and sightseeing included.",
-    highlights: [
-      "Visit iconic landmarks like the Eiffel Tower, Leaning Tower of Pisa, and Cologne Cathedral.",
-      "Enjoy a scenic Seine River cruise and Mt. Titlis cable car experience.",
-      "Explore charming cities including Paris, Amsterdam, Interlaken, and Venice.",
-      "Witness Europe's natural beauty at Rhine Falls and the Swiss Alps.",
-      "Discover cultural gems like Bern, Innsbruck, and Milan.",
-      "Stay in handpicked 3–4 star hotels with Indian meals and guided tours throughout.",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Paris",
-        description:
-          "Arrive in the iconic city of Paris. Upon arrival, meet our representative who will assist with hotel transfers. Check in, relax, and unwind after your flight. In the evening, enjoy a specially arranged packed Indian dinner to ease into your European adventure.\nMeals: Dinner",
-      },
-      {
-        day: 2,
-        title: "Paris City Tour",
-        description:
-          "After breakfast, start the day with an orientation tour of Paris. Visit landmarks like the Champs-Élysées and Arc de Triomphe. Ascend the Eiffel Tower up to Level 2 for panoramic city views. Later, enjoy a scenic Seine River cruise, gliding past iconic Parisian architecture. Return to the hotel for dinner and overnight stay.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 3,
-        title: "Belgium (Brussels)",
-        description:
-          "Depart Paris and drive to Brussels, the capital of Belgium. Enjoy an orientation tour including the Grand Place, Manneken Pis, and a photo stop at the Atomium. Later, continue into the Netherlands for dinner and overnight stay.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 4,
-        title: "Netherlands (Countryside & Amsterdam)",
-        description:
-          "Explore the beautiful Dutch countryside. Visit a traditional windmill, a wooden shoe (clog) factory, and a local cheese farm for demonstrations and tastings. Spend free time at Amsterdam’s central square. Dinner and overnight in the Netherlands.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 5,
-        title: "Cologne, Germany",
-        description:
-          "Travel into Germany and visit Cologne. Tour the grand Cologne Cathedral (UNESCO site) and enjoy leisure time in the vibrant Old Town along the Rhine River. Proceed to your hotel in Germany for dinner and overnight stay.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 6,
-        title: "Rhine Falls & Arrival in Switzerland",
-        description:
-          "Start your day in Germany’s Black Forest and visit a cuckoo clock workshop. Head to the Rhine Falls – Europe’s largest waterfall – and enjoy a thrilling boat ride. Continue to Zurich, Switzerland, for an orientation tour and then check into your hotel.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 7,
-        title: "Mt. Titlis & Lucerne",
-        description:
-          "Enjoy a full-day excursion to Mt. Titlis via cable car and rotating gondola. Explore the glacier cave, the famous Cliff Walk, and snow-covered peaks (Ice Flyer not included). Later, visit Lucerne to see the Lion Monument and Chapel Bridge. Return to the hotel for dinner.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 8,
-        title: "Bern & Interlaken",
-        description:
-          "Visit the Lindt Chocolate Museum in the morning for a sweet start. Then explore Bern’s medieval Old Town and famous Zytglogge clock tower. Continue to Interlaken for shopping and photo opportunities amid breathtaking alpine scenery. Return to your hotel in Switzerland for dinner.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 9,
-        title: "Liechtenstein & Austria (Innsbruck)",
-        description:
-          "Begin with a visit to Vaduz, the capital of Liechtenstein. Proceed to Innsbruck, Austria, for an orientation tour of its historic old town and Golden Roof. End the day with a visit to the Swarovski Crystal Showroom. Overnight in Austria.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 10,
-        title: "Venice, Italy",
-        description:
-          "Travel to Venice, the magical city of canals. Ride a Vaporetto (water taxi) to St. Mark's Square. Take a guided walking tour including views of St. Mark’s Basilica, Doge’s Palace, Bell Tower, and Bridge of Sighs. Free time for shopping and exploring. Dinner and overnight stay in the Padova area.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 11,
-        title: "Pisa & Milan",
-        description:
-          "Head to Pisa to visit the Field of Miracles featuring the Leaning Tower, Cathedral, and Baptistery. Then proceed to Milan. Upon arrival, check in to your hotel, have dinner, and rest.\nMeals: Breakfast, Lunch, Dinner",
-      },
-      {
-        day: 12,
-        title: "Milan City Tour & Departure",
-        description:
-          "Begin with an orientation tour of Milan. Visit the Duomo Cathedral (outside) and stroll through Galleria Vittorio Emanuele II. Enjoy some free time before lunch. Later, transfer to Milan MXP Airport for your return flight.\nMeals: Breakfast, Lunch",
-      },
-      {
-        day: 13,
-        title: "Transit in Muscat & Return to Bangalore",
-        description:
-          "Fly from Milan to Muscat with a layover before your final flight to Bangalore. Relax at the airport lounge, shop duty-free, or grab a quick bite during transit.\nMeals: As per flight service",
-      },
-    ],
-    inclusions: [
-      "Economy class return flight tickets (Bangalore ⇌ Europe via Muscat)",
-      "Visa fees for all countries visited",
-      "Travel insurance for all passengers (below 60 years)",
-      "Accommodation in 3-star or 4-star hotels throughout the tour",
-      "Daily Indian breakfast, lunch, and dinner",
-      "Deluxe air-conditioned motor coach for all internal travel",
-      "Services of an experienced Tour Manager throughout the tour",
-      "Guided sightseeing and orientation tours in:",
-      "France, Belgium, Netherlands, Germany, Switzerland, Liechtenstein, Austria, and Italy",
-      "Major attractions and experiences:",
-      "Eiffel Tower (Level 2), Seine River Cruise, Rhine Falls Boat Ride, Mt. Titlis Cable Car & Cliff Walk, Lucerne, Interlaken, Pisa Leaning Tower, Venice Vaporetto Ride, Swarovski Crystal World, Chocolate Museum visit",
-      "All hotel transfers and airport pick-up/drop",
-      "2-night stay in Paris",
-      "2-night stay in the Netherlands",
-      "1-night stay in Germany",
-      "3-night stay in Switzerland",
-      "1-night stay in Austria",
-      "2-night stay in Italy",
-    ],
-    exclusions: [
-      "Personal expenses such as:",
-      "Laundry, minibar, telephone calls, room service, drinks not part of group meals",
-      "Tips for driver, guide, and tour manager (approx. €5 per person per day)",
-      "Any meals or beverages not mentioned in the itinerary",
-      "Optional excursions, entrance fees, or city sightseeing not specified in the inclusions",
-      "Any cost arising due to flight delays, natural calamities, or unforeseen situations",
-      "5% GST (Goods & Services Tax) – mandatory & not included in the price",
-      "5% TCS (Tax Collected at Source) – mandatory & not included in the price",
-      "Expenses incurred for RT-PCR or COVID-related testing (if required at the time of travel)",
-      "Additional charges for excess baggage or seat selection on flights",
     ],
     singleOccupancy: 0,
     childPrice: 0,
@@ -733,12 +587,12 @@ export const tours = [
       "/images/tours/Japan S&N/japan-s-n-09.png",
       "/images/tours/Japan S&N/japan-s-n-10.png",
     ],
-    pdf: "/images/FLYING PASSPORTS JAPAN AND SOUTH KOREA & NORTH KOREA ITINERARY 2025.pdf", // PDF path is correct
+    pdf: "/images/FLYING PASSPORTS JAPAN AND SOUTH KOREA & NORTH KOREA ITINERARY 2025.pdf",
     duration: 10,
     groupSize: "40",
     price: 337000,
     status: "upcoming",
-    departureDate: "November 7, 2025", // Correct departure date
+    departureDate: "November 7, 2025",
     description:
       "Embark on an extraordinary 10-day journey through Japan, South Korea, and North Korea, exploring a unique blend of ancient traditions, modern metropolises, and exclusive cultural insights. Enjoy guided tours, Indian meals, and seamless travel arrangements.",
     highlights: [
@@ -835,5 +689,139 @@ export const tours = [
     ],
     singleOccupancy: 389000,
     childPrice: 325000,
+  },
+  {
+    id: "6",
+    title: "12-Day European Highlights",
+    destination: "Europe",
+    image: "/images/tours/europe/europe-group-tour-1.webp",
+    gallery: [
+      "/images/tours/europe/europe-group-tour-2.webp",
+      "/images/tours/europe/europe-group-tour-3.webp",
+      "/images/tours/europe/europe-group-tour-4.webp",
+      "/images/tours/europe/europe-group-tour-5.webp",
+      "/images/tours/europe/europe-group-tour-6.webp",
+      "/images/tours/europe/europe-group-tour-7.webp",
+      "/images/tours/europe/europe-group-tour-8.webp",
+      "/images/tours/europe/europe-group-tour-9.webp",
+      "/images/tours/europe/europe-group-tour-10.webp",
+    ],
+    duration: 12,
+    groupSize: "40",
+    price: 327000,
+    status: "upcoming",
+    departureDate: "April 16, 2026",
+    description:
+      "Discover the charm of Europe’s iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,92,000, Double Occupancy ₹3,27,000, Children ₹2,50,000. Enjoy guided tours, Indian meals, and seamless travel arrangements across multiple countries.",
+    highlights: [
+      "Explore Paris with Eiffel Tower and Seine River cruise",
+      "Visit Brussels’ Grand Place and Atomium",
+      "Discover Amsterdam’s canals and Keukenhof Gardens",
+      "Experience Luxembourg City and its historic charm",
+      "Witness the Black Forest and Rhine Falls",
+      "Ride a cable car to Mt. Titlis and explore Lucerne",
+      "Enjoy a toy train ride in Vaduz and Innsbruck’s Golden Roof",
+      "Romantic Venice with Vaporetto ride",
+      "See Pisa’s Leaning Tower and Rome’s Colosseum",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Paris",
+        description:
+          "Arrive in Paris on April 16, 2026. Meet our representative who will assist with hotel transfers. Check in at a 4-star hotel, relax, and enjoy a welcome Indian dinner.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Paris",
+      },
+      {
+        day: 2,
+        title: "Explore Paris City",
+        description:
+          "After breakfast, embark on a city tour of Paris, visiting Champs-Élysées, Arc de Triomphe, and Eiffel Tower (Level 2). Enjoy a scenic Seine River cruise. Return to the hotel for an Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Paris",
+      },
+      {
+        day: 3,
+        title: "Orientation Tour of Brussels",
+        description:
+          "Travel to Brussels, Belgium. Explore the Grand Place, Manneken Pis, and enjoy a photo stop at the Atomium. Indian lunch and dinner included. Overnight in Brussels.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Brussels",
+      },
+      {
+        day: 4,
+        title: "Keukenhof Garden & Amsterdam City",
+        description:
+          "Drive to the Netherlands. Visit Keukenhof Gardens (seasonal) and explore Amsterdam’s canals and central square. Enjoy a canal cruise. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Amsterdam",
+      },
+      {
+        day: 5,
+        title: "City Tour of Luxembourg & Stars",
+        description:
+          "Travel to Luxembourg City for an orientation tour of its historic sites and charming old town. Indian lunch and dinner included. Overnight in Luxembourg.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Luxembourg",
+      },
+      {
+        day: 6,
+        title: "Black Forest & Rhine Falls",
+        description:
+          "Visit Germany’s Black Forest and a cuckoo clock workshop. Proceed to Rhine Falls for a thrilling boat ride. Indian lunch and dinner included. Overnight in Switzerland.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Zurich",
+      },
+      {
+        day: 7,
+        title: "Mt. Titlis & Lucerne City",
+        description:
+          "Enjoy a cable car ride to Mt. Titlis, explore the glacier cave and Cliff Walk. Visit Lucerne’s Lion Monument and Chapel Bridge. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Zurich",
+      },
+      {
+        day: 8,
+        title: "Toy Train Ride in Vaduz & Innsbruck City",
+        description:
+          "Travel to Vaduz, Liechtenstein, for a scenic toy train ride. Continue to Innsbruck, Austria, to see the Golden Roof and historic old town. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Innsbruck",
+      },
+      {
+        day: 9,
+        title: "Romantic Venice",
+        description:
+          "Arrive in Venice, Italy. Take a Vaporetto ride to St. Mark’s Square and enjoy a guided tour of St. Mark’s Basilica and Doge’s Palace. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Padova",
+      },
+      {
+        day: 10,
+        title: "Square of Miracles Pisa",
+        description:
+          "Visit Pisa’s Field of Miracles to see the Leaning Tower, Cathedral, and Baptistery. Indian lunch and dinner included. Overnight in Florence.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Florence",
+      },
+      {
+        day: 11,
+        title: "Vatican & Rome City",
+        description:
+          "Travel to Rome. Visit the Vatican Museums, Sistine Chapel, and St. Peter’s Basilica. Explore the Colosseum and Roman Forum. Indian lunch and farewell dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Rome",
+      },
+      {
+        day: 12,
+        title: "Departure from Rome",
+        description:
+          "After breakfast, transfer to Rome Fiumicino Airport for your return flight to Bangalore. Bid farewell to an unforgettable European adventure.\n\nMeals: Breakfast\nAccommodation: None",
+      },
+    ],
+    inclusions: [
+      "Economy class return flight tickets (Bangalore – Europe – Bangalore)",
+      "Visa fees for all countries visited",
+      "Travel insurance for all passengers (below 60 years)",
+      "Accommodation in 4-star hotels (2 nights Paris, 1 night Brussels, 1 night Amsterdam, 1 night Luxembourg, 2 nights Zurich, 1 night Innsbruck, 1 night Padova, 1 night Florence, 1 night Rome)",
+      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
+      "Deluxe air-conditioned motor coach for all internal travel",
+      "Services of an English-speaking tour manager throughout",
+      "Guided sightseeing and orientation tours in France, Belgium, Netherlands, Luxembourg, Germany, Switzerland, Liechtenstein, Austria, and Italy",
+      "Major attractions and experiences: Eiffel Tower (Level 2), Seine River Cruise, Keukenhof Gardens, Rhine Falls Boat Ride, Mt. Titlis Cable Car & Cliff Walk, Lucerne, Vaduz Toy Train, Venice Vaporetto Ride, Pisa Leaning Tower, Vatican Museums, Colosseum",
+      "All hotel transfers and airport pick-up/drop",
+    ],
+    exclusions: [
+      "5% GST & 5% TCS (as applicable for international travel)",
+      "Tips for driver, guide, and tour manager (approx. €5 per person per day, total €55 per person)",
+      "Personal expenses: laundry, minibar, telephone calls, room service, drinks not part of group meals",
+      "Meals not mentioned in the itinerary",
+      "Optional excursions or entrance fees not specified in the inclusions",
+      "Any cost arising due to flight delays, natural calamities, or unforeseen situations",
+      "Travel insurance charges for travelers above 60 years (if applicable)",
+      "Additional charges for excess baggage or seat selection on flights",
+      "Any other item not mentioned under “What’s Included”",
+    ],
+    singleOccupancy: 392000,
+    childPrice: 250000,
   },
 ];

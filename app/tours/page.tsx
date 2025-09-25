@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import WhatsAppButton from "@/components/whatsapp-button"
 
-// Updated tours array with correct Amazon Forest image path
+// Updated tours array with modified Europe tour
 const tours = [
   {
     id: "10",
@@ -43,6 +43,34 @@ const tours = [
     departureDate: "November 7, 2025",
   },
   {
+    id: "6",
+    title: "12-Day European Highlights",
+    destination: "europe",
+    region: "europe",
+    image: "/images/tours/europe/europe-group-tour-1.webp",
+    duration: 12,
+    price: 327000,
+    description:
+      "Discover the charm of Europe's iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,92,000, Double Occupancy ₹3,27,000, Children ₹2,50,000.",
+    highlights: [
+      "Paris",
+      "Brussels",
+      "Amsterdam",
+      "Luxembourg",
+      "Black Forest",
+      "Rhine Falls",
+      "Mt Titlis",
+      "Lucerne",
+      "Vaduz",
+      "Innsbruck",
+      "Venice",
+      "Pisa",
+      "Rome"
+    ],
+    status: "upcoming",
+    departureDate: "April 16, 2026",
+  },
+  {
     id: "4",
     title: "6-Day Kenyan Safari",
     destination: "kenya",
@@ -53,20 +81,6 @@ const tours = [
     description:
       "Embark on an unforgettable journey through Kenya's breathtaking landscapes, witnessing iconic wildlife in their natural habitat with expert guides.",
     highlights: ["Masai Mara", "Nairobi", "Lake Nakuru", "Amboseli"],
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-  },
-  {
-    id: "6",
-    title: "13-Day European Highlights",
-    destination: "europe",
-    region: "europe",
-    image: "/images/tours/europe/europe-group-tour-1.webp",
-    duration: 13,
-    price: 0,
-    description:
-      "Discover the charm of Europe's iconic cities, from historic landmarks to vibrant cultures, on this comprehensive group tour.",
-    highlights: ["Paris", "Amsterdam", "Prague", "Vienna", "Budapest"],
     status: "expired",
     departureDate: "Dates will be announced soon",
   },

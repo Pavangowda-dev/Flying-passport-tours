@@ -1,20 +1,22 @@
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@supabase/supabase-js';
 import { Database } from '@/lib/supabase.types';
 
 export function createServerSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
   console.log("Supabase server client init", {
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ? "Set" : "Missing",
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? "Set" : "Missing",
+    supabaseUrl: supabaseUrl ? "Set" : "Missing",
+    supabaseKey: supabaseKey ? "Set" : "Missing",
   });
 
-  try {
-    return createServerComponentClient<Database>({ cookies });
-  } catch (error: any) {
-    console.error("Supabase server client error:", {
-      message: error.message,
-      stack: error.stack,
-    });
-    throw error;
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error(
+      "Missing Supabase environment variables: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are required"
+    );
   }
+
+  return createClient<Database>(supabaseUrl, supabaseKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
 }

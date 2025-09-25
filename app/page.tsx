@@ -13,7 +13,7 @@ import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 import { useState, useEffect, useRef } from "react"
 
-// Updated tour data - China and Japan/South Korea/North Korea tours
+// Updated tour data - China, Japan/South Korea/North Korea, and Europe tours
 const upcomingTours = [
   {
     id: "10",
@@ -36,6 +36,17 @@ const upcomingTours = [
     description: "Explore the unique blend of ancient traditions and modern cities in Japan, South Korea, and North Korea with Flying Passport.",
     highlights: ["Tokyo", "Kyoto", "Seoul", "Pyongyang", "Cultural Experiences"],
     departureDate: "November 7, 2025",
+  },
+  {
+    id: "6",
+    title: "12-Day European Highlights",
+    destination: "Europe",
+    image: "/images/tours/europe/europe-group-tour-1.webp",
+    duration: 12,
+    price: 327000,
+    description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
+    highlights: ["Paris", "Amsterdam", "Venice", "Rome", "Mt. Titlis"],
+    departureDate: "April 16, 2026",
   },
 ]
 
@@ -133,7 +144,7 @@ const testimonials = [
     id: 3,
     name: "Mamatha",
     avatar: "👩🏻",
-    quote: "ಟೋಕಿಯೋ ಟೂರ್ ಫ್ಲೈಯಿಂಗ್ ಪಾಸ್ಪೋರ್ಟ್‌ ಜೊತೆ ಶುಭ್ರಮಯವಾಗಿತ್ತು. ತೊಳೆದ ನಗರ, ರುಚಿಯಾದ ಊಟ, ಶಾಂತ ಪರಿಸರ – ಎಲ್ಲವೂ ಮನಸ್ಸಿಗೆ ಹಚ್ಚಿಕೊಂಡಿತು.",
+    quote: "ಟೋಕಿಯೋ ಟೂರ್ ಫ್ಲೈಯಿಂಗ್ ಪಾಸ್ಪೋರ್ಟ್‌ ಜೊತೆ ಶುಭ್ರಮಯವಾಗಿತ್ತು. ತೊಳೆದ ನಗರ, ರುಚಿಯಾದ ಊಟ, ಶಾಂತ ಪರಿಸರ征求。",
     rating: 5,
   },
   {
@@ -251,9 +262,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto justify-items-center overflow-x-auto snap-x snap-mandatory md:snap-none md:overflow-x-visible">
             {upcomingTours.map((tour) => (
-              <Link href={`/tours/${tour.id}`} key={tour.id} className="group w-full max-w-md mx-auto">
+              <Link href={`/tours/${tour.id}`} key={tour.id} className="group w-full max-w-md mx-auto flex-shrink-0 snap-center">
                 <Card className="overflow-hidden hover-lift h-full">
                   <div className="relative h-48">
                     <Image
@@ -261,7 +272,7 @@ export default function Home() {
                       alt={`${tour.title} from Bangalore with Flying Passport`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       loading="lazy"
                       quality={85}
                     />
@@ -319,9 +330,9 @@ export default function Home() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Our Youtube Vlogs</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Our Group Tour Adventures</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Watch our travel adventures with Flying Passport
+              Experience our tours through our videos
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
