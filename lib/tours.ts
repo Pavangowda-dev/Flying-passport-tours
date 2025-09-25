@@ -623,7 +623,7 @@ export const tours = [
     ],
     duration: 9,
     groupSize: "40",
-    price: 285000,
+    price: 250000,
     status: "upcoming",
     departureDate: "October 27, 2025",
     description:

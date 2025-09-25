@@ -140,7 +140,7 @@ export default function ContactPage() {
                       href="mailto:contact@flyingpassports.com"
                       className="text-muted-foreground hover:text-secondary transition-colors text-sm md:text-base"
                     >
-                      contact@flyingpassports.com
+                      contact@flyingpassporttours.com
                     </a>
                   </div>
                 </div>

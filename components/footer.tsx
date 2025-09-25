@@ -90,7 +90,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail size={18} className="mr-3 mt-0.5 text-secondary flex-shrink-0" />
-                <span className="text-sm break-all">contact@flyingpassports.com</span>
+                <span className="text-sm break-all">contact@flyingpassporttours.com</span>
               </li>
               <li className="flex items-start">
                 <Phone size={18} className="mr-3 mt-0.5 text-secondary flex-shrink-0" />
