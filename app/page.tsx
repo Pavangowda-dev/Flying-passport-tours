@@ -21,7 +21,7 @@ const upcomingTours = [
     destination: "China",
     image: "/images/tours/China/China_1.png",
     duration: 9,
-    price: 285000,
+    price: 250000,
     description: "Discover the rich culture and stunning landscapes of China with the best travel agency in Bangalore.",
     highlights: ["Beijing", "Great Wall", "Shanghai", "Xi'an Terracotta Warriors", "Yangtze River"],
     departureDate: "October 27, 2025",
