@@ -40,7 +40,7 @@ export async function submitEarlyAccess(prevState: any, formData: FormData) {
     }
 
     console.log("Supabase insert successful:", data);
-    return { success: true, message: "Early access registered successfully! We'll notify you soon." };
+    return { success: true, message: "Thank you for registering for early access! We’re excited to help plan your next adventure and will notify you as soon as your tour is ready." };
   } catch (err: any) {
     console.error("Submission error:", err.message, err);
     return { success: false, message: "Failed to register early access. Please try again." };

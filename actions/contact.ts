@@ -62,7 +62,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
     }
 
     console.log("Supabase insert successful:", data);
-    return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+    return { success: true, message: "Thank you for getting in touch! We’ve received your message and will respond within 14 hours." };
   } catch (error: any) {
     console.error("Unexpected error in contact form submission:", {
       message: error.message,

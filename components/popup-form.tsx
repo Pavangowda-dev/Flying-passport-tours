@@ -223,7 +223,7 @@ export default function PopupForm() {
 
             {isSuccess && (
               <div className="p-3 bg-green-100 text-green-800 rounded-md text-center">
-                Thank you! We'll contact you soon.
+                Thanks for reaching out! One of our travel experts will be in touch within 12 hours.
               </div>
             )}
             {error && (
