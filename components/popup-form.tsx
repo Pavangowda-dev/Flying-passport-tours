@@ -12,6 +12,7 @@ import { createBrowserClientSupabase } from '@/lib/supabase/client';
 const destinations = [
   { value: 'china', label: 'China' },
   { value: 'japan-south-korea-north-korea', label: 'Japan, South Korea & North Korea' },
+  { value: 'europe', label: 'Europe' },
 ];
 
 export default function PopupForm() {

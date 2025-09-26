@@ -31,9 +31,9 @@ export default function AboutPage() {
             <div>
               <h2 className="font-serif font-bold text-3xl md:text-4xl mb-6">Our Story</h2>
               <p className="mb-4">
-                We are Asha and Kiran, a passionate travel couple from Karnataka, India. From university days to
-                quitting our IT jobs, our love for travel led us to Germany to pursue our Master's while exploring the
-                world on a tight budget.
+              I am Asha, a passionate traveler from Karnataka, India. From university days to 
+              quitting my IT job, my love for travel led me to Germany to pursue my Master's while exploring the 
+              world on a tight budget.
               </p>
               <p className="mb-4">
                 Despite working multiple part-time jobs, we prioritized travel over luxury, managing to explore 50+
@@ -56,11 +56,11 @@ export default function AboutPage() {
                   <p className="text-xs sm:text-sm text-muted-foreground">Countries Explored</p>
                 </div>
                 <div>
-                  <p className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-secondary">500+</p>
+                  <p className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-secondary">1000+</p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Happy Travelers</p>
                 </div>
                 <div>
-                  <p className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-secondary">20+</p>
+                  <p className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-secondary">30+</p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Group Tours</p>
                 </div>
               </div>
@@ -264,10 +264,11 @@ export default function AboutPage() {
                 <Award size={32} className="text-secondary mx-auto" />
               </div>
               <blockquote className="text-lg font-serif italic mb-4">
-                "The Japan tour was perfectly organized with a great balance of structured activities and free time. Our
-                guide was knowledgeable and passionate."
+                "Our Europe trip with Flying Passport was amazing! Everything from food and accommodation to sightseeing was well arranged, 
+                allowing us to enjoy every moment without worries. A big thanks to the dedicated team, 
+                especially Asha ma’am and Kiran sir, for making our journey truly memorable."
               </blockquote>
-              <p className="font-bold">Rahul Mehta</p>
+              <p className="font-bold">Sumana S</p>
             </div>
 
             <div className="bg-white/10 p-6 rounded-lg">
@@ -275,10 +276,11 @@ export default function AboutPage() {
                 <Award size={32} className="text-secondary mx-auto" />
               </div>
               <blockquote className="text-lg font-serif italic mb-4">
-                "As a solo female traveler, I felt completely safe and welcomed on the Turkey tour. I made friends I
-                still keep in touch with today!"
+                "My second tour with Flying Passport (after Japan) was China, and it was unforgettable! 
+                From unique experiences to seamless arrangements, Asha ma’am and Kiran sir made it feel like 
+                traveling with close friends. Truly a core memory!"
               </blockquote>
-              <p className="font-bold">Priya Sharma</p>
+              <p className="font-bold">Sushnitha R</p>
             </div>
 
             <div className="bg-white/10 p-6 rounded-lg">
@@ -286,10 +288,10 @@ export default function AboutPage() {
                 <Award size={32} className="text-secondary mx-auto" />
               </div>
               <blockquote className="text-lg font-serif italic mb-4">
-                "The Kenya safari exceeded all expectations. Seeing the wildlife up close was a dream come true, and the
-                accommodations were fantastic."
+                "My Turkey trip with Flying Passport was unforgettable! Perfectly planned itinerary, 
+                beautiful stays, and seamless travel made the experience stress-free and memorable. Highly recommend their team!"
               </blockquote>
-              <p className="font-bold">Ananya Patel</p>
+              <p className="font-bold">Jayalakshmi S</p>
             </div>
           </div>
         </div>

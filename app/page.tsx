@@ -41,7 +41,7 @@ const upcomingTours = [
     id: "6",
     title: "12-Day European Highlights",
     destination: "Europe",
-    image: "/images/tours/europe/europe-group-tour-1.webp",
+    image: "/images/tours/europe/europe-group-tour-1.png",
     duration: 12,
     price: 327000,
     description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",

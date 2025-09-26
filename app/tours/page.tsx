@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import WhatsAppButton from "@/components/whatsapp-button"
+import PopupForm from "@/components/popup-form"
 
 // Updated tours array with modified Europe tour
 const tours = [
@@ -26,7 +27,7 @@ const tours = [
       "Explore China's rich history and modern marvels, from the Great Wall to vibrant Shanghai, on this immersive group tour.",
     highlights: ["Beijing", "Great Wall", "Xi'an", "Shanghai"],
     status: "upcoming",
-    departureDate: "September 15, 2025",
+    departureDate: "October 27, 2025",
   },
   {
     id: "11",
@@ -47,7 +48,7 @@ const tours = [
     title: "12-Day European Highlights",
     destination: "europe",
     region: "europe",
-    image: "/images/tours/europe/europe-group-tour-1.webp",
+    image: "/images/tours/europe/europe-group-tour-1.png",
     duration: 12,
     price: 327000,
     description:
@@ -201,6 +202,8 @@ export default function ToursPage() {
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false)
   const [isDurationDropdownOpen, setIsDurationDropdownOpen] = useState(false)
   const [isContinentDropdownOpen, setIsContinentDropdownOpen] = useState(false)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [selectedTourTitle, setSelectedTourTitle] = useState<string | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isAutoScrolling, setIsAutoScrolling] = useState(false)
 
@@ -310,10 +313,18 @@ export default function ToursPage() {
     }
   }
 
+  const handleEarlyAccessClick = (tourTitle: string) => {
+    setSelectedTourTitle(tourTitle)
+    setIsPopupOpen(true)
+  }
+
   return (
     <div className="pt-24 sm:pt-20 md:pt-24 pb-6 sm:pb-8 md:pb-16 min-h-screen">
       {/* WhatsApp Button */}
       <WhatsAppButton alwaysVisible={true} />
+
+      {/* Popup Form */}
+      <PopupForm isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} tourTitle={selectedTourTitle} />
 
       {/* JSON-LD Schema for Tours */}
       <script type="application/ld+json">
@@ -759,69 +770,68 @@ export default function ToursPage() {
                       key={tour.id}
                       className="flex-shrink-0 snap-start w-[calc(100vw-48px)] sm:w-[calc(100vw-56px)]"
                     >
-                      <Link href={`/tours/${tour.id}`} className="block">
-                        <Card className="overflow-hidden hover-lift h-full">
-                          <div className="relative h-48 sm:h-52">
-                            <Image
-                              src={tour.image || "/placeholder.svg"}
-                              alt={`${tour.title} group tour from Karnataka with Flying Passport`}
-                              fill
-                              className="object-cover object-center transition-transform duration-500 hover:scale-105"
-                              sizes="100vw"
-                              quality={75}
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-black/40 z-10 rounded-lg flex items-center justify-center">
-                              <div className="bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs font-medium">
-                                Coming Back Soon
-                              </div>
-                            </div>
-                            {/* Continent Badge for mobile */}
-                            <div className="absolute top-2 right-2 bg-primary/20 text-primary px-1.5 py-0.5 rounded text-xs">
-                              {continents.find(c => c.value === tour.region)?.label}
+                      <Card className="overflow-hidden hover-lift h-full">
+                        <div className="relative h-48 sm:h-52">
+                          <Image
+                            src={tour.image || "/placeholder.svg"}
+                            alt={`${tour.title} group tour from Karnataka with Flying Passport`}
+                            fill
+                            className="object-cover object-center transition-transform duration-500 hover:scale-105"
+                            sizes="100vw"
+                            quality={75}
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-black/40 z-10 rounded-lg flex items-center justify-center">
+                            <div className="bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs font-medium">
+                              Coming Back Soon
                             </div>
                           </div>
-                          <CardContent className="p-3 sm:p-4">
-                            <h3 className="font-serif font-bold text-base sm:text-lg mb-2 sm:mb-3 hover:text-secondary transition-colors line-clamp-2">
-                              {tour.title}
-                            </h3>
-                            <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
-                              <Clock size={14} className="mr-1 sm:mr-2 flex-shrink-0" />
-                              <span>{tour.duration} Days</span>
-                              <span className="mx-2 sm:mx-3">•</span>
-                              <Users size={14} className="mr-1 sm:mr-2 flex-shrink-0" />
-                              <span>40 People</span>
+                          {/* Continent Badge for mobile */}
+                          <div className="absolute top-2 right-2 bg-primary/20 text-primary px-1.5 py-0.5 rounded text-xs">
+                            {continents.find(c => c.value === tour.region)?.label}
+                          </div>
+                        </div>
+                        <CardContent className="p-3 sm:p-4">
+                          <h3 className="font-serif font-bold text-base sm:text-lg mb-2 sm:mb-3 hover:text-secondary transition-colors line-clamp-2">
+                            {tour.title}
+                          </h3>
+                          <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
+                            <Clock size={14} className="mr-1 sm:mr-2 flex-shrink-0" />
+                            <span>{tour.duration} Days</span>
+                            <span className="mx-2 sm:mx-3">•</span>
+                            <Users size={14} className="mr-1 sm:mr-2 flex-shrink-0" />
+                            <span>40 People</span>
+                          </div>
+                          <p className="text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
+                            {tour.description}
+                          </p>
+                          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+                            {tour.highlights.slice(0, 3).map((highlight, index) => (
+                              <span key={index} className="text-xs bg-muted px-2 py-1 rounded-full">
+                                {highlight}
+                              </span>
+                            ))}
+                            {tour.highlights.length > 3 && (
+                              <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                                +{tour.highlights.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <span className="font-bold text-sm sm:text-base">Price on Request</span>
+                              <span className="text-xs text-muted-foreground"> / person</span>
                             </div>
-                            <p className="text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
-                              {tour.description}
-                            </p>
-                            <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-                              {tour.highlights.slice(0, 3).map((highlight, index) => (
-                                <span key={index} className="text-xs bg-muted px-2 py-1 rounded-full">
-                                  {highlight}
-                                </span>
-                              ))}
-                              {tour.highlights.length > 3 && (
-                                <span className="text-xs bg-muted px-2 py-1 rounded-full">
-                                  +{tour.highlights.length - 3} more
-                                </span>
-                              )}
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <span className="font-bold text-sm sm:text-base">Price on Request</span>
-                                <span className="text-xs text-muted-foreground"> / person</span>
-                              </div>
-                              <Button
-                                size="sm"
-                                className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-xs sm:text-sm px-3 sm:px-4 py-2 min-h-[36px]"
-                              >
-                                Get Early Access
-                              </Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </Link>
+                            <Button
+                              size="sm"
+                              className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-xs sm:text-sm px-3 sm:px-4 py-2 min-h-[36px]"
+                              onClick={() => handleEarlyAccessClick(tour.title)}
+                            >
+                              Get Early Access
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                   ))}
                 </div>
@@ -856,7 +866,7 @@ export default function ToursPage() {
             {/* Desktop: Regular grid */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
               {comingBackSoonTours.map((tour) => (
-                <Link href={`/tours/${tour.id}`} key={tour.id} className="group">
+                <div key={tour.id} className="group">
                   <Card className="overflow-hidden hover-lift h-full">
                     <div className="relative h-48">
                       <Image
@@ -911,13 +921,14 @@ export default function ToursPage() {
                         <Button
                           size="sm"
                           className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-sm"
+                          onClick={() => handleEarlyAccessClick(tour.title)}
                         >
                           Get Early Access
                         </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

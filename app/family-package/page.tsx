@@ -1,65 +1,81 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Clock, Users, Heart, X } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import * as Dialog from "@radix-ui/react-dialog"
-import * as Toast from "@radix-ui/react-toast"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
-import WhatsAppButton from "@/components/whatsapp-button"
-import { createBrowserClientSupabase } from "@/lib/supabase/client"
+import { useEffect, useState } from "react";
+import { Clock, Users, Heart, X } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as Toast from "@radix-ui/react-toast";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import WhatsAppButton from "@/components/whatsapp-button";
+import { createBrowserClientSupabase } from "@/lib/supabase/client";
 
 export default function FamilyPackagePage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [mobileNumber, setMobileNumber] = useState("")
-  const [error, setError] = useState("")
-  const [toastOpen, setToastOpen] = useState(false)
-  const [toastMessage, setToastMessage] = useState("")
-  const [toastType, setToastType] = useState<"success" | "error">("success")
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [error, setError] = useState("");
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState<"success" | "error">("success");
 
   const validateMobileNumber = (number: string) => {
-    const cleanNumber = number.replace(/^\+91/, "").replace(/\D/g, "")
-    return cleanNumber.length === 10
-  }
+    return /^\+?[1-9]\d{1,14}$/.test(number);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!validateMobileNumber(mobileNumber)) {
-      setError("Please enter a valid 10-digit Indian mobile number (e.g., +919876543210 or 9876543210)")
-      return
+      setError("Please enter a valid mobile number (e.g., +919876543210)");
+      return;
     }
 
     try {
-      const supabase = createBrowserClientSupabase()
-      const { error } = await supabase
+      const supabase = createBrowserClientSupabase();
+      const insertData = {
+        mobile_number: mobileNumber,
+        created_at: new Date().toISOString(),
+      };
+      console.log("Submitting to Supabase:", insertData);
+
+      const { data, error } = await supabase
         .from("notify_me")
-        .insert([{ mobile_number: mobileNumber }])
+        .insert([insertData])
+        .select();
 
       if (error) {
-        throw new Error(error.message)
+        console.error("Supabase insert error:", {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code,
+        });
+        throw new Error(error.message);
       }
 
-      setToastMessage("Thank you! We'll notify you when family packages are available.")
-      setToastType("success")
-      setToastOpen(true)
-      setMobileNumber("")
-      setError("")
-      setIsModalOpen(false)
-    } catch (err) {
-      setToastMessage("Error submitting your number. Please try again.")
-      setToastType("error")
-      setToastOpen(true)
-      console.error("Supabase error:", err)
+      console.log("Supabase insert successful:", data);
+      setToastMessage("Thank you! We'll notify you when family packages are available.");
+      setToastType("success");
+      setToastOpen(true);
+      setMobileNumber("");
+      setError("");
+      setIsModalOpen(false);
+    } catch (err: any) {
+      console.error("Unexpected error in notify me submission:", {
+        message: err.message,
+        stack: err.stack,
+      });
+      setToastMessage("Error submitting your number. Please try again.");
+      setToastType("error");
+      setToastOpen(true);
     }
-  }
+  };
 
   return (
     <div className="pt-28 md:pt-32 pb-8 md:pb-16">
@@ -141,8 +157,8 @@ export default function FamilyPackagePage() {
                             placeholder="+919876543210"
                             value={mobileNumber}
                             onChange={(e) => {
-                              setMobileNumber(e.target.value)
-                              setError("")
+                              setMobileNumber(e.target.value);
+                              setError("");
                             }}
                             className={error ? "border-red-500" : ""}
                           />
@@ -196,5 +212,5 @@ export default function FamilyPackagePage() {
         <Toast.Viewport />
       </Toast.Provider>
     </div>
-  )
+  );
 }

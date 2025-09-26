@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 interface Testimonial {
   id: number
@@ -42,7 +44,7 @@ export default function TestimonialSlider({
   }, [autoRotate, isPaused, rotationInterval])
 
   return (
-    <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+    <div className="relative">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500"
@@ -51,7 +53,6 @@ export default function TestimonialSlider({
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="w-full flex-shrink-0 px-4 md:px-12">
               <div className="flex flex-col items-center text-center max-w-2xl mx-auto py-8">
-                {/* Better character avatar that fills the grid completely */}
                 <div className="w-20 h-20 mb-4 rounded-full bg-white/10 flex items-center justify-center text-5xl border-2 border-white/20">
                   {testimonial.avatar}
                 </div>
@@ -103,6 +104,17 @@ export default function TestimonialSlider({
             aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}
+      </div>
+
+      <div className="text-center mt-8">
+        <Button asChild className="bg-secondary hover:bg-accent hover:text-primary transition-colors">
+          <Link
+            href="https://www.google.com/search?sca_esv=a0d1b552b0cbf3bf&sxsrf=AE3TifPVUx3WWiF0UsJ72-v5RHwdriYBpg:1758912779006&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E17nQGy_4smJLKeVsxBxXqtmJlAAvxQM7dCF6OPIf2kNVOwDopeEfvWdE2Y26ylj9iSV8FWFBLmAhWqV3sZurvR4dCLIPYvHvwjTiK8qnQnbHJGVng%3D%3D&q=Flying+Passport+Tours+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwjUv4jbjPePAxUhxjgGHdtVMrMQ0bkNegQIIRAD&biw=1280&bih=678&dpr=1.5"
+            target="_blank"
+          >
+            View More Reviews
+          </Link>
+        </Button>
       </div>
     </div>
   )
