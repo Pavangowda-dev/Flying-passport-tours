@@ -395,7 +395,7 @@ export const tours = [
       "10 nights accommodation in 3★ and 4★ hotels",
       "Daily breakfast and 5 dinners",
       "Inter-island ferries and domestic flight",
-      "English-speaking local guides",
+      "English-speaking local guide",
       "All entrance fees",
       "Wine tasting in Santorini",
       "Airport and port transfers",
