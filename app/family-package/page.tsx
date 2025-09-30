@@ -11,7 +11,94 @@ import * as Toast from "@radix-ui/react-toast";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { createBrowserClientSupabase } from "@/lib/supabase/client";
+import { useFormState, useFormStatus } from "react-dom";
+import { submitNotifyMe } from "@/actions/notify-me";
+
+interface NotifyMeFormState {
+  success: boolean;
+  message: string;
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button
+      type="submit"
+      className="bg-secondary hover:bg-accent hover:text-primary"
+      disabled={pending}
+    >
+      {pending ? "Submitting..." : "Submit"}
+    </Button>
+  );
+}
+
+function NotifyMeForm({ setIsModalOpen }: { setIsModalOpen: (open: boolean) => void }) {
+  const initialState: NotifyMeFormState = { success: false, message: "" };
+  const [state, formAction] = useFormState(submitNotifyMe, initialState);
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [error, setError] = useState("");
+
+  // Close dialog after successful submission
+  useEffect(() => {
+    if (state.success) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(false);
+        setMobileNumber("");
+        setError("");
+      }, 2000); // Close after 2 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [state.success, setIsModalOpen]);
+
+  const validateMobileNumber = (number: string) => {
+    return /^\+?[1-9]\d{1,14}$/.test(number);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMobileNumber(e.target.value);
+    setError("");
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    if (!validateMobileNumber(mobileNumber)) {
+      setError("Please enter a valid mobile number (e.g., +919876543210)");
+      return;
+    }
+    formAction(formData);
+  };
+
+  return (
+    <form action={handleSubmit} className="space-y-4">
+      <div>
+        <Label htmlFor="mobileNumber">Mobile Number</Label>
+        <Input
+          id="mobileNumber"
+          name="mobileNumber"
+          type="tel"
+          placeholder="+919876543210"
+          value={mobileNumber}
+          onChange={handleChange}
+          className={error || state.success === false ? "border-red-500" : ""}
+          disabled={state.success}
+        />
+        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+        {state.message && !error && (
+          <p className={cn("text-sm mt-1", state.success ? "text-green-500" : "text-red-500")}>
+            {state.message}
+          </p>
+        )}
+      </div>
+      <div className="flex justify-end space-x-2">
+        <Dialog.Close asChild>
+          <Button variant="outline" disabled={state.success}>
+            Cancel
+          </Button>
+        </Dialog.Close>
+        <SubmitButton />
+      </div>
+    </form>
+  );
+}
 
 export default function FamilyPackagePage() {
   useEffect(() => {
@@ -19,63 +106,15 @@ export default function FamilyPackagePage() {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [error, setError] = useState("");
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState<"success" | "error">("success");
 
-  const validateMobileNumber = (number: string) => {
-    return /^\+?[1-9]\d{1,14}$/.test(number);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateMobileNumber(mobileNumber)) {
-      setError("Please enter a valid mobile number (e.g., +919876543210)");
-      return;
-    }
-
-    try {
-      const supabase = createBrowserClientSupabase();
-      const insertData = {
-        mobile_number: mobileNumber,
-        created_at: new Date().toISOString(),
-      };
-      console.log("Submitting to Supabase:", insertData);
-
-      const { data, error } = await supabase
-        .from("notify_me")
-        .insert([insertData])
-        .select();
-
-      if (error) {
-        console.error("Supabase insert error:", {
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-          code: error.code,
-        });
-        throw new Error(error.message);
-      }
-
-      console.log("Supabase insert successful:", data);
-      setToastMessage("Thank you! We'll notify you when family packages are available.");
-      setToastType("success");
-      setToastOpen(true);
-      setMobileNumber("");
-      setError("");
-      setIsModalOpen(false);
-    } catch (err: any) {
-      console.error("Unexpected error in notify me submission:", {
-        message: err.message,
-        stack: err.stack,
-      });
-      setToastMessage("Error submitting your number. Please try again.");
-      setToastType("error");
+  useEffect(() => {
+    if (toastMessage) {
       setToastOpen(true);
     }
-  };
+  }, [toastMessage]);
 
   return (
     <div className="pt-28 md:pt-32 pb-8 md:pb-16">
@@ -148,31 +187,7 @@ export default function FamilyPackagePage() {
                       <Dialog.Description className="text-muted-foreground mb-4">
                         Enter your mobile number to receive updates on family package availability.
                       </Dialog.Description>
-                      <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                          <Label htmlFor="mobileNumber">Mobile Number</Label>
-                          <Input
-                            id="mobileNumber"
-                            type="tel"
-                            placeholder="+919876543210"
-                            value={mobileNumber}
-                            onChange={(e) => {
-                              setMobileNumber(e.target.value);
-                              setError("");
-                            }}
-                            className={error ? "border-red-500" : ""}
-                          />
-                          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-                        </div>
-                        <div className="flex justify-end space-x-2">
-                          <Dialog.Close asChild>
-                            <Button variant="outline">Cancel</Button>
-                          </Dialog.Close>
-                          <Button type="submit" className="bg-secondary hover:bg-accent hover:text-primary">
-                            Submit
-                          </Button>
-                        </div>
-                      </form>
+                      <NotifyMeForm setIsModalOpen={setIsModalOpen} />
                     </Dialog.Content>
                   </Dialog.Portal>
                 </Dialog.Root>
