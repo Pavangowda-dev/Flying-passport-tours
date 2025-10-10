@@ -61,6 +61,10 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",
   },
+  icons: {
+    icon: "/images/logo-updated.png",
+    apple: "/images/logo-updated.png",
+  },
 };
 
 export default function RootLayout({
@@ -72,6 +76,8 @@ export default function RootLayout({
     <html lang="en" className="light" style={{ colorScheme: "light" }}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css" />
+        <link rel="icon" href="/images/logo-updated.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/logo-updated.png" />
         {/* JSON-LD Schema for LocalBusiness */}
         <script type="application/ld+json">
           {JSON.stringify({

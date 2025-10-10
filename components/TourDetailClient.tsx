@@ -1,75 +1,80 @@
 'use client';
 
-import { useState } from "react"
-import Image from "next/image"
-import { Clock, Users, MapPin, Check, X, ChevronLeft, ChevronRight, Download } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import BookingForm from "@/components/booking-form"
-import WhatsAppButton from "@/components/whatsapp-button"
-import EarlyAccessPopup from "@/components/early-access-popup"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Clock, Users, MapPin, Check, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import BookingForm from "@/components/booking-form";
+import WhatsAppButton from "@/components/whatsapp-button";
+import EarlyAccessPopup from "@/components/early-access-popup";
 
 interface Tour {
-  id: string
-  title: string
-  destination: string
-  image: string
-  gallery: string[]
-  duration: number
-  groupSize: string
-  price: number
-  status: string
-  departureDate: string
-  description: string
-  highlights: string[]
-  itinerary: { day: number; title: string; description: string }[]
-  inclusions: string[]
-  exclusions: string[]
-  singleOccupancy: number
-  childPrice: number
-  pdf?: string
+  id: string;
+  title: string;
+  destination: string;
+  image: string;
+  gallery: string[];
+  duration: number;
+  groupSize: string;
+  price: number;
+  status: string;
+  departureDate: string;
+  description: string;
+  highlights: string[];
+  itinerary: { day: number; title: string; description: string }[];
+  inclusions: string[];
+  exclusions: string[];
+  singleOccupancy: number;
+  childPrice: number;
 }
 
 export default function TourDetailClient({ tour }: { tour: Tour }) {
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
-  const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768)
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const isExpired = tour.status === "expired"
-  const allImages = isExpired ? [tour.image] : [tour.image, ...tour.gallery]
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const nextImage = () => {
-    setActiveImageIndex((prev) => (prev + 1) % allImages.length)
-  }
+  const isExpired = tour.status === "expired";
+  const allImages = isExpired ? [tour.image] : [tour.image, ...tour.gallery];
 
-  const prevImage = () => {
-    setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
-  }
+  const nextImage = () => setActiveImageIndex((prev) => (prev + 1) % allImages.length);
+  const prevImage = () => setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
 
-  const handleDownloadClick = () => {
-    if (tour.status !== "upcoming" || !tour.pdf) {
-      alert("The itinerary PDF will be available when the tour is upcoming.");
-    }
-  }
+  const packageInclusions = [
+    { icon: "/images/Travel-icons/Sightseeing.png", text: "Sightseeing" },
+    { icon: "/images/Travel-icons/Flights&Visa.png", text: "Flights & Visa" },
+    { icon: "/images/Travel-icons/3-Times-Meal.png", text: "3 Times Meal" },
+    { icon: "/images/Travel-icons/5-Star-Accommodation.png", text: "5 Star Accommodation" },
+    { icon: "/images/Travel-icons/Travel-Insurance.png", text: "Travel Insurance" },
+    { icon: "/images/Travel-icons/Transportation.png", text: "Transportation" },
+  ];
 
   return (
     <div className="pt-16 sm:pt-16 md:pt-20">
       <WhatsAppButton alwaysVisible={true} />
       <EarlyAccessPopup tourTitle={tour.title} isExpired={isExpired} />
 
+      {/* ====== IMAGE + BOOKING SECTION ====== */}
       <section className="pt-4 pb-8 md:pt-6 md:pb-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Tour Images with Slider */}
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* ==== LEFT: IMAGE GALLERY ==== */}
             <div className="lg:col-span-2">
-              <div className="relative aspect-[1122/793] lg:aspect-[30/15] lg:max-h-[1000px] rounded-lg overflow-hidden mb-4">
+              <div className="relative aspect-[822/411] rounded-lg overflow-hidden mb-4">
                 <Image
                   src={allImages[activeImageIndex] || "/placeholder.svg"}
                   alt={`${tour.title} group tour with Flying Passport`}
                   fill
                   className="object-cover"
                   quality={85}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 822px"
                   placeholder="blur"
                   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8+/ahAQAIrwH4bI6eZQAAAABJRU5ErkJggg=="
                 />
@@ -95,6 +100,8 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                   </>
                 )}
               </div>
+
+              {/* ==== DESKTOP All Inclusive Package ==== */}
               {!isMobile && allImages.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto pb-2">
                   {allImages.map((img, index) => (
@@ -119,59 +126,85 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                   ))}
                 </div>
               )}
+
+              {/* ==== DESKTOP - All Inclusive Package ==== */}
+              {!isMobile && (
+                <div className="mt-4">
+                  <h3 className="font-serif font-bold text-xl mb-2">All Inclusive Package</h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    {packageInclusions.map(({ icon, text }, index) => (
+                      <div key={index} className="flex flex-col items-center text-center">
+                        <Image src={icon} alt={text} width={32} height={32} className="mb-1" />
+                        <span className="text-xs font-medium">{text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div>
-              <h1 className="font-serif font-bold text-3xl mb-2">{tour.title}</h1>
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center">
-                  <MapPin size={16} className="mr-1" />
-                  <span>{tour.destination.charAt(0).toUpperCase() + tour.destination.slice(1)}</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock size={16} className="mr-1" />
-                  <span>{tour.duration} Days</span>
-                </div>
-                <div className="flex items-center">
-                  <Users size={16} className="mr-1" />
-                  <span>{tour.groupSize} People</span>
-                </div>
-              </div>
-              <div className="mb-6">
-                <div className="text-3xl font-bold mb-1">
-                  {tour.price > 0 ? `₹${tour.price.toLocaleString("en-IN")}` : "Price on Request"}
-                </div>
-                <p className="text-sm text-muted-foreground">per person (twin sharing)</p>
-              </div>
+            {/* ==== RIGHT: BOOKING FORM ==== */}
+            <div className="lg:sticky lg:top-20">
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-serif font-bold text-xl mb-4">
-                    {isExpired ? "Get Early Access" : "Book Your Tour"}
-                  </h3>
+                  <h1 className="font-serif font-bold text-3xl mb-2">{tour.title}</h1>
+                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center">
+                      <MapPin size={16} className="mr-1" />
+                      <span>{tour.destination.charAt(0).toUpperCase() + tour.destination.slice(1)}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock size={16} className="mr-1" />
+                      <span>{tour.duration} Days</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Users size={16} className="mr-1" />
+                      <span>{tour.groupSize} People</span>
+                    </div>
+                  </div>
+                  <div className="mb-6">
+                    <h3 className="font-serif font-bold text-xl mb-1">Pricing Starts From</h3>
+                    <div className="text-3xl font-bold text-secondary">
+                      ₹{tour.price.toLocaleString("en-IN")} / per person
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-1">Talk to our travel expert for full pricing</p>
+                  </div>
                   <BookingForm tourId={tour.id} tourTitle={tour.title} departureDate={tour.departureDate} />
                 </CardContent>
               </Card>
             </div>
           </div>
         </div>
+
+        {/* ==== MOBILE - All Inclusive Package BELOW BOOKING FORM ==== */}
+        {isMobile && (
+          <div className="container mx-auto px-4 max-w-7xl mt-6">
+            <h3 className="font-serif font-bold text-xl mb-2">All Inclusive Package</h3>
+            <div className="grid grid-cols-3 gap-4">
+              {packageInclusions.map(({ icon, text }, index) => (
+                <div key={index} className="flex flex-col items-center text-center">
+                  <Image src={icon} alt={text} width={32} height={32} className="mb-1" />
+                  <span className="text-xs font-medium">{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
+      {/* ====== TABS SECTION ====== */}
       <section className="py-8 md:py-12 bg-muted">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <Tabs defaultValue="overview">
             <TabsList className="w-full justify-start mb-8 overflow-auto">
-              <TabsTrigger value="overview" className="min-w-max">
-                Overview
-              </TabsTrigger>
-              <TabsTrigger value="itinerary" className="min-w-max">
-                Itinerary
-              </TabsTrigger>
-              <TabsTrigger value="inclusions" className="min-w-max">
-                Inclusions & Exclusions
-              </TabsTrigger>
+              <TabsTrigger value="overview" className="min-w-max">Overview</TabsTrigger>
+              <TabsTrigger value="itinerary" className="min-w-max">Itinerary</TabsTrigger>
+              <TabsTrigger value="inclusions" className="min-w-max">Inclusions & Exclusions</TabsTrigger>
             </TabsList>
+
+            {/* ==== OVERVIEW TAB ==== */}
             <TabsContent value="overview" className="mt-0">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div className="lg:col-span-2">
                   <h2 className="font-serif font-bold text-2xl mb-4">Tour Overview</h2>
                   <p className="mb-6">{tour.description}</p>
@@ -184,55 +217,8 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                       </li>
                     ))}
                   </ul>
-                  {tour.price > 0 && (
-                    <div className="bg-white p-6 rounded-lg">
-                      <h3 className="font-serif font-bold text-xl mb-4">Pricing Options</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="border rounded-lg p-4">
-                          <h4 className="font-bold text-lg mb-2">Twin Sharing</h4>
-                          <p className="text-2xl font-bold text-secondary">₹{tour.price.toLocaleString("en-IN")}</p>
-                          <p className="text-sm text-muted-foreground">per person</p>
-                        </div>
-                        <div className="border rounded-lg p-4">
-                          <h4 className="font-bold text-lg mb-2">Single Occupancy</h4>
-                          <p className="text-2xl font-bold text-secondary">
-                            ₹{tour.singleOccupancy.toLocaleString("en-IN")}
-                          </p>
-                          <p className="text-sm text-muted-foreground">per person</p>
-                        </div>
-                        <div className="border rounded-lg p-4">
-                          <h4 className="font-bold text-lg mb-2">Children's Price</h4>
-                          <p className="text-2xl font-bold text-secondary">
-                            ₹{tour.childPrice.toLocaleString("en-IN")}
-                          </p>
-                          <p className="text-sm text-muted-foreground">per child (5-12 years)</p>
-                        </div>
-                        <div className="border rounded-lg p-4 bg-muted">
-                          <h4 className="font-bold text-lg mb-2">Download Itinerary</h4>
-                          {tour.status === "upcoming" && tour.pdf ? (
-                            <a
-                              href={tour.pdf}
-                              download
-                              className="flex items-center text-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
-                            >
-                              <Download size={18} className="mr-2" />
-                              Download Full Itinerary PDF
-                            </a>
-                          ) : (
-                            <button
-                              onClick={handleDownloadClick}
-                              className="flex items-center text-sm font-medium text-secondary hover:text-secondary/80 transition-colors"
-                            >
-                              <Download size={18} className="mr-2" />
-                              Download Full Itinerary PDF
-                            </button>
-                          )}
-                          <p className="text-sm text-muted-foreground mt-1">Get the detailed schedule for your trip</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
+
                 <div>
                   <Card>
                     <CardContent className="p-6">
@@ -252,12 +238,16 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                         </div>
                         <div className="flex items-center justify-between border-b pb-2">
                           <span className="font-medium text-muted-foreground">Destination:</span>
-                          <span className="font-bold">{tour.destination.charAt(0).toUpperCase() + tour.destination.slice(1)}</span>
+                          <span className="font-bold">
+                            {tour.destination.charAt(0).toUpperCase() + tour.destination.slice(1)}
+                          </span>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="font-medium text-muted-foreground">Status:</span>
                           <span
-                            className={`font-bold ${tour.status === "upcoming" ? "text-green-600" : "text-red-600"}`}
+                            className={`font-bold ${
+                              tour.status === "upcoming" ? "text-green-600" : "text-red-600"
+                            }`}
                           >
                             {tour.status.charAt(0).toUpperCase() + tour.status.slice(1)}
                           </span>
@@ -268,6 +258,8 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                 </div>
               </div>
             </TabsContent>
+
+            {/* ==== ITINERARY TAB ==== */}
             <TabsContent value="itinerary" className="mt-0">
               <h2 className="font-serif font-bold text-2xl mb-6">Tour Itinerary</h2>
               <div className="space-y-4">
@@ -290,6 +282,8 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
                 ))}
               </div>
             </TabsContent>
+
+            {/* ==== INCLUSIONS TAB ==== */}
             <TabsContent value="inclusions" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
@@ -320,5 +314,5 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
         </div>
       </section>
     </div>
-  )
+  );
 }

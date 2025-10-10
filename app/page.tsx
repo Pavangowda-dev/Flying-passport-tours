@@ -13,19 +13,8 @@ import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 import { useState, useEffect, useRef } from "react"
 
-// Updated tour data - China, Japan/South Korea/North Korea, and Europe tours
+// Updated tour data - China (Fully Booked), Japan/South Korea/North Korea (Few Seats Left), Europe, and Egypt tours
 const upcomingTours = [
-  {
-    id: "10",
-    title: "9-Day China Adventure",
-    destination: "China",
-    image: "/images/tours/China/China_1.png",
-    duration: 9,
-    price: 250000,
-    description: "Discover the rich culture and stunning landscapes of China with the best travel agency in Bangalore.",
-    highlights: ["Beijing", "Great Wall", "Shanghai", "Xi'an Terracotta Warriors", "Yangtze River"],
-    departureDate: "October 27, 2025",
-  },
   {
     id: "11",
     title: "10-Day Japan, South Korea & North Korea",
@@ -33,6 +22,7 @@ const upcomingTours = [
     image: "/images/tours/Japan S&N/japan-s-n-01.png",
     duration: 10,
     price: 337000,
+    availability: "limited",
     description: "Explore the unique blend of ancient traditions and modern cities in Japan, South Korea, and North Korea with Flying Passport.",
     highlights: ["Tokyo", "Kyoto", "Seoul", "Pyongyang", "Cultural Experiences"],
     departureDate: "November 7, 2025",
@@ -47,6 +37,29 @@ const upcomingTours = [
     description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
     highlights: ["Paris", "Amsterdam", "Venice", "Rome", "Mt. Titlis"],
     departureDate: "April 16, 2026",
+  },
+  {
+    id: "12",
+    title: "8-Day Ancient Egypt Adventure",
+    destination: "Egypt",
+    image: "/images/tours/Egypt/Ancient-Egypt (1).png",
+    duration: 8,
+    price: 197000,
+    description: "Discover the wonders of Ancient Egypt with guided tours to the Giza Pyramids, Nile River cruise, and more from Bangalore.",
+    highlights: ["Giza Pyramids", "Nile River Cruise", "Luxor", "Aswan", "Alexandria"],
+    departureDate: "February 11, 2026",
+  },
+  {
+    id: "10",
+    title: "9-Day China Discovery",
+    destination: "China",
+    image: "/images/tours/China/China_1.png",
+    duration: 9,
+    price: 250000,
+    status: "closed",
+    description: "Discover the rich culture and stunning landscapes of China with the best travel agency in Bangalore.",
+    highlights: ["Beijing", "Great Wall", "Shanghai", "Xi'an Terracotta Warriors", "Yangtze River"],
+    departureDate: "October 27, 2025",
   },
 ]
 
@@ -144,7 +157,7 @@ const testimonials = [
     id: 3,
     name: "Mamatha",
     avatar: "👩🏻",
-    quote: "ಟೋಕಿಯೋ ಟೂರ್ ಫ್ಲೈಯಿಂಗ್ ಪಾಸ್ಪೋರ್ಟ್‌ ಜೊತೆ ಶುಭ್ರಮಯವಾಗಿತ್ತು. ತೊಳೆದ ನಗರ, ರುಚಿಯಾದ ಊಟ, ಶಾಂತ ಪರಿಸರ征求。",
+    quote: "ಟೋಕಿಯೋ ಟೂರ್ ಫ್ಲೈಯಿಂಗ್ ಪಾಸ್ಪೋರ್ಟ್‌ ಜೊತೆ ಶುಭ್ರಮಯವಾಗಿತ್ತು. ತೊಳೆದ ನಗರ, ರುಚಿಯಾದ ಊಟ, ಶಾಂತ ಪರಿಸರ。",
     rating: 5,
   },
   {
@@ -279,11 +292,24 @@ export default function Home() {
                     <div className="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">
                       {tour.departureDate}
                     </div>
+                    {/* Status Badge for Fully Booked */}
+                    {tour.status === "closed" && (
+                      <div className="absolute inset-0 bg-black/40 z-10 rounded-lg flex items-center justify-center">
+                        <div className="bg-black/80 text-white px-3 py-2 rounded-full text-sm font-medium">
+                          Fully Booked
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <CardContent className="p-4">
                     <h3 className="font-serif font-bold text-lg mb-2 group-hover:text-secondary transition-colors">
                       {tour.title}
                     </h3>
+                    {tour.availability === "limited" && (
+                      <p className="text-red-600 text-sm font-medium mb-2">
+                        Few Seats Left! Hurry Up!
+                      </p>
+                    )}
                     <div className="flex items-center text-sm text-muted-foreground mb-3">
                       <Clock size={16} className="mr-1" />
                       <span>{tour.duration} Days</span>
@@ -306,11 +332,15 @@ export default function Home() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-lg">₹{tour.price.toLocaleString("en-IN")}</span>
+                        <span className="font-bold text-lg">From ₹{tour.price.toLocaleString("en-IN")}</span>
                         <span className="text-xs text-muted-foreground"> / person</span>
                       </div>
-                      <Button size="sm" className="bg-secondary hover:bg-accent hover:text-primary transition-colors">
-                        View Details
+                      <Button 
+                        size="sm" 
+                        className="bg-secondary hover:bg-accent hover:text-primary transition-colors"
+                        disabled={tour.status === "closed"}
+                      >
+                        {tour.status === "closed" ? "Fully Booked" : "View Details"}
                       </Button>
                     </div>
                   </CardContent>

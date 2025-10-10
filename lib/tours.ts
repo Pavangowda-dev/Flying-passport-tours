@@ -50,6 +50,8 @@ export const tours = [
     ],
     singleOccupancy: 0,
     childPrice: 0,
+    seoTitle: "10-Day Japan Adventure | Flying Passport Tours",
+    seoDescription: "Join our 10-day Japan tour from Bangalore with Kannada-guided experiences. Explore Tokyo, Kyoto, Mount Fuji, and more. Book now!"
   },
   {
     id: "2",
@@ -105,6 +107,8 @@ export const tours = [
     ],
     singleOccupancy: 0,
     childPrice: 0,
+    seoTitle: "12-Day Italian Discovery | Flying Passport Tours",
+    seoDescription: "Explore Italy’s iconic destinations with our 12-day tour from Bangalore. Visit Rome, Florence, Venice, and the Amalfi Coast. Book now!"
   },
   {
     id: "3",
@@ -156,6 +160,8 @@ export const tours = [
     ],
     singleOccupancy: 0,
     childPrice: 0,
+    seoTitle: "8-Day Turkish Delight | Flying Passport Tours",
+    seoDescription: "Discover Turkey’s history and landscapes on our 8-day tour from Bangalore. Visit Istanbul, Cappadocia, and Ephesus. Book now!"
   },
   {
     id: "4",
@@ -251,6 +257,8 @@ export const tours = [
     ],
     singleOccupancy: 0,
     childPrice: 0,
+    seoTitle: "6-Day Kenyan Safari | Flying Passport Tours",
+    seoDescription: "Join our 6-day Kenyan safari from Bangalore. Explore Masai Mara, Naivasha, and Hell’s Gate with Kannada-guided tours and Indian meals. Book now!"
   },
   {
     id: "5",
@@ -303,393 +311,8 @@ export const tours = [
     ],
     singleOccupancy: 0,
     childPrice: 0,
-  },
-  {
-    id: "7",
-    title: "10-Day Vietnam Journey",
-    destination: "Vietnam",
-    image: "/images/tours/vietnam.webp",
-    gallery: [],
-    duration: 10,
-    groupSize: "40",
-    price: 0,
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-    description:
-      "Explore the rich history and natural beauty of Vietnam. From the bustling streets of Ho Chi Minh City to the stunning landscapes of Ha Long Bay.",
-    highlights: [
-      "Explore the historic streets of Hanoi",
-      "Cruise through Ha Long Bay's limestone karsts",
-      "Discover the ancient town of Hoi An",
-      "Experience the vibrant energy of Ho Chi Minh City",
-      "Visit the Cu Chi Tunnels",
-      "Enjoy authentic Vietnamese cuisine",
-    ],
-    itinerary: [
-      { day: 1, title: "Arrival in Hanoi", description: "Arrive in Hanoi. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Hanoi City Tour", description: "Visit Ho Chi Minh Mausoleum, Temple of Literature, and Old Quarter." },
-      { day: 3, title: "Hanoi to Ha Long Bay", description: "Drive to Ha Long Bay. Overnight cruise with dinner on board." },
-      { day: 4, title: "Ha Long Bay to Hoi An", description: "Morning in Ha Long Bay. Flight to Da Nang, transfer to Hoi An." },
-      { day: 5, title: "Hoi An Ancient Town", description: "Walking tour of Hoi An. Lantern festival in the evening." },
-      { day: 6, title: "Hoi An to Ho Chi Minh City", description: "Flight to Ho Chi Minh City. City orientation tour." },
-      { day: 7, title: "Cu Chi Tunnels", description: "Visit Cu Chi Tunnels. Afternoon at leisure in the city." },
-      { day: 8, title: "Mekong Delta", description: "Day trip to Mekong Delta. Boat rides and local experiences." },
-      { day: 9, title: "Ho Chi Minh City", description: "Free day for shopping and exploration. Farewell dinner." },
-      { day: 10, title: "Departure", description: "Transfer to airport for departure." },
-    ],
-    inclusions: [
-      "9 nights accommodation including 1 night on Ha Long Bay cruise",
-      "Daily breakfast and 6 dinners",
-      "Domestic flights within Vietnam",
-      "English-speaking local guides",
-      "All entrance fees",
-      "Ha Long Bay cruise",
-      "Mekong Delta tour",
-      "Airport transfers",
-    ],
-    exclusions: [
-      "International flights to/from Vietnam",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
-    ],
-    singleOccupancy: 0,
-    childPrice: 0,
-  },
-  {
-    id: "8",
-    title: "11-Day Greek Island Hopping",
-    destination: "Greece",
-    image: "/images/tours/greek.webp",
-    gallery: [],
-    duration: 11,
-    groupSize: "40",
-    price: 0,
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-    description:
-      "Discover the stunning islands and ancient history of Greece. From the iconic white buildings of Santorini to the vibrant nightlife of Mykonos.",
-    highlights: [
-      "Explore ancient Athens and the Acropolis",
-      "Sunset views in Santorini",
-      "Beach time and nightlife in Mykonos",
-      "Discover the Palace of Knossos in Crete",
-      "Traditional Greek cuisine and wine tasting",
-      "Island hopping by ferry",
-    ],
-    itinerary: [
-      { day: 1, title: "Arrival in Athens", description: "Arrive in Athens. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Athens Sightseeing", description: "Visit Acropolis, Parthenon, and Ancient Agora. Afternoon at leisure." },
-      { day: 3, title: "Athens to Mykonos", description: "Ferry to Mykonos. Explore Mykonos Town and beaches." },
-      { day: 4, title: "Mykonos Island", description: "Beach day and optional visit to nearby Delos island." },
-      { day: 5, title: "Mykonos to Santorini", description: "Ferry to Santorini. Explore Fira and famous sunset in Oia." },
-      { day: 6, title: "Santorini Exploration", description: "Wine tasting tour and visit to Akrotiri archaeological site." },
-      { day: 7, title: "Santorini to Crete", description: "Ferry to Crete. Explore Heraklion and visit Knossos Palace." },
-      { day: 8, title: "Crete Discovery", description: "Visit traditional villages and enjoy Cretan cuisine." },
-      { day: 9, title: "Crete to Athens", description: "Flight back to Athens. Last-minute shopping and sightseeing." },
-      { day: 10, title: "Athens Free Day", description: "Free day in Athens. Optional day trip or museum visits." },
-      { day: 11, title: "Departure", description: "Transfer to airport for departure." },
-    ],
-    inclusions: [
-      "10 nights accommodation in 3★ and 4★ hotels",
-      "Daily breakfast and 5 dinners",
-      "Inter-island ferries and domestic flight",
-      "English-speaking local guides",
-      "All entrance fees",
-      "Wine tasting in Santorini",
-      "Airport and port transfers",
-    ],
-    exclusions: [
-      "International flights to/from Greece",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
-    ],
-    singleOccupancy: 0,
-    childPrice: 0,
-  },
-  {
-    id: "9",
-    title: "8-Day Moroccan Adventure",
-    destination: "Morocco",
-    image: "/images/tours/morocco.webp",
-    gallery: [],
-    duration: 8,
-    groupSize: "40",
-    price: 0,
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-    description:
-      "Experience the colors, flavors, and landscapes of magical Morocco. From bustling souks to the Sahara Desert, discover the beauty of North Africa.",
-    highlights: [
-      "Explore the vibrant souks of Marrakech",
-      "Visit the blue city of Chefchaouen",
-      "Experience the imperial city of Fes",
-      "Camel trekking in the Sahara Desert",
-      "Overnight in desert camp under the stars",
-      "Traditional Moroccan cuisine and mint tea",
-    ],
-    itinerary: [
-      { day: 1, title: "Arrival in Casablanca", description: "Arrive in Casablanca. Visit Hassan II Mosque. Transfer to Rabat." },
-      { day: 2, title: "Rabat to Chefchaouen", description: "Explore Rabat's medina. Drive to the blue city of Chefchaouen." },
-      { day: 3, title: "Chefchaouen to Fes", description: "Morning in Chefchaouen. Afternoon drive to Fes." },
-      { day: 4, title: "Fes Exploration", description: "Full day exploring Fes medina, tanneries, and madrasas." },
-      { day: 5, title: "Fes to Sahara Desert", description: "Drive through Middle Atlas to Merzouga. Camel trek to desert camp." },
-      { day: 6, title: "Sahara to Ouarzazate", description: "Sunrise in desert. Drive to Ouarzazate via Todra Gorge." },
-      { day: 7, title: "Ouarzazate to Marrakech", description: "Visit Ait Benhaddou kasbah. Drive to Marrakech over Atlas Mountains." },
-      { day: 8, title: "Marrakech & Departure", description: "Explore Marrakech medina and Jemaa el-Fnaa square. Transfer to airport." },
-    ],
-    inclusions: [
-      "7 nights accommodation including 1 night in desert camp",
-      "Daily breakfast and 4 dinners",
-      "Private transportation throughout",
-      "English-speaking local guide",
-      "All entrance fees",
-      "Camel trekking experience",
-      "Airport transfers",
-    ],
-    exclusions: [
-      "International flights to/from Morocco",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
-    ],
-    singleOccupancy: 0,
-    childPrice: 0,
-  },
-  {
-    id: "10",
-    title: "9-Day China Discovery",
-    destination: "China",
-    image: "/images/tours/China/China_1.png",
-    gallery: [
-      "/images/tours/China/China_2.png",
-      "/images/tours/China/China_3.png",
-      "/images/tours/China/China_4.png",
-      "/images/tours/China/China_5.png",
-      "/images/tours/China/China_6.png",
-      "/images/tours/China/China_7.png",
-      "/images/tours/China/China_8.png",
-      "/images/tours/China/China_9.png",
-      "/images/tours/China/China_10.png",
-    ],
-    duration: 9,
-    groupSize: "40",
-    price: 250000,
-    status: "upcoming",
-    departureDate: "October 27, 2025",
-    description:
-      "Explore China’s rich history and modern marvels, from the Great Wall to vibrant Shanghai, on this immersive 9-day group tour. Enjoy cultural experiences, iconic landmarks, and Indian meals with seamless travel arrangements.",
-    highlights: [
-      "Walk along the iconic Great Wall of China",
-      "Explore the historic Forbidden City in Beijing",
-      "Visit the Terracotta Warriors in Xi’an",
-      "Cruise the vibrant Huangpu River in Shanghai",
-      "Experience the scenic beauty of Guilin’s Li River",
-      "Savor authentic Chinese cuisine with Indian meal options",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Beijing",
-        description:
-          "Arrive at Beijing Capital International Airport on October 27. Meet our representative and transfer to a 4-star hotel. Enjoy a welcome Indian dinner and relax after your journey.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Beijing",
-      },
-      {
-        day: 2,
-        title: "Beijing – Forbidden City & Tiananmen Square",
-        description:
-          "After breakfast, visit Tiananmen Square and the Forbidden City, the imperial palace complex. Enjoy an Indian lunch, followed by a visit to the Temple of Heaven. Evening at leisure with Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Beijing",
-      },
-      {
-        day: 3,
-        title: "Great Wall of China",
-        description:
-          "Travel to the Mutianyu section of the Great Wall. Enjoy a cable car ride and time to explore this iconic landmark. Return to Beijing for an Indian dinner and rest.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Beijing",
-      },
-      {
-        day: 4,
-        title: "Beijing to Xi’an",
-        description:
-          "Morning high-speed train to Xi’an. After an Indian lunch, visit the ancient Xi’an City Wall. Evening free to explore the Muslim Quarter with dinner at an Indian restaurant.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Xi’an",
-      },
-      {
-        day: 5,
-        title: "Xi’an – Terracotta Warriors",
-        description:
-          "Visit the world-famous Terracotta Warriors and Horses Museum. After lunch, explore the Big Wild Goose Pagoda. Enjoy an Indian dinner and a cultural show in the evening.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Xi’an",
-      },
-      {
-        day: 6,
-        title: "Xi’an to Guilin",
-        description:
-          "Fly to Guilin, known for its dramatic limestone karsts. After an Indian lunch, visit Reed Flute Cave. Evening at leisure with dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Guilin",
-      },
-      {
-        day: 7,
-        title: "Guilin – Li River Cruise",
-        description:
-          "Enjoy a scenic Li River cruise to Yangshuo, surrounded by lush mountains. Explore Yangshuo’s West Street in the afternoon. Return to Guilin for an Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Guilin",
-      },
-      {
-        day: 8,
-        title: "Guilin to Shanghai",
-        description:
-          "Fly to Shanghai. After an Indian lunch, explore the Bund and Nanjing Road. Evening Huangpu River cruise followed by an Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Shanghai",
-      },
-      {
-        day: 9,
-        title: "Shanghai & Departure",
-        description:
-          "Visit Yu Garden and the Old Town in the morning. After an Indian lunch, transfer to Shanghai Pudong International Airport for your return flight. Bid farewell to an unforgettable China adventure.\n\nMeals: Breakfast, Lunch\nAccommodation: None",
-      },
-    ],
-    inclusions: [
-      "Economy class return flight tickets (Bangalore – China – Bangalore)",
-      "Accommodation in 4-star hotels (3 nights Beijing, 2 nights Xi’an, 2 nights Guilin, 1 night Shanghai)",
-      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
-      "High-speed train tickets (Beijing to Xi’an)",
-      "Domestic flights (Xi’an to Guilin, Guilin to Shanghai)",
-      "All sightseeing and entrance fees as per itinerary",
-      "Li River cruise and Huangpu River cruise",
-      "Services of an English-speaking tour manager throughout",
-      "China tourist visa for all travelers",
-      "Free travel insurance (below 60 years)",
-      "All airport and hotel transfers",
-    ],
-    exclusions: [
-      "5% GST & 5% TCS (as applicable for international travel)",
-      "Tips for driver and guide (USD 5 per day per person, total USD 45 per person)",
-      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
-      "Meals not mentioned in the itinerary",
-      "Optional excursions or entrance fees not specified in the itinerary",
-      "Travel insurance charges for travelers above 60 years (if applicable)",
-      "Any other item not mentioned under “What’s Included”",
-    ],
-    singleOccupancy: 325000,
-    childPrice: 245000,
-  },
-  {
-    id: "11",
-    title: "10-Day Japan, South Korea & North Korea",
-    destination: "Japan, South Korea, North Korea",
-    image: "/images/tours/Japan S&N/japan-s-n-01.png",
-    gallery: [
-      "/images/tours/Japan S&N/japan-s-n-02.png",
-      "/images/tours/Japan S&N/japan-s-n-03.png",
-      "/images/tours/Japan S&N/japan-s-n-04.png",
-      "/images/tours/Japan S&N/japan-s-n-05.png",
-      "/images/tours/Japan S&N/japan-s-n-06.png",
-      "/images/tours/Japan S&N/japan-s-n-07.png",
-      "/images/tours/Japan S&N/japan-s-n-08.png",
-      "/images/tours/Japan S&N/japan-s-n-09.png",
-      "/images/tours/Japan S&N/japan-s-n-10.png",
-    ],
-    pdf: "/images/FLYING PASSPORTS JAPAN AND SOUTH KOREA & NORTH KOREA ITINERARY 2025.pdf",
-    duration: 10,
-    groupSize: "40",
-    price: 337000,
-    status: "upcoming",
-    departureDate: "November 7, 2025",
-    description:
-      "Embark on an extraordinary 10-day journey through Japan, South Korea, and North Korea, exploring a unique blend of ancient traditions, modern metropolises, and exclusive cultural insights. Enjoy guided tours, Indian meals, and seamless travel arrangements.",
-    highlights: [
-      "Discover Tokyo’s vibrant cityscape and historic sites",
-      "Explore Seoul’s palaces and bustling markets",
-      "Experience a rare visit to Pyongyang’s landmarks",
-      "Visit Kyoto’s serene temples and gardens",
-      "Enjoy a cultural performance in Seoul",
-      "Savor regional cuisines with Indian meal options",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Tokyo, Japan",
-        description:
-          "Arrive at Tokyo Narita International Airport on November 7. Meet our representative and transfer to a 4-star hotel. Enjoy a welcome Indian dinner and relax.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Tokyo",
-      },
-      {
-        day: 2,
-        title: "Tokyo City Tour",
-        description:
-          "After breakfast, explore Tokyo’s highlights, including Meiji Shrine, Shibuya Crossing, and Asakusa Temple. Enjoy an Indian lunch and free time in the evening. Indian dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Tokyo",
-      },
-      {
-        day: 3,
-        title: "Tokyo to Kyoto",
-        description:
-          "Take a bullet train to Kyoto. Visit Kinkaku-ji (Golden Pavilion) and Arashiyama Bamboo Grove after an Indian lunch. Evening at leisure with Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
-      },
-      {
-        day: 4,
-        title: "Kyoto Cultural Day",
-        description:
-          "Explore Fushimi Inari Shrine and participate in a traditional tea ceremony. Indian lunch and dinner included. Evening free to explore Gion district.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
-      },
-      {
-        day: 5,
-        title: "Kyoto to Seoul, South Korea",
-        description:
-          "Fly to Seoul, South Korea. After an Indian lunch, visit Gyeongbokgung Palace and Bukchon Hanok Village. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 6,
-        title: "Seoul Exploration",
-        description:
-          "Visit N Seoul Tower and Myeongdong Market after breakfast. Enjoy a cultural performance in the evening. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 7,
-        title: "Seoul to Pyongyang, North Korea",
-        description:
-          "Fly to Pyongyang, North Korea. After an Indian lunch, visit the Kumsusan Palace of the Sun and the Arch of Triumph. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
-      },
-      {
-        day: 8,
-        title: "Pyongyang Highlights",
-        description:
-          "Explore the Juche Tower and Mansudae Grand Monument. Indian lunch and dinner included. Evening at leisure to experience Pyongyang’s unique atmosphere.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
-      },
-      {
-        day: 9,
-        title: "Pyongyang to Seoul",
-        description:
-          "Return flight to Seoul. Enjoy a free day for shopping or optional activities in Seoul. Indian lunch and farewell dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 10,
-        title: "Seoul & Departure",
-        description:
-          "After breakfast, transfer to Incheon International Airport for your return flight. Bid farewell to an unforgettable adventure.\n\nMeals: Breakfast\nAccommodation: None",
-      },
-    ],
-    inclusions: [
-      "Economy class return flight tickets (Bangalore – Japan/South Korea/North Korea – Bangalore)",
-      "Accommodation in 4-star hotels (2 nights Tokyo, 2 nights Kyoto, 3 nights Seoul, 2 nights Pyongyang)",
-      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
-      "Domestic flights (Tokyo to Seoul, Seoul to Pyongyang, Pyongyang to Seoul)",
-      "Bullet train tickets (Tokyo to Kyoto)",
-      "All sightseeing and entrance fees as per itinerary",
-      "Cultural experiences: tea ceremony in Kyoto, cultural performance in Seoul",
-      "Services of an English-speaking tour manager throughout",
-      "Tourist visas for Japan, South Korea, and North Korea for all travelers",
-      "Free travel insurance (below 60 years)",
-      "All airport and hotel transfers",
-    ],
-    exclusions: [
-      "5% GST & 5% TCS (as applicable for international travel)",
-      "Tips for driver and guide (USD 5 per day per person, total USD 50 per person)",
-      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
-      "Meals not mentioned in the itinerary",
-      "Optional excursions or entrance fees not specified in the itinerary",
-      "Travel insurance charges for travelers above 60 years (if applicable)",
-      "Any other item not mentioned under “What’s Included”",
-    ],
-    singleOccupancy: 389000,
-    childPrice: 325000,
+    seoTitle: "9-Day Thailand Explorer | Flying Passport Tours",
+    seoDescription: "Discover Thailand’s culture and beaches on our 9-day tour from Bangalore. Visit Bangkok, Chiang Mai, and Phuket. Book now!"
   },
   {
     id: "6",
@@ -828,5 +451,561 @@ export const tours = [
     ],
     singleOccupancy: 392000,
     childPrice: 250000,
+    seoTitle: "12-Day European Highlights Tour 2026 | Flying Passport Tours",
+    seoDescription: "Join our 12-day Europe tour from Bangalore, April 16, 2026. Explore Paris, Amsterdam, Rome, Switzerland, and more with Kannada-guided tours and Indian meals. Book now for an unforgettable adventure!",
+    keywords: ["Europe tour 2026", "Paris tour package", "Switzerland group tour", "Italy travel from Bangalore", "Kannada-guided Europe tour", "Eiffel Tower tour", "Venice gondola ride", "Swiss Alps tour"]
   },
+  {
+    id: "7",
+    title: "10-Day Vietnam Journey",
+    destination: "Vietnam",
+    image: "/images/tours/vietnam.webp",
+    gallery: [],
+    duration: 10,
+    groupSize: "40",
+    price: 0,
+    status: "expired",
+    departureDate: "Dates will be announced soon",
+    description:
+      "Explore the rich history and natural beauty of Vietnam. From the bustling streets of Ho Chi Minh City to the stunning landscapes of Ha Long Bay.",
+    highlights: [
+      "Explore the historic streets of Hanoi",
+      "Cruise through Ha Long Bay's limestone karsts",
+      "Discover the ancient town of Hoi An",
+      "Experience the vibrant energy of Ho Chi Minh City",
+      "Visit the Cu Chi Tunnels",
+      "Enjoy authentic Vietnamese cuisine",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Hanoi", description: "Arrive in Hanoi. Transfer to hotel. Welcome dinner." },
+      { day: 2, title: "Hanoi City Tour", description: "Visit Ho Chi Minh Mausoleum, Temple of Literature, and Old Quarter." },
+      { day: 3, title: "Hanoi to Ha Long Bay", description: "Drive to Ha Long Bay. Overnight cruise with dinner on board." },
+      { day: 4, title: "Ha Long Bay to Hoi An", description: "Morning in Ha Long Bay. Flight to Da Nang, transfer to Hoi An." },
+      { day: 5, title: "Hoi An Ancient Town", description: "Walking tour of Hoi An. Lantern festival in the evening." },
+      { day: 6, title: "Hoi An to Ho Chi Minh City", description: "Flight to Ho Chi Minh City. City orientation tour." },
+      { day: 7, title: "Cu Chi Tunnels", description: "Visit Cu Chi Tunnels. Afternoon at leisure in the city." },
+      { day: 8, title: "Mekong Delta", description: "Day trip to Mekong Delta. Boat rides and local experiences." },
+      { day: 9, title: "Ho Chi Minh City", description: "Free day for shopping and exploration. Farewell dinner." },
+      { day: 10, title: "Departure", description: "Transfer to airport for departure." },
+    ],
+    inclusions: [
+      "9 nights accommodation including 1 night on Ha Long Bay cruise",
+      "Daily breakfast and 6 dinners",
+      "Domestic flights within Vietnam",
+      "English-speaking local guides",
+      "All entrance fees",
+      "Ha Long Bay cruise",
+      "Mekong Delta tour",
+      "Airport transfers",
+    ],
+    exclusions: [
+      "International flights to/from Vietnam",
+      "Travel insurance",
+      "Meals not mentioned",
+      "Personal expenses",
+      "Optional activities",
+    ],
+    singleOccupancy: 0,
+    childPrice: 0,
+    seoTitle: "10-Day Vietnam Journey | Flying Passport Tours",
+    seoDescription: "Explore Vietnam’s rich history and beauty on our 10-day tour from Bangalore. Visit Hanoi, Ha Long Bay, and Ho Chi Minh City. Book now!"
+  },
+  {
+    id: "8",
+    title: "11-Day Greek Island Hopping",
+    destination: "Greece",
+    image: "/images/tours/greek.webp",
+    gallery: [],
+    duration: 11,
+    groupSize: "40",
+    price: 0,
+    status: "expired",
+    departureDate: "Dates will be announced soon",
+    description:
+      "Discover the stunning islands and ancient history of Greece. From the iconic white buildings of Santorini to the vibrant nightlife of Mykonos.",
+    highlights: [
+      "Explore ancient Athens and the Acropolis",
+      "Sunset views in Santorini",
+      "Beach time and nightlife in Mykonos",
+      "Discover the Palace of Knossos in Crete",
+      "Traditional Greek cuisine and wine tasting",
+      "Island hopping by ferry",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Athens", description: "Arrive in Athens. Transfer to hotel. Welcome dinner." },
+      { day: 2, title: "Athens Sightseeing", description: "Visit Acropolis, Parthenon, and Ancient Agora. Afternoon at leisure." },
+      { day: 3, title: "Athens to Mykonos", description: "Ferry to Mykonos. Explore Mykonos Town and beaches." },
+      { day: 4, title: "Mykonos Island", description: "Beach day and optional visit to nearby Delos island." },
+      { day: 5, title: "Mykonos to Santorini", description: "Ferry to Santorini. Explore Fira and famous sunset in Oia." },
+      { day: 6, title: "Santorini Exploration", description: "Wine tasting tour and visit to Akrotiri archaeological site." },
+      { day: 7, title: "Santorini to Crete", description: "Ferry to Crete. Explore Heraklion and visit Knossos Palace." },
+      { day: 8, title: "Crete Discovery", description: "Visit traditional villages and enjoy Cretan cuisine." },
+      { day: 9, title: "Crete to Athens", description: "Flight back to Athens. Last-minute shopping and sightseeing." },
+      { day: 10, title: "Athens Free Day", description: "Free day in Athens. Optional day trip or museum visits." },
+      { day: 11, title: "Departure", description: "Transfer to airport for departure." },
+    ],
+    inclusions: [
+      "10 nights accommodation in 3★ and 4★ hotels",
+      "Daily breakfast and 5 dinners",
+      "Inter-island ferries and domestic flight",
+      "English-speaking local guides",
+      "All entrance fees",
+      "Wine tasting in Santorini",
+      "Airport and port transfers",
+    ],
+    exclusions: [
+      "International flights to/from Greece",
+      "Travel insurance",
+      "Meals not mentioned",
+      "Personal expenses",
+      "Optional activities",
+    ],
+    singleOccupancy: 0,
+    childPrice: 0,
+    seoTitle: "11-Day Greek Island Hopping | Flying Passport Tours",
+    seoDescription: "Discover Greece’s stunning islands on our 11-day tour from Bangalore. Visit Athens, Santorini, Mykonos, and Crete. Book now!"
+  },
+  {
+    id: "9",
+    title: "8-Day Amazon Adventure",
+    destination: "Amazon, Brazil",
+    image: "/images/tours/amazon.webp",
+    gallery: [],
+    duration: 8,
+    groupSize: "30",
+    price: 280000,
+    status: "expired",
+    departureDate: "Dates will be announced soon",
+    description:
+      "Embark on an unforgettable adventure into the heart of the Amazon rainforest. Explore lush jungles, vibrant wildlife, and indigenous cultures with expert guides.",
+    highlights: [
+      "Cruise along the Amazon River",
+      "Spot exotic wildlife like piranhas and pink dolphins",
+      "Visit indigenous communities",
+      "Jungle trekking with expert guides",
+      "Nighttime canoe safari for nocturnal wildlife",
+      "Learn about Amazonian ecosystems",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Manaus",
+        description:
+          "Arrive at Manaus International Airport. Transfer to a 4-star hotel. Welcome Indian dinner.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Manaus",
+      },
+      {
+        day: 2,
+        title: "Manaus to Amazon Jungle",
+        description:
+          "Transfer to an Amazon lodge by boat. Afternoon jungle walk to learn about flora and fauna. Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
+      },
+      {
+        day: 3,
+        title: "Amazon River Cruise",
+        description:
+          "Cruise along the Amazon River, spotting wildlife like monkeys and birds. Visit an indigenous community. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
+      },
+      {
+        day: 4,
+        title: "Jungle Trekking & Piranha Fishing",
+        description:
+          "Morning jungle trek with expert guide. Afternoon piranha fishing activity. Evening Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
+      },
+      {
+        day: 5,
+        title: "Nighttime Canoe Safari",
+        description:
+          "Morning at leisure. Nighttime canoe safari to spot nocturnal wildlife. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
+      },
+      {
+        day: 6,
+        title: "Amazon Exploration",
+        description:
+          "Full-day exploration of the Amazon, including birdwatching and learning about medicinal plants. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
+      },
+      {
+        day: 7,
+        title: "Return to Manaus",
+        description:
+          "Morning boat back to Manaus. Afternoon city tour of Manaus, including the Opera House. Farewell Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Manaus",
+      },
+      {
+        day: 8,
+        title: "Departure",
+        description:
+          "After breakfast, transfer to Manaus airport for departure.\n\nMeals: Breakfast\nAccommodation: None",
+      },
+    ],
+    inclusions: [
+      "Economy class return flight tickets (Bangalore – Manaus – Bangalore)",
+      "7 nights accommodation (2 nights in 4-star hotel, 5 nights in Amazon lodge)",
+      "Daily Indian breakfast, lunch, and dinner",
+      "All transfers and boat trips",
+      "Guided jungle treks and wildlife tours",
+      "Visit to indigenous community",
+      "Nighttime canoe safari",
+      "Free travel insurance (below 60 years)",
+      "Brazil tourist visa",
+    ],
+    exclusions: [
+      "5% GST & 5% TCS (as applicable)",
+      "Tips for guides (USD 5 per day per person, total USD 40 per person)",
+      "Personal expenses: laundry, drinks, minibar",
+      "Meals not mentioned in the itinerary",
+      "Optional activities",
+      "Travel insurance for above 60 years",
+    ],
+    singleOccupancy: 350000,
+    childPrice: 260000,
+    seoTitle: "8-Day Amazon Adventure | Flying Passport Tours",
+    seoDescription: "Explore the Amazon rainforest on our 8-day tour from Bangalore. Cruise the river, spot wildlife, and visit indigenous communities. Book now!"
+  },
+  {
+    id: "10",
+    title: "9-Day China Discovery",
+    destination: "China",
+    image: "/images/tours/China/China_1.png",
+    gallery: [
+      "/images/tours/China/China_2.png",
+      "/images/tours/China/China_3.png",
+      "/images/tours/China/China_4.png",
+      "/images/tours/China/China_5.png",
+      "/images/tours/China/China_6.png",
+      "/images/tours/China/China_7.png",
+      "/images/tours/China/China_8.png",
+      "/images/tours/China/China_9.png",
+      "/images/tours/China/China_10.png",
+    ],
+    duration: 9,
+    groupSize: "40",
+    price: 250000,
+    status: "closed",
+    departureDate: "October 27, 2025",
+    description:
+      "Explore China’s rich history and modern marvels, from the Great Wall to vibrant Shanghai, on this immersive 9-day group tour. Enjoy cultural experiences, iconic landmarks, and Indian meals with seamless travel arrangements.",
+    highlights: [
+      "Walk along the iconic Great Wall of China",
+      "Explore the historic Forbidden City in Beijing",
+      "Visit the Terracotta Warriors in Xi’an",
+      "Cruise the vibrant Huangpu River in Shanghai",
+      "Experience the scenic beauty of Guilin’s Li River",
+      "Savor authentic Chinese cuisine with Indian meal options",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Beijing",
+        description:
+          "Arrive at Beijing Capital International Airport on October 27. Meet our representative and transfer to a 4-star hotel. Enjoy a welcome Indian dinner and relax after your journey.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Beijing",
+      },
+      {
+        day: 2,
+        title: "Beijing – Forbidden City & Tiananmen Square",
+        description:
+          "After breakfast, visit Tiananmen Square and the Forbidden City, the imperial palace complex. Enjoy an Indian lunch, followed by a visit to the Temple of Heaven. Evening at leisure with Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Beijing",
+      },
+      {
+        day: 3,
+        title: "Great Wall of China",
+        description:
+          "Travel to the Mutianyu section of the Great Wall. Enjoy a cable car ride and time to explore this iconic landmark. Return to Beijing for an Indian dinner and rest.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Beijing",
+      },
+      {
+        day: 4,
+        title: "Beijing to Xi’an",
+        description:
+          "Morning high-speed train to Xi’an. After an Indian lunch, visit the ancient Xi’an City Wall. Evening free to explore the Muslim Quarter with dinner at an Indian restaurant.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Xi’an",
+      },
+      {
+        day: 5,
+        title: "Xi’an – Terracotta Warriors",
+        description:
+          "Visit the world-famous Terracotta Warriors and Horses Museum. After lunch, explore the Big Wild Goose Pagoda. Enjoy an Indian dinner and a cultural show in the evening.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Xi’an",
+      },
+      {
+        day: 6,
+        title: "Xi’an to Guilin",
+        description:
+          "Fly to Guilin, known for its dramatic limestone karsts. After an Indian lunch, visit Reed Flute Cave. Evening at leisure with dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Guilin",
+      },
+      {
+        day: 7,
+        title: "Guilin – Li River Cruise",
+        description:
+          "Enjoy a scenic Li River cruise to Yangshuo, surrounded by lush mountains. Explore Yangshuo’s West Street in the afternoon. Return to Guilin for an Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Guilin",
+      },
+      {
+        day: 8,
+        title: "Guilin to Shanghai",
+        description:
+          "Fly to Shanghai. After an Indian lunch, explore the Bund and Nanjing Road. Evening Huangpu River cruise followed by an Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Shanghai",
+      },
+      {
+        day: 9,
+        title: "Shanghai & Departure",
+        description:
+          "Visit Yu Garden and the Old Town in the morning. After an Indian lunch, transfer to Shanghai Pudong International Airport for your return flight. Bid farewell to an unforgettable China adventure.\n\nMeals: Breakfast, Lunch\nAccommodation: None",
+      },
+    ],
+    inclusions: [
+      "Economy class return flight tickets (Bangalore – China – Bangalore)",
+      "Accommodation in 4-star hotels (3 nights Beijing, 2 nights Xi’an, 2 nights Guilin, 1 night Shanghai)",
+      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
+      "High-speed train tickets (Beijing to Xi’an)",
+      "Domestic flights (Xi’an to Guilin, Guilin to Shanghai)",
+      "All sightseeing and entrance fees as per itinerary",
+      "Li River cruise and Huangpu River cruise",
+      "Services of an English-speaking tour manager throughout",
+      "China tourist visa for all travelers",
+      "Free travel insurance (below 60 years)",
+      "All airport and hotel transfers",
+    ],
+    exclusions: [
+      "5% GST & 5% TCS (as applicable for international travel)",
+      "Tips for driver and guide (USD 5 per day per person, total USD 45 per person)",
+      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
+      "Meals not mentioned in the itinerary",
+      "Optional excursions or entrance fees not specified in the itinerary",
+      "Travel insurance charges for travelers above 60 years (if applicable)",
+      "Any other item not mentioned under “What’s Included”",
+    ],
+    singleOccupancy: 325000,
+    childPrice: 245000,
+    seoTitle: "9-Day China Discovery Tour 2025 | Flying Passport Tours",
+    seoDescription: "Explore China’s Great Wall, Terracotta Warriors, and Shanghai on our 9-day tour from Bangalore, starting October 27, 2025. Enjoy Indian meals and Kannada-guided tours. Book now!",
+    keywords: ["China tour 2025", "Great Wall tour package", "Terracotta Warriors tour", "Shanghai group tour", "Kannada-guided China tour", "Beijing tour from Bangalore", "Li River cruise"]
+  },
+  {
+    id: "11",
+    title: "10-Day Japan, South Korea & North Korea",
+    destination: "Japan, South Korea, North Korea",
+    image: "/images/tours/Japan S&N/japan-s-n-01.png",
+    gallery: [
+      "/images/tours/Japan S&N/japan-s-n-02.png",
+      "/images/tours/Japan S&N/japan-s-n-03.png",
+      "/images/tours/Japan S&N/japan-s-n-04.png",
+      "/images/tours/Japan S&N/japan-s-n-05.png",
+      "/images/tours/Japan S&N/japan-s-n-06.png",
+      "/images/tours/Japan S&N/japan-s-n-07.png",
+      "/images/tours/Japan S&N/japan-s-n-08.png",
+      "/images/tours/Japan S&N/japan-s-n-09.png",
+      "/images/tours/Japan S&N/japan-s-n-10.png",
+    ],
+    pdf: "/images/FLYING PASSPORTS JAPAN AND SOUTH KOREA & NORTH KOREA ITINERARY 2025.pdf",
+    duration: 10,
+    groupSize: "40",
+    price: 337000,
+    status: "upcoming",
+    departureDate: "November 7, 2025",
+    availability: "limited",
+    description:
+      "Embark on an extraordinary 10-day journey through Japan, South Korea, and North Korea, exploring a unique blend of ancient traditions, modern metropolises, and exclusive cultural insights. Enjoy guided tours, Indian meals, and seamless travel arrangements.",
+    highlights: [
+      "Discover Tokyo’s vibrant cityscape and historic sites",
+      "Explore Seoul’s palaces and bustling markets",
+      "Experience a rare visit to Pyongyang’s landmarks",
+      "Visit Kyoto’s serene temples and gardens",
+      "Enjoy a cultural performance in Seoul",
+      "Savor regional cuisines with Indian meal options",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Tokyo, Japan",
+        description:
+          "Arrive at Tokyo Narita International Airport on November 7. Meet our representative and transfer to a 4-star hotel. Enjoy a welcome Indian dinner and relax.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Tokyo",
+      },
+      {
+        day: 2,
+        title: "Tokyo City Tour",
+        description:
+          "After breakfast, explore Tokyo’s highlights, including Meiji Shrine, Shibuya Crossing, and Asakusa Temple. Enjoy an Indian lunch and free time in the evening. Indian dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Tokyo",
+      },
+      {
+        day: 3,
+        title: "Tokyo to Kyoto",
+        description:
+          "Take a bullet train to Kyoto. Visit Kinkaku-ji (Golden Pavilion) and Arashiyama Bamboo Grove after an Indian lunch. Evening at leisure with Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
+      },
+      {
+        day: 4,
+        title: "Kyoto Cultural Day",
+        description:
+          "Explore Fushimi Inari Shrine and participate in a traditional tea ceremony. Indian lunch and dinner included. Evening free to explore Gion district.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
+      },
+      {
+        day: 5,
+        title: "Kyoto to Seoul, South Korea",
+        description:
+          "Fly to Seoul, South Korea. After an Indian lunch, visit Gyeongbokgung Palace and Bukchon Hanok Village. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
+      },
+      {
+        day: 6,
+        title: "Seoul Exploration",
+        description:
+          "Visit N Seoul Tower and Myeongdong Market after breakfast. Enjoy a cultural performance in the evening. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
+      },
+      {
+        day: 7,
+        title: "Seoul to Pyongyang, North Korea",
+        description:
+          "Fly to Pyongyang, North Korea. After an Indian lunch, visit the Kumsusan Palace of the Sun and the Arch of Triumph. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
+      },
+      {
+        day: 8,
+        title: "Pyongyang Highlights",
+        description:
+          "Explore the Juche Tower and Mansudae Grand Monument. Indian lunch and dinner included. Evening at leisure to experience Pyongyang’s unique atmosphere.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
+      },
+      {
+        day: 9,
+        title: "Pyongyang to Seoul",
+        description:
+          "Return flight to Seoul. Enjoy a free day for shopping or optional activities in Seoul. Indian lunch and farewell dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
+      },
+      {
+        day: 10,
+        title: "Seoul & Departure",
+        description:
+          "After breakfast, transfer to Incheon International Airport for your return flight. Bid farewell to an unforgettable adventure.\n\nMeals: Breakfast\nAccommodation: None",
+      },
+    ],
+    inclusions: [
+      "Economy class return flight tickets (Bangalore – Japan/South Korea/North Korea – Bangalore)",
+      "Accommodation in 4-star hotels (2 nights Tokyo, 2 nights Kyoto, 3 nights Seoul, 2 nights Pyongyang)",
+      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
+      "Domestic flights (Tokyo to Seoul, Seoul to Pyongyang, Pyongyang to Seoul)",
+      "Bullet train tickets (Tokyo to Kyoto)",
+      "All sightseeing and entrance fees as per itinerary",
+      "Cultural experiences: tea ceremony in Kyoto, cultural performance in Seoul",
+      "Services of an English-speaking tour manager throughout",
+      "Tourist visas for Japan, South Korea, and North Korea for all travelers",
+      "Free travel insurance (below 60 years)",
+      "All airport and hotel transfers",
+    ],
+    exclusions: [
+      "5% GST & 5% TCS (as applicable for international travel)",
+      "Tips for driver and guide (USD 5 per day per person, total USD 50 per person)",
+      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
+      "Meals not mentioned in the itinerary",
+      "Optional excursions or entrance fees not specified in the itinerary",
+      "Travel insurance charges for travelers above 60 years (if applicable)",
+      "Any other item not mentioned under “What’s Included”",
+    ],
+    singleOccupancy: 389000,
+    childPrice: 325000,
+    seoTitle: "10-Day Japan, South Korea & North Korea Tour 2025 | Flying Passport Tours",
+    seoDescription: "Join our exclusive 10-day tour from Bangalore to Japan, South Korea, and North Korea, starting November 7, 2025. Explore Tokyo, Seoul, Pyongyang, and more with Kannada-guided tours and Indian meals. Book now!",
+    keywords: ["Japan tour 2025", "South Korea tour package", "North Korea group tour", "Tokyo tour from Bangalore", "Kannada-guided Asia tour", "Kyoto tea ceremony", "Seoul cultural tour"]
+  },
+  {
+    id: "12",
+    title: "8-Day Ancient Egypt Adventure",
+    destination: "Egypt",
+    image: "/images/tours/Egypt/Ancient-Egypt (1).png",
+    gallery: [
+      "/images/tours/Egypt/Ancient-Egypt (2).png",
+      "/images/tours/Egypt/Ancient-Egypt (3).png",
+      "/images/tours/Egypt/Ancient-Egypt (4).png",
+      "/images/tours/Egypt/Ancient-Egypt (5).png",
+      "/images/tours/Egypt/Ancient-Egypt (6).png",
+      "/images/tours/Egypt/Ancient-Egypt (7).png",
+      "/images/tours/Egypt/Ancient-Egypt (8).png",
+      "/images/tours/Egypt/Ancient-Egypt (9).png",
+      "/images/tours/Egypt/Ancient-Egypt (10).png",
+      "/images/tours/Egypt/Ancient-Egypt (11).png",
+    ],
+    duration: 8,
+    groupSize: "40",
+    price: 197000,
+    status: "upcoming",
+    departureDate: "February 11, 2026",
+    description:
+      "Embark on an unforgettable 8-day journey through Egypt, where ancient wonders meet timeless beauty. From the majestic Pyramids of Giza and the legendary Sphinx to the historic temples of Luxor and Aswan, experience the land of pharaohs like never before. Cruise along the mystical Nile River, explore the catacombs of Alexandria, and walk through the Valley of the Kings — every moment is a step back in time. With luxurious stays, guided tours, and seamless travel, this Egypt expedition promises a perfect blend of history, culture, and comfort.",
+    highlights: [
+      "Visit the Great Pyramids & Sphinx",
+      "Explore the Grand Egyptian Museum",
+      "5-star Nile River Cruise experience",
+      "Discover Luxor & Karnak Temples",
+      "Visit the Valley of the Kings",
+      "Day trip to historic Alexandria",
+      "Explore Philae, Kom Ombo & Edfu Temples",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Cairo",
+        description:
+          "Arrive at Cairo International Airport. Meet our representative for visa and transfer assistance. Relax at your hotel after check-in.",
+      },
+      {
+        day: 2,
+        title: "Cairo – Giza Pyramids & Museum Tour",
+        description:
+          "Visit the Great Pyramids, Sphinx, and the Grand Egyptian Museum. Enjoy a camel ride and explore ancient treasures.",
+      },
+      {
+        day: 3,
+        title: "Excursion to Alexandria",
+        description:
+          "Travel to Alexandria to explore the Catacombs, Pompey’s Pillar, and Bibliotheca Alexandrina. Stroll along the Corniche before returning to Cairo.",
+      },
+      {
+        day: 4,
+        title: "Cairo – Fly to Aswan & Nile Cruise Embarkation",
+        description:
+          "Fly to Aswan and board your 5-star Nile Cruise. Visit Philae Temple and enjoy the scenic views along the river.",
+      },
+      {
+        day: 5,
+        title: "Kom Ombo & Edfu Temples",
+        description:
+          "Sail to Kom Ombo to visit the Crocodile Temple and Museum. Continue to Edfu to see the Temple of Horus, one of Egypt’s best-preserved temples.",
+      },
+      {
+        day: 6,
+        title: "Luxor – East & West Bank Tour",
+        description:
+          "Explore the grand Karnak and Luxor Temples, dedicated to the gods Amun, Mut, and Khonsu.",
+      },
+      {
+        day: 7,
+        title: "Valley of the Kings & Hatshepsut Temple – Fly to Cairo",
+        description:
+          "Visit the Valley of the Kings and Queen Hatshepsut’s Temple. Stop at the Colossi of Memnon before flying back to Cairo.",
+      },
+      {
+        day: 8,
+        title: "Departure from Cairo",
+        description:
+          "After breakfast, transfer to the airport for your flight back home with wonderful memories of Egypt.",
+      },
+    ],
+    inclusions: [
+      "Round-trip international flights: Bangalore – Cairo – Bangalore",
+      "Domestic flights: Cairo – Aswan – Luxor – Cairo",
+      "Airport pickup and drop-off (available 24/7)",
+      "All admission tickets for the mentioned sightseeing",
+      "Visa arrangements for all travelers",
+      "Kannada-speaking Tour Manager throughout the trip",
+      "Deluxe air-conditioned coach for transfers and tours",
+      "4 nights stay in a 5-star hotel in Cairo",
+      "3 nights stay on a 5-star Nile Cruise",
+      "Indian lunch during Cairo day tours",
+      "Lunch at local restaurant in Alexandria",
+      "Services of a qualified Egyptologist guide",
+    ],
+    exclusions: [
+      "Tips to drivers, guides, and tour managers",
+      "Meals not mentioned in the itinerary",
+      "Expenses of personal nature or not listed in inclusions",
+      "5% GST not included in the package price",
+      "5% TCS not included in the package price",
+    ],
+    singleOccupancy: 245000,
+    childPrice: 139000,
+    seoTitle: "8-Day Ancient Egypt Adventure Tour 2026 | Flying Passport Tours",
+    seoDescription: "Discover Egypt’s wonders on our 8-day tour from Bangalore, starting February 11, 2026. Visit Giza Pyramids, Nile River cruise, and more with Indian meals. Book now!",
+    keywords: ["Egypt tour 2026", "Giza Pyramids tour package", "Nile River cruise", "Cairo group tour", "Kannada-guided Egypt tour", "Luxor tour from Bangalore", "Aswan adventure"]
+  }
 ];

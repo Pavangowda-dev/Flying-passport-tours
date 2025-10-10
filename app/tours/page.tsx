@@ -13,7 +13,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/compon
 import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 
-// Updated tours array with modified Europe tour
+// Updated tours array with modified China tour, new Egypt tour, and updated Japan/South Korea/North Korea tour
 const tours = [
   {
     id: "10",
@@ -26,7 +26,7 @@ const tours = [
     description:
       "Explore China's rich history and modern marvels, from the Great Wall to vibrant Shanghai, on this immersive group tour.",
     highlights: ["Beijing", "Great Wall", "Xi'an", "Shanghai"],
-    status: "upcoming",
+    status: "closed",
     departureDate: "October 27, 2025",
   },
   {
@@ -42,6 +42,21 @@ const tours = [
     highlights: ["Tokyo", "Seoul", "Pyongyang", "Kyoto"],
     status: "upcoming",
     departureDate: "November 7, 2025",
+    availability: "limited",
+  },
+  {
+    id: "12",
+    title: "8-Day Ancient Egypt Adventure",
+    destination: "egypt",
+    region: "africa",
+    image: "/images/tours/Egypt/Ancient-Egypt (1).png",
+    duration: 8,
+    price: 197000,
+    description:
+      "Discover the wonders of Ancient Egypt on this 8-day group tour. Pricing: Double Occupancy ₹1,97,000, Children ₹1,39,000.",
+    highlights: ["Cairo", "Giza Pyramids", "Alexandria", "Aswan", "Luxor"],
+    status: "upcoming",
+    departureDate: "February 11, 2026",
   },
   {
     id: "6",
@@ -232,7 +247,14 @@ export default function ToursPage() {
   })
 
   // Separate upcoming and coming back soon tours
-  const upcomingTours = filteredTours.filter((tour) => tour.status === "upcoming")
+  const upcomingTours = filteredTours.filter((tour) => tour.status === "upcoming" || tour.status === "closed")
+  // Sort upcoming tours in the specified order
+  const sortedUpcomingTours = [
+    upcomingTours.find(tour => tour.id === "10"), // China
+    upcomingTours.find(tour => tour.id === "11"), // Japan/South Korea/North Korea
+    upcomingTours.find(tour => tour.id === "12"), // Egypt
+    upcomingTours.find(tour => tour.id === "6"),  // Europe
+  ].filter(Boolean) as typeof upcomingTours
   const comingBackSoonTours = filteredTours.filter((tour) => tour.status === "expired")
 
   // Auto-scroll for mobile Coming Back Soon section
@@ -331,7 +353,7 @@ export default function ToursPage() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "itemListElement": upcomingTours.map((tour, index) => ({
+          "itemListElement": sortedUpcomingTours.map((tour, index) => ({
             "@type": "ListItem",
             "position": index + 1,
             "item": {
@@ -344,7 +366,7 @@ export default function ToursPage() {
                 "@type": "Offer",
                 "price": tour.price.toString(),
                 "priceCurrency": "INR",
-                "availability": "http://schema.org/InStock",
+                "availability": tour.status === "closed" ? "http://schema.org/OutOfStock" : "http://schema.org/InStock",
                 "validFrom": tour.departureDate,
               },
             },
@@ -671,13 +693,13 @@ export default function ToursPage() {
         </div>
 
         {/* Upcoming Tours Section */}
-        {upcomingTours.length > 0 && (
+        {sortedUpcomingTours.length > 0 && (
           <div className="mb-8 sm:mb-12">
             <h2 className="font-serif font-bold text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 text-center">
               Upcoming Tours
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {upcomingTours.map((tour) => (
+              {sortedUpcomingTours.map((tour) => (
                 <Link href={`/tours/${tour.id}`} key={tour.id} className="group">
                   <Card className="overflow-hidden hover-lift h-full">
                     <div className="relative h-48 sm:h-52 md:h-56">
@@ -693,6 +715,14 @@ export default function ToursPage() {
                       <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-secondary text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                         {tour.departureDate}
                       </div>
+                      {/* Status Badge */}
+                      {tour.status === "closed" && (
+                        <div className="absolute inset-0 bg-black/40 z-10 rounded-lg flex items-center justify-center">
+                          <div className="bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
+                            Fully Booked
+                          </div>
+                        </div>
+                      )}
                       {/* Continent Badge */}
                       <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-primary/20 text-primary px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                         <MapPin size={12} className="inline mr-1" />
@@ -727,16 +757,22 @@ export default function ToursPage() {
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
+                          {tour.availability === "limited" && (
+                            <p className="text-red-600 text-xs sm:text-sm font-medium mb-2">
+                              Few Seats Left! Hurry Up!
+                            </p>
+                          )}
                           <span className="font-bold text-sm sm:text-base md:text-lg">
-                            {tour.price > 0 ? `₹${tour.price.toLocaleString("en-IN")}` : "Price on Request"}
+                            {tour.price > 0 ? `From ₹${tour.price.toLocaleString("en-IN")}` : "Price on Request"}
                           </span>
                           <span className="text-xs text-muted-foreground"> / person</span>
                         </div>
                         <Button
                           size="sm"
                           className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-xs sm:text-sm px-3 sm:px-4 py-2 min-h-[36px]"
+                          disabled={tour.status === "closed"}
                         >
-                          View Details
+                          {tour.status === "closed" ? "Fully Booked" : "View Details"}
                         </Button>
                       </div>
                     </CardContent>
@@ -766,9 +802,11 @@ export default function ToursPage() {
                   }}
                 >
                   {comingBackSoonTours.map((tour) => (
-                    <div
+                    <Link
+                      href={`/tours/${tour.id}`}
                       key={tour.id}
                       className="flex-shrink-0 snap-start w-[calc(100vw-48px)] sm:w-[calc(100vw-56px)]"
+                      onClick={() => handleEarlyAccessClick(tour.title)}
                     >
                       <Card className="overflow-hidden hover-lift h-full">
                         <div className="relative h-48 sm:h-52">
@@ -825,14 +863,13 @@ export default function ToursPage() {
                             <Button
                               size="sm"
                               className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-xs sm:text-sm px-3 sm:px-4 py-2 min-h-[36px]"
-                              onClick={() => handleEarlyAccessClick(tour.title)}
                             >
                               Get Early Access
                             </Button>
                           </div>
                         </CardContent>
                       </Card>
-                    </div>
+                    </Link>
                   ))}
                 </div>
 
@@ -866,7 +903,12 @@ export default function ToursPage() {
             {/* Desktop: Regular grid */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
               {comingBackSoonTours.map((tour) => (
-                <div key={tour.id} className="group">
+                <Link
+                  href={`/tours/${tour.id}`}
+                  key={tour.id}
+                  className="group"
+                  onClick={() => handleEarlyAccessClick(tour.title)}
+                >
                   <Card className="overflow-hidden hover-lift h-full">
                     <div className="relative h-48">
                       <Image
@@ -921,14 +963,13 @@ export default function ToursPage() {
                         <Button
                           size="sm"
                           className="bg-secondary hover:bg-accent hover:text-primary transition-colors text-sm"
-                          onClick={() => handleEarlyAccessClick(tour.title)}
                         >
                           Get Early Access
                         </Button>
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

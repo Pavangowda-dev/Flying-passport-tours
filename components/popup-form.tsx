@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { createBrowserClientSupabase } from '@/lib/supabase/client';
 
 const destinations = [
-  { value: 'china', label: 'China' },
+  { value: 'egypt', label: 'Ancient Egypt' },
   { value: 'japan-south-korea-north-korea', label: 'Japan, South Korea & North Korea' },
   { value: 'europe', label: 'Europe' },
 ];
