@@ -20,7 +20,7 @@ const tours = [
     title: "12-Day China Discovery",
     destination: "china",
     region: "asia",
-    image: "/images/tours/china/china_1.png",
+    image: "/images/tours/China/china-1.png",
     duration: 12,
     price: 285000,
     description:
@@ -49,7 +49,7 @@ const tours = [
     title: "8-Day Ancient Egypt Adventure",
     destination: "egypt",
     region: "africa",
-    image: "/images/tours/Egypt/Ancient-Egypt (1).png",
+    image: "/images/tours/Egypt/egypt-1.png",
     duration: 8,
     price: 197000,
     description:
@@ -63,7 +63,7 @@ const tours = [
     title: "12-Day European Highlights",
     destination: "europe",
     region: "europe",
-    image: "/images/tours/europe/europe-group-tour-1.png",
+    image: "/images/tours/Europe/Europe-1.png",
     duration: 12,
     price: 327000,
     description:

@@ -8,42 +8,87 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // ---------------------------
-// 🖼️ Gallery Images
+// 🖼️ Gallery Images (Updated with New Files)
 // ---------------------------
 const galleryImages = [
-  { id: 1, src: "/images/gallery/new-gallery-1.jpg", alt: "Group travel experience" },
-  { id: 2, src: "/images/gallery/new-gallery-2.jpg", alt: "Travel memories" },
-  { id: 3, src: "/images/gallery/new-gallery-3.jpg", alt: "Adventure moments" },
-  { id: 4, src: "/images/gallery/new-gallery-4.jpg", alt: "Cultural exploration" },
-  { id: 5, src: "/images/gallery/new-gallery-5.jpg", alt: "Travel experiences" },
-  { id: 6, src: "/images/gallery/new-gallery-6.jpg", alt: "Group adventures" },
-  { id: 7, src: "/images/gallery/new-gallery-7.jpg", alt: "Travel highlights" },
-  { id: 8, src: "/images/gallery/new-gallery-8.jpg", alt: "Destination visits" },
-  { id: 9, src: "/images/gallery/new-gallery-9.jpg", alt: "Travel moments" },
-  { id: 10, src: "/images/gallery/new-gallery-10.jpg", alt: "Group travel" },
-  { id: 11, src: "/images/gallery/additional-1.jpg", alt: "Historic monuments" },
-  { id: 12, src: "/images/gallery/additional-2.jpg", alt: "Scenic destinations" },
-  { id: 13, src: "/images/gallery/additional-3.jpg", alt: "Safari adventures" },
-  { id: 14, src: "/images/gallery/additional-4.jpg", alt: "Ancient ruins" },
-  { id: 15, src: "/images/gallery/additional-5.jpg", alt: "Desert landscapes" },
-  { id: 16, src: "/images/gallery/additional-6.jpg", alt: "Cultural experiences" },
-  { id: 17, src: "/images/gallery/additional-7.jpg", alt: "Archaeological sites" },
-  { id: 18, src: "/images/gallery/additional-8.jpg", alt: "Group celebrations" },
-  { id: 19, src: "/images/gallery/additional-9.jpg", alt: "Mountain adventures" },
-  { id: 20, src: "/images/gallery/additional-10.jpg", alt: "Coastal experiences" },
+  { id: 1, src: "/images/gallery/gallery-1.png", alt: "Group travel experience" },
+  { id: 2, src: "/images/gallery/gallery-2.png", alt: "Travel memories" },
+  { id: 3, src: "/images/gallery/gallery-3.png", alt: "Adventure moments" },
+  { id: 4, src: "/images/gallery/gallery-4.png", alt: "Cultural exploration" },
+  { id: 5, src: "/images/gallery/gallery-5.png", alt: "Travel experiences" },
+  { id: 6, src: "/images/gallery/gallery-6.png", alt: "Group adventures" },
+  { id: 7, src: "/images/gallery/gallery-7.png", alt: "Travel highlights" },
+  { id: 8, src: "/images/gallery/gallery-8.png", alt: "Destination visits" },
+  { id: 9, src: "/images/gallery/gallery-9.png", alt: "Travel moments" },
+  { id: 10, src: "/images/gallery/gallery-10.png", alt: "Group travel" },
+  { id: 11, src: "/images/gallery/gallery-11.png", alt: "Historic monuments" },
+  { id: 12, src: "/images/gallery/gallery-12.png", alt: "Scenic destinations" },
+  { id: 13, src: "/images/gallery/gallery-13.png", alt: "Safari adventures" },
+  { id: 14, src: "/images/gallery/gallery-14.png", alt: "Ancient ruins" },
+  { id: 15, src: "/images/gallery/gallery-15.png", alt: "Desert landscapes" },
+  { id: 16, src: "/images/gallery/gallery-16.png", alt: "Cultural experiences" },
+  { id: 17, src: "/images/gallery/gallery-17.png", alt: "Archaeological sites" },
+  { id: 18, src: "/images/gallery/gallery-18.png", alt: "Group celebrations" },
+  { id: 19, src: "/images/gallery/gallery-19.png", alt: "Mountain adventures" },
+  { id: 20, src: "/images/gallery/gallery-20.png", alt: "Coastal experiences" },
 ];
 
 // ---------------------------
-// 🎥 Local Reels Videos
+// 🎥 Instagram Reels
 // ---------------------------
-const reelsVideos = [
-  { id: 1, src: "/images/gallery-videos/gallery-video-1.mp4" },
-  { id: 2, src: "/images/gallery-videos/gallery-video-2.mp4" },
-  { id: 3, src: "/images/gallery-videos/gallery-video-3.mp4" },
-  { id: 4, src: "/images/gallery-videos/gallery-video-4.mp4" },
-  { id: 5, src: "/images/gallery-videos/gallery-video-5.mp4" },
+const instagramReels = [
+  "https://www.instagram.com/reel/DNpcZgBM-zv/",
+  "https://www.instagram.com/reel/DNiJ0LoM1Fi/",
+  "https://www.instagram.com/reel/DNfKelJB4o2/",
+  "https://www.instagram.com/reel/DM41l_jMpYk/",
+  "https://www.instagram.com/reel/DLEiLc1oulw/",
 ];
 
+// ---------------------------
+// 📦 Instagram Embed Component
+// ---------------------------
+const InstagramEmbed = ({ url }: { url: string }) => {
+  useEffect(() => {
+    // Load Instagram embed script dynamically
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, [url]);
+
+  return (
+    <div
+      className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 w-full max-w-[400px] mx-auto"
+      style={{ minWidth: 300 }}
+      dangerouslySetInnerHTML={{
+        __html: `
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="${url}"
+            data-instgrm-version="14"
+            style="
+              width:100%;
+              min-width:300px;
+              max-width:400px;
+              margin:0 auto;
+              border:none;
+              border-radius:12px;
+              background:#fff;
+            "
+          ></blockquote>
+        `,
+      }}
+    />
+  );
+};
+
+// ---------------------------
+// 📸 Main Page Component
+// ---------------------------
 export default function GalleryPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -95,28 +140,33 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* ---------------- VIDEOS / REELS ---------------- */}
-        <div className="mb-12">
-          <h2 className="font-serif font-bold text-2xl md:text-3xl text-center mb-8 text-gray-900">
-            Our Travel Moments in Motion 🎥
+        {/* ---------------- INSTAGRAM REELS ---------------- */}
+        <div className="mb-16">
+          <h2 className="font-serif font-bold text-2xl md:text-3xl text-center mb-10 text-gray-900">
+            Our Travel Moments in Motion
           </h2>
-          <div className="flex gap-5 overflow-x-auto scrollbar-none px-2 pb-4 snap-x snap-mandatory">
-            {reelsVideos.map((video) => (
-              <div
-                key={video.id}
-                className="flex-shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 aspect-[9/16] rounded-xl overflow-hidden shadow-lg snap-center"
-              >
-                <video
-                  src={video.src}
-                  controls
-                  className="w-full h-full object-cover rounded-xl"
-                ></video>
+
+          {/* Mobile → Grid | Desktop → Horizontal Scroll */}
+          <div className="block md:hidden">
+            {/* Mobile layout (stacked) */}
+            <div className="grid gap-6 place-items-center">
+              {instagramReels.map((url, index) => (
+                <InstagramEmbed key={index} url={url} />
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden md:flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent pb-6 snap-x snap-mandatory">
+            {/* Desktop/Tablet layout (horizontal scroll) */}
+            {instagramReels.map((url, index) => (
+              <div key={index} className="snap-center flex-shrink-0">
+                <InstagramEmbed url={url} />
               </div>
             ))}
           </div>
 
-          {/* -------- View More Button under Reels -------- */}
-          <div className="text-center mt-8">
+          {/* -------- View More Button -------- */}
+          <div className="text-center mt-12">
             <Button
               asChild
               size="lg"

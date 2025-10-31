@@ -8,9 +8,17 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
+      // ✅ Allow images from your Supabase storage
       {
         protocol: "https",
         hostname: "your-supabase-project.supabase.co",
+        port: "",
+        pathname: "/**",
+      },
+      // ✅ Allow images from Cloudinary
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
         port: "",
         pathname: "/**",
       },
@@ -26,6 +34,6 @@ const nextConfig = {
       "@radix-ui/react-accordion",
     ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

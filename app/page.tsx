@@ -31,7 +31,7 @@ const upcomingTours = [
     id: "6",
     title: "12-Day European Highlights",
     destination: "Europe",
-    image: "/images/tours/europe/europe-group-tour-1.png",
+    image: "/images/tours/Europe/Europe-1.png",
     duration: 12,
     price: 327000,
     description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
@@ -42,7 +42,7 @@ const upcomingTours = [
     id: "12",
     title: "8-Day Ancient Egypt Adventure",
     destination: "Egypt",
-    image: "/images/tours/Egypt/Ancient-Egypt (1).png",
+    image: "/images/tours/Egypt/egypt-1.png",
     duration: 8,
     price: 197000,
     description: "Discover the wonders of Ancient Egypt with guided tours to the Giza Pyramids, Nile River cruise, and more from Bangalore.",
@@ -53,7 +53,7 @@ const upcomingTours = [
     id: "10",
     title: "9-Day China Discovery",
     destination: "China",
-    image: "/images/tours/China/China_1.png",
+    image: "/images/tours/China/china-1.png",
     duration: 9,
     price: 250000,
     status: "closed",
@@ -90,47 +90,47 @@ const videos = [
 // Updated gallery images with keyword-optimized alt text, including 5 additional images
 const galleryImages = [
   {
-    src: "/images/gallery/new-gallery-1.jpg",
+    src: "/images/gallery/gallery-1.png",
     alt: "Best travel agency in Bangalore group tour",
   },
   {
-    src: "/images/gallery/new-gallery-2.jpg",
+    src: "/images/gallery/gallery-2.png",
     alt: "International group tours from Bangalore",
   },
   {
-    src: "/images/gallery/new-gallery-3.jpg",
+    src: "/images/gallery/gallery-3.png",
     alt: "Affordable holiday packages from Karnataka",
   },
   {
-    src: "/images/gallery/new-gallery-4.jpg",
+    src: "/images/gallery/gallery-4.png",
     alt: "Cultural group tours from Bangalore",
   },
   {
-    src: "/images/gallery/new-gallery-5.jpg",
+    src: "/images/gallery/gallery-5.png",
     alt: "Kannada-guided group tours Karnataka",
   },
   {
-    src: "/images/gallery/new-gallery-6.jpg",
+    src: "/images/gallery/gallery-6.png",
     alt: "Group adventures with Flying Passport",
   },
   {
-    src: "/images/gallery/new-gallery-7.jpg",
+    src: "/images/gallery/gallery-7.png",
     alt: "Travel highlights",
   },
   {
-    src: "/images/gallery/new-gallery-8.jpg",
+    src: "/images/gallery/gallery-8.png",
     alt: "Destination visits",
   },
   {
-    src: "/images/gallery/new-gallery-9.jpg",
+    src: "/images/gallery/gallery-9.png",
     alt: "Travel moments",
   },
   {
-    src: "/images/gallery/new-gallery-10.jpg",
+    src: "/images/gallery/gallery-10.png",
     alt: "Group travel",
   },
   {
-    src: "/images/gallery/additional-1.jpg",
+    src: "/images/gallery/gallery-11.png",
     alt: "Historic monuments",
   },
 ]

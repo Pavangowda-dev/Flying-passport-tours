@@ -48,12 +48,12 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
   const prevImage = () => setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
 
   const packageInclusions = [
-    { icon: "/images/Travel-icons/Sightseeing.png", text: "Sightseeing" },
-    { icon: "/images/Travel-icons/Flights&Visa.png", text: "Flights & Visa" },
-    { icon: "/images/Travel-icons/3-Times-Meal.png", text: "3 Times Meal" },
-    { icon: "/images/Travel-icons/5-Star-Accommodation.png", text: "5 Star Accommodation" },
-    { icon: "/images/Travel-icons/Travel-Insurance.png", text: "Travel Insurance" },
-    { icon: "/images/Travel-icons/Transportation.png", text: "Transportation" },
+    { icon: "/images/icons/sightseeing.png", text: "Sightseeing" },
+    { icon: "/images/icons/flights-visa.png", text: "Flights & Visa" },
+    { icon: "/images/icons/meals.png", text: "3 Times Meal" },
+    { icon: "/images/icons/5-star.png", text: "5 Star Accommodation" },
+    { icon: "/images/icons/.png", text: "Travel Insurance" },
+    { icon: "/images/icons/Transportation.png", text: "Transportation" },
   ];
 
   return (
