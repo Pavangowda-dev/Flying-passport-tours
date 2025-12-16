@@ -67,11 +67,17 @@ export default function HeroSection({
             muted
             loop
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ filter: "blur(3px)" }}
           >
-            <source src="/flying passport website final.mp4" type="video/mp4" />
+            <source
+              src="https://hcghunzrxpktydhukhai.supabase.co/storage/v1/object/public/Hero%20video/flying%20passport%20website%20final.mp4"
+              type="video/mp4"
+            />
           </video>
+
+          {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-primary/40"></div>
         </div>
       )}
@@ -86,6 +92,7 @@ export default function HeroSection({
         >
           {title}
         </h1>
+
         <p
           className={cn(
             "text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-6 md:mb-8 opacity-0 transition-opacity duration-1000 delay-300 px-4",
@@ -94,6 +101,7 @@ export default function HeroSection({
         >
           {subtitle}
         </p>
+
         {ctaText && (
           <Button
             asChild={!ctaLink?.startsWith("#")}
@@ -104,7 +112,11 @@ export default function HeroSection({
             )}
             onClick={ctaLink?.startsWith("#") ? handleCTAClick : undefined}
           >
-            {ctaLink?.startsWith("#") ? <span>{ctaText}</span> : <Link href={ctaLink}>{ctaText}</Link>}
+            {ctaLink?.startsWith("#") ? (
+              <span>{ctaText}</span>
+            ) : (
+              <Link href={ctaLink}>{ctaText}</Link>
+            )}
           </Button>
         )}
       </div>

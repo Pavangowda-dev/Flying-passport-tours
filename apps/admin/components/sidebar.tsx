@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Mail,
@@ -14,31 +16,58 @@ import { Button } from "@/components/ui/button";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
 const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { id: "contact-form", label: "Contact Form", icon: Mail },
-  { id: "early-access", label: "Early Access Form", icon: Clock },
-  { id: "tour-booking", label: "Tour Booking Form", icon: MapPin },
-  { id: "homepage-enquiry", label: "Homepage Enquiry Form", icon: Home },
-  { id: "family-package", label: "Family Package Notify Form", icon: Package },
-  { id: "analytics", label: "Analytics", icon: BarChart3 },
+  {
+    label: "Dashboard",
+    href: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Contact Form",
+    href: "/dashboard/contact",
+    icon: Mail,
+  },
+  {
+    label: "Early Access Form",
+    href: "/dashboard/early-access",
+    icon: Clock,
+  },
+  {
+    label: "Tour Booking Form",
+    href: "/dashboard/tour-bookings",
+    icon: MapPin,
+  },
+  {
+    label: "Homepage Enquiry Form",
+    href: "/dashboard/homepage-enquiries",
+    icon: Home,
+  },
+  {
+    label: "Family Package Notify",
+    href: "/dashboard/family-package-notify",
+    icon: Package,
+  },
+  {
+    label: "Analytics",
+    href: "/dashboard/analytics",
+    icon: BarChart3,
+  },
 ];
 
 export function Sidebar({
-  currentPage,
-  onPageChange,
   isOpen,
   collapsed,
-  onCollapseToggle,
+  onClose,
 }: {
-  currentPage: string;
-  onPageChange: (page: string) => void;
   isOpen: boolean;
   collapsed: boolean;
-  onCollapseToggle: () => void;
+  onClose: () => void;
 }) {
+  const pathname = usePathname();
+
   return (
     <aside
-      className={`fixed lg:relative inset-y-0 left-0 z-40 flex flex-col transform transition-all duration-300 ease-in-out bg-[#1f2d28] text-white shadow-lg lg:shadow-none
+      className={`fixed lg:relative inset-y-0 left-0 z-40 flex flex-col
+        bg-[#1f2d28] text-white shadow-lg transition-all duration-300
         ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         ${collapsed ? "lg:w-20" : "lg:w-64"}
         ${isOpen ? "w-3/4 max-w-xs" : "w-64"}`}
@@ -50,51 +79,55 @@ export function Sidebar({
         }`}
       >
         {!collapsed ? (
-          <div className="flex-1">
-            <h1 className="text-xl font-bold text-white">Flying Passport</h1>
-            <p className="text-xs text-white/70 mt-1">Admin Dashboard</p>
+          <div>
+            <h1 className="text-xl font-bold">Flying Passport</h1>
+            <p className="text-xs text-white/70">Admin Dashboard</p>
           </div>
         ) : (
-          <h1 className="text-lg font-bold text-white text-center">FP</h1>
+          <h1 className="text-lg font-bold">FP</h1>
         )}
 
-        {/* Mobile close button (top-right) */}
-        <button
-          className="lg:hidden text-white hover:text-gray-300"
-          onClick={() => onPageChange(currentPage)} // optional close
-        >
-          <X size={20} onClick={() => window.dispatchEvent(new Event("closeSidebar"))} />
+        {/* Mobile close */}
+        <button className="lg:hidden" onClick={onClose}>
+          <X size={20} />
         </button>
       </div>
 
-      {/* Menu Items */}
+      {/* Navigation */}
       <nav className="flex-1 overflow-y-auto p-4 space-y-1">
         <Tooltip.Provider>
           {menuItems.map((item) => {
             const Icon = item.icon;
-            const isActive = currentPage === item.id;
+            const isActive =
+              pathname === item.href ||
+              pathname.startsWith(item.href + "/");
+
             return (
-              <Tooltip.Root key={item.id}>
+              <Tooltip.Root key={item.href}>
                 <Tooltip.Trigger asChild>
-                  <Button
-                    onClick={() => onPageChange(item.id)}
-                    variant="ghost"
-                    className={`w-full justify-start gap-3 px-3 py-2 rounded-md transition-colors ${
-                      collapsed ? "justify-center" : ""
-                    } ${
-                      isActive
-                        ? "bg-white text-[#1f2d28] font-semibold"
-                        : "text-white/80 hover:bg-white/10"
-                    }`}
-                  >
-                    <Icon size={18} />
-                    {!collapsed && <span className="text-sm">{item.label}</span>}
-                  </Button>
+                  <Link href={item.href} onClick={onClose}>
+                    <Button
+                      variant="ghost"
+                      className={`w-full justify-start gap-3 px-3 py-2 rounded-md
+                        ${collapsed ? "justify-center" : ""}
+                        ${
+                          isActive
+                            ? "bg-white text-[#1f2d28] font-semibold"
+                            : "text-white/80 hover:bg-white/10"
+                        }`}
+                    >
+                      <Icon size={18} />
+                      {!collapsed && (
+                        <span className="text-sm">{item.label}</span>
+                      )}
+                    </Button>
+                  </Link>
                 </Tooltip.Trigger>
+
                 {collapsed && (
                   <Tooltip.Content
                     side="right"
-                    className="bg-black text-white text-xs p-1.5 rounded-md"
+                    className="bg-black text-white text-xs px-2 py-1 rounded"
                   >
                     {item.label}
                   </Tooltip.Content>
@@ -107,7 +140,7 @@ export function Sidebar({
 
       {!collapsed && (
         <div className="p-4 border-t border-white/10 text-xs text-white/60">
-          <p>© 2025 Flying Passport Tours</p>
+          © 2025 Flying Passport Tours
         </div>
       )}
     </aside>

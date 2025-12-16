@@ -13,23 +13,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/compon
 import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 
-// Updated tours array: China → Coming Soon, New 7-Day Vietnam → Upcoming with ₹98,000
+// Updated tours array: Removed 10-Day Japan/SK/NK, Added 8-Day Japan, Updated Egypt/Europe prices & Europe date
 const tours = [
-  {
-    id: "11",
-    title: "10-Day Japan, South Korea & North Korea",
-    destination: "japan-south-korea-north-korea",
-    region: "asia",
-    image: "/images/tours/japan-south-north/japan-south-north (1).png",
-    duration: 10,
-    price: 337000,
-    description:
-      "Embark on a unique journey through Japan, South Korea, and North Korea, exploring vibrant cultures, historic landmarks, and modern cities.",
-    highlights: ["Tokyo", "Seoul", "Pyongyang", "Kyoto"],
-    status: "upcoming",
-    departureDate: "November 7, 2025",
-    availability: "limited",
-  },
   {
     id: "12",
     title: "8-Day Ancient Egypt Adventure",
@@ -37,9 +22,9 @@ const tours = [
     region: "africa",
     image: "/images/tours/Egypt/egypt-1.png",
     duration: 8,
-    price: 197000,
+    price: 96000,
     description:
-      "Discover the wonders of Ancient Egypt on this 8-day group tour. Pricing: Double Occupancy ₹1,97,000, Children ₹1,39,000.",
+      "Discover the wonders of Ancient Egypt on this 8-day group tour. Pricing: Double Occupancy ₹96,000, Children ₹67,000.",
     highlights: ["Cairo", "Giza Pyramids", "Alexandria", "Aswan", "Luxor"],
     status: "upcoming",
     departureDate: "February 11, 2026",
@@ -51,9 +36,9 @@ const tours = [
     region: "europe",
     image: "/images/tours/Europe/Europe-1.png",
     duration: 12,
-    price: 327000,
+    price: 250000,
     description:
-      "Discover the charm of Europe's iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,92,000, Double Occupancy ₹3,27,000, Children ₹2,50,000.",
+      "Discover the charm of Europe's iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,00,000, Double Occupancy ₹2,50,000, Children ₹1,90,000.",
     highlights: [
       "Paris",
       "Brussels",
@@ -70,7 +55,7 @@ const tours = [
       "Rome"
     ],
     status: "upcoming",
-    departureDate: "April 16, 2026",
+    departureDate: "May 5, 2026",
   },
   // NEW: 7-Day Vietnam - Upcoming with ₹98,000
   {
@@ -86,6 +71,22 @@ const tours = [
     highlights: ["Da Nang", "Ba Na Hills", "Hoi An", "Ha Long Bay"],
     status: "upcoming",
     departureDate: "February 01, 2026",
+  },
+  // NEW: 8-Day Japan - Upcoming with ₹3,14,000
+  {
+    id: "13",
+    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    destination: "japan",
+    region: "asia",
+    image: "/images/tours/japan.webp",
+    duration: 8,
+    price: 314000,
+    description:
+      "Experience Japan's blend of tradition and modernity on this 8-day/7-night group tour, traveling from Tokyo to Osaka via bullet train, visiting Mt. Fuji, historic Kyoto, and vibrant Hiroshima.",
+    highlights: ["Tokyo", "Mt. Fuji", "Kyoto", "Nara", "Osaka", "Hiroshima"],
+    status: "upcoming",
+    departureDate: "April 9, 2026",
+    availability: "limited",
   },
   // China moved to Coming Back Soon
   {
@@ -264,11 +265,11 @@ export default function ToursPage() {
 
   // Separate upcoming and coming back soon tours
   const upcomingTours = filteredTours.filter((tour) => tour.status === "upcoming" || tour.status === "closed")
-  // Sort upcoming tours: New 7-Day Vietnam → Japan/SK/NK → Egypt → Europe
+  // Sort upcoming tours: New 7-Day Vietnam → Egypt → New 8-Day Japan → Europe
   const sortedUpcomingTours = [
     upcomingTours.find(tour => tour.id === "10"), // New 7-Day Vietnam
-    upcomingTours.find(tour => tour.id === "11"), // Japan/South Korea/North Korea
     upcomingTours.find(tour => tour.id === "12"), // Egypt
+    upcomingTours.find(tour => tour.id === "13"), // New 8-Day Japan
     upcomingTours.find(tour => tour.id === "6"),  // Europe
   ].filter(Boolean) as typeof upcomingTours
 

@@ -13,7 +13,7 @@ import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 import { useState, useEffect, useRef } from "react"
 
-// Updated tour data - Removed China, Added 7-Day Vietnam (first), Japan/South Korea/North Korea (Few Seats Left), Egypt, Europe
+// Updated tour data: Vietnam → Egypt → New 8-Day Japan → Europe
 const upcomingTours = [
   {
     id: "10",
@@ -27,27 +27,27 @@ const upcomingTours = [
     departureDate: "February 01, 2026",
   },
   {
-    id: "11",
-    title: "10-Day Japan, South Korea & North Korea",
-    destination: "Japan, South Korea, North Korea",
-    image: "/images/tours/japan-south-north/japan-south-north (1).png",
-    duration: 10,
-    price: 337000,
-    availability: "limited",
-    description: "Explore the unique blend of ancient traditions and modern cities in Japan, South Korea, and North Korea with Flying Passport.",
-    highlights: ["Tokyo", "Kyoto", "Seoul", "Pyongyang", "Cultural Experiences"],
-    departureDate: "November 7, 2025",
-  },
-  {
     id: "12",
     title: "8-Day Ancient Egypt Adventure",
     destination: "Egypt",
     image: "/images/tours/Egypt/egypt-1.png",
     duration: 8,
-    price: 197000,
+    price: 96000,
     description: "Discover the wonders of Ancient Egypt with guided tours to the Giza Pyramids, Nile River cruise, and more from Bangalore.",
     highlights: ["Giza Pyramids", "Nile River Cruise", "Luxor", "Aswan", "Alexandria"],
     departureDate: "February 11, 2026",
+  },
+  {
+    id: "13",
+    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    destination: "Japan",
+    image: "/images/tours/japan.webp",
+    duration: 8,
+    price: 314000,
+    availability: "limited",
+    description: "Experience Japan's blend of tradition and modernity on this 8-day/7-night group tour, traveling from Tokyo to Osaka via bullet train, visiting Mt. Fuji, historic Kyoto, and vibrant Hiroshima.",
+    highlights: ["Tokyo", "Mt. Fuji", "Kyoto", "Nara", "Osaka", "Hiroshima"],
+    departureDate: "April 9, 2026",
   },
   {
     id: "6",
@@ -55,10 +55,10 @@ const upcomingTours = [
     destination: "Europe",
     image: "/images/tours/Europe/Europe-1.png",
     duration: 12,
-    price: 327000,
+    price: 250000,
     description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
     highlights: ["Paris", "Amsterdam", "Venice", "Rome", "Mt. Titlis"],
-    departureDate: "April 16, 2026",
+    departureDate: "May 5, 2026",
   },
 ]
 

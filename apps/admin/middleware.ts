@@ -4,29 +4,38 @@ import { createServerClient } from "@supabase/ssr";
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { get: (key) => req.cookies.get(key)?.value } }
+    {
+      cookies: {
+        get: (name) => req.cookies.get(name)?.value,
+        set: (name, value, options) =>
+          res.cookies.set({ name, value, ...options }),
+        remove: (name, options) =>
+          res.cookies.set({ name, value: "", ...options }),
+      },
+    }
   );
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  const isAuthPage = req.nextUrl.pathname.startsWith("/login");
+  const isLogin = req.nextUrl.pathname === "/login";
 
-  if (session && isAuthPage) {
-    return NextResponse.redirect(new URL("/", req.url));
+  if (!user && !isLogin) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  if (!session && !isAuthPage) {
-    return NextResponse.redirect(new URL("/login", req.url));
+  if (user && isLogin) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return res;
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!_next|favicon.ico).*)"],
 };

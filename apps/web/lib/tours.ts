@@ -21,16 +21,7 @@ export const tours = [
       "Stay in a traditional Japanese ryokan",
     ],
     itinerary: [
-      { day: 1, title: "Arrival in Tokyo", description: "Arrive at Narita International Airport. Transfer to your hotel in Tokyo. Welcome dinner with the group." },
-      { day: 2, title: "Tokyo Exploration", description: "Visit Meiji Shrine, Harajuku, Shibuya Crossing, and Tokyo Tower. Evening free to explore on your own." },
-      { day: 3, title: "Tokyo to Mount Fuji", description: "Travel to the Mount Fuji area. Visit the 5th Station (weather permitting) and Lake Kawaguchi. Overnight stay in a traditional ryokan." },
-      { day: 4, title: "Mount Fuji to Kyoto", description: "Morning at leisure. Afternoon bullet train to Kyoto. Evening walk through Gion district." },
-      { day: 5, title: "Kyoto Temples & Gardens", description: "Visit Kinkaku-ji (Golden Pavilion), Ryoan-ji Zen Garden, and Arashiyama Bamboo Grove." },
-      { day: 6, title: "Kyoto Cultural Day", description: "Participate in a traditional tea ceremony and kimono experience. Visit Fushimi Inari Shrine." },
-      { day: 7, title: "Kyoto to Hiroshima", description: "Day trip to Hiroshima. Visit Peace Memorial Park and Museum. Ferry to Miyajima Island to see the floating torii gate." },
-      { day: 8, title: "Kyoto to Osaka", description: "Travel to Osaka. Visit Osaka Castle and Dotonbori district. Evening food tour." },
-      { day: 9, title: "Osaka Free Day", description: "Free day to explore Osaka or take an optional day trip to Nara. Farewell dinner in the evening." },
-      { day: 10, title: "Departure", description: "Transfer to Kansai International Airport for your departure flight." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "9 nights accommodation (3★ and 4★ hotels, 1 night in traditional ryokan)",
@@ -75,18 +66,7 @@ export const tours = [
       "Visit the stunning Amalfi Coast",
     ],
     itinerary: [
-      { day: 1, title: "Arrival in Rome", description: "Arrive at Rome Fiumicino Airport. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Ancient Rome", description: "Visit Colosseum, Roman Forum, and Palatine Hill. Afternoon at leisure." },
-      { day: 3, title: "Vatican City", description: "Explore Vatican Museums, Sistine Chapel, and St. Peter's Basilica." },
-      { day: 4, title: "Rome to Florence", description: "Morning train to Florence. Afternoon walking tour of historic center." },
-      { day: 5, title: "Florence Art & Culture", description: "Visit Uffizi Gallery, Duomo, and Ponte Vecchio. Cooking class in evening." },
-      { day: 6, title: "Tuscany Day Trip", description: "Visit Siena and San Gimignano. Wine tasting in Chianti region." },
-      { day: 7, title: "Florence to Venice", description: "Morning train to Venice. Afternoon exploration of St. Mark's Square." },
-      { day: 8, title: "Venice Discovery", description: "Visit Doge's Palace, gondola ride, and glass-making demonstration in Murano." },
-      { day: 9, title: "Venice to Amalfi Coast", description: "Travel to Sorrento. Evening at leisure." },
-      { day: 10, title: "Amalfi Coast", description: "Visit Positano and Amalfi. Boat trip along the coast." },
-      { day: 11, title: "Return to Rome", description: "Morning at leisure. Afternoon return to Rome. Farewell dinner." },
-      { day: 12, title: "Departure", description: "Transfer to Rome airport for departure." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "11 nights accommodation in 3★ and 4★ hotels",
@@ -132,14 +112,7 @@ export const tours = [
       "Shop at the Grand Bazaar",
     ],
     itinerary: [
-      { day: 1, title: "Arrival in Istanbul", description: "Arrive at Istanbul Airport. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Istanbul Old City", description: "Visit Blue Mosque, Hagia Sophia, Topkapi Palace, and Grand Bazaar." },
-      { day: 3, title: "Istanbul to Cappadocia", description: "Flight to Cappadocia. Explore Goreme Open Air Museum." },
-      { day: 4, title: "Cappadocia Adventure", description: "Hot air balloon ride at sunrise. Underground city tour." },
-      { day: 5, title: "Cappadocia to Pamukkale", description: "Drive to Pamukkale. Visit the white travertine terraces." },
-      { day: 6, title: "Pamukkale to Ephesus", description: "Visit ancient Ephesus and the House of Virgin Mary." },
-      { day: 7, title: "Return to Istanbul", description: "Flight back to Istanbul. Bosphorus cruise. Turkish bath experience." },
-      { day: 8, title: "Departure", description: "Transfer to airport for departure." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "7 nights accommodation in 3★ and 4★ hotels",
@@ -195,42 +168,7 @@ export const tours = [
       "Travel in luxury 4x4 Land Cruisers with a dedicated Kannada tour manager.",
     ],
     itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Nairobi – Warm Welcome and Relaxation",
-        description:
-          "Upon your arrival at Nairobi Airport in the evening, the Flying Passport team will greet you and escort you to your 4-star hotel, Long View Suites. After check-in, enjoy a warm welcome with coffee and snacks. Later, relish a specially prepared Indian dinner. Unwind with a campfire, music, and dance as you begin your exciting Kenyan adventure.\n\nMeals: Indian Breakfast, Lunch & Dinner\nAccommodation: Long View Suites, Nairobi",
-      },
-      {
-        day: 2,
-        title: "Nairobi City Tour & Masai Market Experience",
-        description:
-          "After a delicious Indian breakfast, begin your day with a 3-hour Nairobi city tour, discovering the highlights of the capital. Enjoy lunch at an Indian restaurant, followed by a visit to the vibrant Masai Market for a unique shopping experience. Return to the hotel for a comforting Indian dinner and a restful night.\n\nMeals: Indian Breakfast, Lunch & Dinner\nAccommodation: Long View Suites, Nairobi",
-      },
-      {
-        day: 3,
-        title: "Nairobi to Masai Mara – Tribal Visit & Scenic Drive",
-        description:
-          "After breakfast, embark on a scenic journey in a luxurious 4x4 Land Cruiser to Masai Mara, driving along the breathtaking Great Rift Valley. Pause at a viewpoint for panoramic views. On arrival, enjoy a picnic lunch, then visit an authentic Masai tribal village to experience their culture and traditions. Check-in at Jambo Mara Safari Lodge or Masai Mara Sopa Lodge for dinner and overnight stay.\n\nMeals: Breakfast, Lunch & Dinner\nAccommodation: Jambo Mara Safari Lodge or Masai Mara Sopa Lodge",
-      },
-      {
-        day: 4,
-        title: "Full-Day Safari in Masai Mara",
-        description:
-          "Start early with breakfast, then head into Masai Mara Reserve for a full day of game viewing. Spot Africa’s Big Five, witness the Great Migration (seasonal), and enjoy a picnic lunch at Hippo Pool. Capture the stunning wildlife and landscapes during morning and afternoon game drives. Return in the evening to the lodge for dinner and rest.\n\nMeals: Breakfast, Lunch & Dinner\nAccommodation: Jambo Mara Safari Lodge or Masai Mara Sopa Lodge",
-      },
-      {
-        day: 5,
-        title: "Masai Mara to Naivasha – Boat Safari Adventure",
-        description:
-          "After breakfast, drive about 4 hours to Naivasha National Park. After a refreshing lunch, embark on a serene boat ride safari on Lake Naivasha, known for its birdlife and hippo sightings. Enjoy a peaceful evening and dinner at the beautiful Chambai Safari Hotel.\n\nMeals: Breakfast, Lunch & Dinner\nAccommodation: Chambai Safari Hotel, Naivasha",
-      },
-      {
-        day: 6,
-        title: "Hell's Gate National Park & Departure",
-        description:
-          "After an early breakfast, visit Hell’s Gate National Park for an exciting walking or cycling safari, and explore the Olkaria Geothermal Power Plant and natural hot springs. After the adventure, enjoy a picnic lunch during the return drive to Nairobi. Guests with evening flights will be dropped off at Nairobi Airport for the return journey.\n\nMeals: Breakfast, Lunch",
-      },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "Economy class return flight tickets (Bangalore – Nairobi – Bangalore)",
@@ -282,15 +220,7 @@ export const tours = [
       "Enjoy authentic Thai cuisine and cooking classes",
     ],
     itinerary: [
-      { day: 1, title: "Arrival in Bangkok", description: "Arrive at Bangkok airport. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Bangkok Temples", description: "Visit Wat Pho, Wat Arun, and Grand Palace. Evening tuk-tuk tour." },
-      { day: 3, title: "Bangkok to Chiang Mai", description: "Flight to Chiang Mai. Visit local markets and temples." },
-      { day: 4, title: "Chiang Mai Culture", description: "Elephant sanctuary visit. Traditional cooking class." },
-      { day: 5, title: "Chiang Mai to Phuket", description: "Flight to Phuket. Beach time and relaxation." },
-      { day: 6, title: "Phi Phi Islands", description: "Full day island hopping tour to Phi Phi Islands." },
-      { day: 7, title: "Phuket Beach Day", description: "Free day at the beach. Optional water activities." },
-      { day: 8, title: "Phuket to Bangkok", description: "Flight back to Bangkok. Last-minute shopping. Farewell dinner." },
-      { day: 9, title: "Departure", description: "Transfer to airport for departure." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "8 nights accommodation in 3★ and 4★ hotels",
@@ -332,29 +262,32 @@ export const tours = [
     ],
     duration: 12,
     groupSize: "40",
-    price: 327000,
+    price: 250000,
     status: "upcoming",
-    departureDate: "April 16, 2026",
+    departureDate: "May 5, 2026",
     description:
-      "Discover the magic of Europe on an unforgettable journey through France, Belgium, the Netherlands, Germany, Switzerland, Austria, Italy, and more. From iconic landmarks like the Eiffel Tower, Leaning Tower of Pisa, and Vatican City to serene landscapes of the Black Forest and the Swiss Alps, every day is packed with incredible experiences. Enjoy guided sightseeing, comfortable 4-star stays, Indian meals, and seamless travel with our expert Kannada tour manager.",
+      "Discover the charm of Europe's iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,00,000, Double Occupancy ₹2,50,000, Children ₹1,90,000.",
     highlights: [
-      "Explore Paris with Eiffel Tower entry, Seine River cruise, and Versailles Palace",
-      "Visit Brussels’ Grand Place, Atomium, and Manneken Pis",
-      "Discover Amsterdam with Keukenhof Gardens or Madurodam, plus cheese & clog farm visit",
-      "Experience Strasbourg’s old town charm and Luxembourg City tour with tram ride",
-      "Drive through Germany’s Black Forest and visit Lake Titisee with cuckoo clock demo",
-      "Witness Switzerland’s Rhine Falls, ride up Mt. Titlis, and tour Lucerne by train",
-      "Enjoy a toy train ride in Vaduz and explore Innsbruck with Swarovski Crystal shop",
-      "Cruise Venice’s canals, St. Mark’s Square, and ride a romantic gondola",
-      "See the Leaning Tower of Pisa at the Square of Miracles",
-      "Explore Rome’s Colosseum, Vatican City, and St. Peter’s Basilica",
+      "Paris",
+      "Brussels",
+      "Amsterdam",
+      "Luxembourg",
+      "Black Forest",
+      "Rhine Falls",
+      "Mt Titlis",
+      "Lucerne",
+      "Vaduz",
+      "Innsbruck",
+      "Venice",
+      "Pisa",
+      "Rome"
     ],
     itinerary: [
       {
         day: 1,
-        title: "Arrival in Paris – April 16, 2026",
+        title: "Arrival in Paris – May 5, 2026",
         description:
-          "Arrive in Paris on April 16, 2026. Begin your trip with an orientation tour of the city and in the evening, enjoy a romantic Seine River cruise passing Notre Dame, historic bridges, and the Eiffel Tower.",
+          "Arrive in Paris on May 5, 2026. Begin your trip with an orientation tour of the city and in the evening, enjoy a romantic Seine River cruise passing Notre Dame, historic bridges, and the Eiffel Tower.",
       },
       {
         day: 2,
@@ -420,7 +353,7 @@ export const tours = [
         day: 12,
         title: "Departure from Rome",
         description:
-          "On April 27, 2026, enjoy your final breakfast in Europe before transferring to the airport. Fly back home with unforgettable memories of Paris, Switzerland, Italy, and more.",
+          "On May 16, 2026, enjoy your final breakfast in Europe before transferring to the airport. Fly back home with unforgettable memories of Paris, Switzerland, Italy, and more.",
       },
     ],
     inclusions: [
@@ -449,10 +382,10 @@ export const tours = [
       "5% GST (mandatory, not included in package price)",
       "5% TCS (mandatory, not included in package price)",
     ],
-    singleOccupancy: 392000,
-    childPrice: 250000,
+    singleOccupancy: 300000,
+    childPrice: 190000,
     seoTitle: "12-Day European Highlights Tour 2026 | Flying Passport Tours",
-    seoDescription: "Join our 12-day Europe tour from Bangalore, April 16, 2026. Explore Paris, Amsterdam, Rome, Switzerland, and more with Kannada-guided tours and Indian meals. Book now for an unforgettable adventure!",
+    seoDescription: "Join our 12-day Europe tour from Bangalore, May 5, 2026. Explore Paris, Amsterdam, Rome, Switzerland, and more with Kannada-guided tours and Indian meals. Book now for an unforgettable adventure!",
     keywords: ["Europe tour 2026", "Paris tour package", "Switzerland group tour", "Italy travel from Bangalore", "Kannada-guided Europe tour", "Eiffel Tower tour", "Venice gondola ride", "Swiss Alps tour"]
   },
   {
@@ -467,26 +400,10 @@ export const tours = [
     status: "expired",
     departureDate: "Dates will be announced soon",
     description:
-      "Explore the rich history and natural beauty of Vietnam. From the bustling streets of Ho Chi Minh City to the stunning landscapes of Ha Long Bay.",
-    highlights: [
-      "Explore the historic streets of Hanoi",
-      "Cruise through Ha Long Bay's limestone karsts",
-      "Discover the ancient town of Hoi An",
-      "Experience the vibrant energy of Ho Chi Minh City",
-      "Visit the Cu Chi Tunnels",
-      "Enjoy authentic Vietnamese cuisine",
-    ],
+      "Experience Vietnam's rich history, stunning landscapes, and vibrant culture on this immersive group tour.",
+    highlights: ["Hanoi", "Ha Long Bay", "Hoi An", "Ho Chi Minh City"],
     itinerary: [
-      { day: 1, title: "Arrival in Hanoi", description: "Arrive in Hanoi. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Hanoi City Tour", description: "Visit Ho Chi Minh Mausoleum, Temple of Literature, and Old Quarter." },
-      { day: 3, title: "Hanoi to Ha Long Bay", description: "Drive to Ha Long Bay. Overnight cruise with dinner on board." },
-      { day: 4, title: "Ha Long Bay to Hoi An", description: "Morning in Ha Long Bay. Flight to Da Nang, transfer to Hoi An." },
-      { day: 5, title: "Hoi An Ancient Town", description: "Walking tour of Hoi An. Lantern festival in the evening." },
-      { day: 6, title: "Hoi An to Ho Chi Minh City", description: "Flight to Ho Chi Minh City. City orientation tour." },
-      { day: 7, title: "Cu Chi Tunnels", description: "Visit Cu Chi Tunnels. Afternoon at leisure in the city." },
-      { day: 8, title: "Mekong Delta", description: "Day trip to Mekong Delta. Boat rides and local experiences." },
-      { day: 9, title: "Ho Chi Minh City", description: "Free day for shopping and exploration. Farewell dinner." },
-      { day: 10, title: "Departure", description: "Transfer to airport for departure." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "9 nights accommodation including 1 night on Ha Long Bay cruise",
@@ -522,27 +439,10 @@ export const tours = [
     status: "expired",
     departureDate: "Dates will be announced soon",
     description:
-      "Discover the stunning islands and ancient history of Greece. From the iconic white buildings of Santorini to the vibrant nightlife of Mykonos.",
-    highlights: [
-      "Explore ancient Athens and the Acropolis",
-      "Sunset views in Santorini",
-      "Beach time and nightlife in Mykonos",
-      "Discover the Palace of Knossos in Crete",
-      "Traditional Greek cuisine and wine tasting",
-      "Island hopping by ferry",
-    ],
+      "Sail through Greece's stunning islands, from the whitewashed cliffs of Santorini to the historic ruins of Athens.",
+    highlights: ["Athens", "Mykonos", "Santorini", "Crete"],
     itinerary: [
-      { day: 1, title: "Arrival in Athens", description: "Arrive in Athens. Transfer to hotel. Welcome dinner." },
-      { day: 2, title: "Athens Sightseeing", description: "Visit Acropolis, Parthenon, and Ancient Agora. Afternoon at leisure." },
-      { day: 3, title: "Athens to Mykonos", description: "Ferry to Mykonos. Explore Mykonos Town and beaches." },
-      { day: 4, title: "Mykonos Island", description: "Beach day and optional visit to nearby Delos island." },
-      { day: 5, title: "Mykonos to Santorini", description: "Ferry to Santorini. Explore Fira and famous sunset in Oia." },
-      { day: 6, title: "Santorini Exploration", description: "Wine tasting tour and visit to Akrotiri archaeological site." },
-      { day: 7, title: "Santorini to Crete", description: "Ferry to Crete. Explore Heraklion and visit Knossos Palace." },
-      { day: 8, title: "Crete Discovery", description: "Visit traditional villages and enjoy Cretan cuisine." },
-      { day: 9, title: "Crete to Athens", description: "Flight back to Athens. Last-minute shopping and sightseeing." },
-      { day: 10, title: "Athens Free Day", description: "Free day in Athens. Optional day trip or museum visits." },
-      { day: 11, title: "Departure", description: "Transfer to airport for departure." },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "10 nights accommodation in 3★ and 4★ hotels",
@@ -567,74 +467,20 @@ export const tours = [
   },
   {
     id: "9",
-    title: "8-Day Amazon Adventure",
-    destination: "Amazon, Brazil",
-    image: "/images/tours/amazon.webp",
+    title: "9-Day Amazon Forest Adventure",
+    destination: "brazil-amazon",
+    image: "/images/tours/Amazon-forest.png",
     gallery: [],
-    duration: 8,
-    groupSize: "30",
-    price: 280000,
+    duration: 9,
+    groupSize: "40",
+    price: 0,
     status: "expired",
     departureDate: "Dates will be announced soon",
     description:
-      "Embark on an unforgettable adventure into the heart of the Amazon rainforest. Explore lush jungles, vibrant wildlife, and indigenous cultures with expert guides.",
-    highlights: [
-      "Cruise along the Amazon River",
-      "Spot exotic wildlife like piranhas and pink dolphins",
-      "Visit indigenous communities",
-      "Jungle trekking with expert guides",
-      "Nighttime canoe safari for nocturnal wildlife",
-      "Learn about Amazonian ecosystems",
-    ],
+      "Embark on an unforgettable journey into the heart of the Amazon rainforest, experiencing incredible biodiversity, indigenous cultures, and thrilling wildlife encounters.",
+    highlights: ["Amazon Rainforest", "Manaus", "Piraha Tribe", "Pink River Dolphins", "Canopy Walkways"],
     itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Manaus",
-        description:
-          "Arrive at Manaus International Airport. Transfer to a 4-star hotel. Welcome Indian dinner.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Manaus",
-      },
-      {
-        day: 2,
-        title: "Manaus to Amazon Jungle",
-        description:
-          "Transfer to an Amazon lodge by boat. Afternoon jungle walk to learn about flora and fauna. Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
-      },
-      {
-        day: 3,
-        title: "Amazon River Cruise",
-        description:
-          "Cruise along the Amazon River, spotting wildlife like monkeys and birds. Visit an indigenous community. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
-      },
-      {
-        day: 4,
-        title: "Jungle Trekking & Piranha Fishing",
-        description:
-          "Morning jungle trek with expert guide. Afternoon piranha fishing activity. Evening Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
-      },
-      {
-        day: 5,
-        title: "Nighttime Canoe Safari",
-        description:
-          "Morning at leisure. Nighttime canoe safari to spot nocturnal wildlife. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
-      },
-      {
-        day: 6,
-        title: "Amazon Exploration",
-        description:
-          "Full-day exploration of the Amazon, including birdwatching and learning about medicinal plants. Indian lunch and dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: Amazon lodge",
-      },
-      {
-        day: 7,
-        title: "Return to Manaus",
-        description:
-          "Morning boat back to Manaus. Afternoon city tour of Manaus, including the Opera House. Farewell Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Manaus",
-      },
-      {
-        day: 8,
-        title: "Departure",
-        description:
-          "After breakfast, transfer to Manaus airport for departure.\n\nMeals: Breakfast\nAccommodation: None",
-      },
+      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
     ],
     inclusions: [
       "Economy class return flight tickets (Bangalore – Manaus – Bangalore)",
@@ -655,10 +501,10 @@ export const tours = [
       "Optional activities",
       "Travel insurance for above 60 years",
     ],
-    singleOccupancy: 350000,
-    childPrice: 260000,
-    seoTitle: "8-Day Amazon Adventure | Flying Passport Tours",
-    seoDescription: "Explore the Amazon rainforest on our 8-day tour from Bangalore. Cruise the river, spot wildlife, and visit indigenous communities. Book now!"
+    singleOccupancy: 0,
+    childPrice: 0,
+    seoTitle: "9-Day Amazon Forest Adventure | Flying Passport Tours",
+    seoDescription: "Explore the Amazon rainforest on our 9-day tour from Bangalore. Cruise the river, spot wildlife, and visit indigenous communities. Book now!"
   },
   {
     id: "10",
@@ -768,131 +614,6 @@ export const tours = [
     keywords: ["Vietnam tour from Bangalore", "Vietnam package for Karnataka travellers", "Vietnam group tour India", "International packages from Bangalore", "Vietnam holiday package", "Da Nang Hoi An Hanoi tour package India", "Best international tours from India", "Vietnam February 2026 group tour India"]
   },
   {
-    id: "11",
-    title: "10-Day Japan, South Korea & North Korea",
-    destination: "Japan, South Korea, North Korea",
-    image: "/images/tours/japan-south-north/japan-south-north (1).png",
-    gallery: [
-      "/images/tours/japan-south-north/japan-south-north (2).png",
-      "/images/tours/japan-south-north/japan-south-north (3).png",
-      "/images/tours/japan-south-north/japan-south-north (4).png",
-      "/images/tours/japan-south-north/japan-south-north (5).png",
-      "/images/tours/japan-south-north/japan-south-north (6).png",
-      "/images/tours/japan-south-north/japan-south-north (7).png",
-      "/images/tours/japan-south-north/japan-south-north (8).png",
-      "/images/tours/japan-south-north/japan-south-north (9).png",
-      "/images/tours/japan-south-north/japan-south-north (10).png",
-      "/images/tours/japan-south-north/japan-south-north (11).png",
-      "/images/tours/japan-south-north/japan-south-north (12).png",
-    ],
-    pdf: "/images/FLYING PASSPORTS JAPAN AND SOUTH KOREA & NORTH KOREA ITINERARY 2025.pdf",
-    duration: 10,
-    groupSize: "40",
-    price: 337000,
-    status: "upcoming",
-    departureDate: "November 7, 2025",
-    availability: "limited",
-    description:
-      "Embark on an extraordinary 10-day journey through Japan, South Korea, and North Korea, exploring a unique blend of ancient traditions, modern metropolises, and exclusive cultural insights. Enjoy guided tours, Indian meals, and seamless travel arrangements.",
-    highlights: [
-      "Discover Tokyo’s vibrant cityscape and historic sites",
-      "Explore Seoul’s palaces and bustling markets",
-      "Experience a rare visit to Pyongyang’s landmarks",
-      "Visit Kyoto’s serene temples and gardens",
-      "Enjoy a cultural performance in Seoul",
-      "Savor regional cuisines with Indian meal options",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Tokyo, Japan",
-        description:
-          "Arrive at Tokyo Narita International Airport on November 7. Meet our representative and transfer to a 4-star hotel. Enjoy a welcome Indian dinner and relax.\n\nMeals: Dinner\nAccommodation: 4-star hotel, Tokyo",
-      },
-      {
-        day: 2,
-        title: "Tokyo City Tour",
-        description:
-          "After breakfast, explore Tokyo’s highlights, including Meiji Shrine, Shibuya Crossing, and Asakusa Temple. Enjoy an Indian lunch and free time in the evening. Indian dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Tokyo",
-      },
-      {
-        day: 3,
-        title: "Tokyo to Kyoto",
-        description:
-          "Take a bullet train to Kyoto. Visit Kinkaku-ji (Golden Pavilion) and Arashiyama Bamboo Grove after an Indian lunch. Evening at leisure with Indian dinner.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
-      },
-      {
-        day: 4,
-        title: "Kyoto Cultural Day",
-        description:
-          "Explore Fushimi Inari Shrine and participate in a traditional tea ceremony. Indian lunch and dinner included. Evening free to explore Gion district.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Kyoto",
-      },
-      {
-        day: 5,
-        title: "Kyoto to Seoul, South Korea",
-        description:
-          "Fly to Seoul, South Korea. After an Indian lunch, visit Gyeongbokgung Palace and Bukchon Hanok Village. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 6,
-        title: "Seoul Exploration",
-        description:
-          "Visit N Seoul Tower and Myeongdong Market after breakfast. Enjoy a cultural performance in the evening. Indian lunch and dinner included.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 7,
-        title: "Seoul to Pyongyang, North Korea",
-        description:
-          "Fly to Pyongyang, North Korea. After an Indian lunch, visit the Kumsusan Palace of the Sun and the Arch of Triumph. Indian dinner and overnight stay.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
-      },
-      {
-        day: 8,
-        title: "Pyongyang Highlights",
-        description:
-          "Explore the Juche Tower and Mansudae Grand Monument. Indian lunch and dinner included. Evening at leisure to experience Pyongyang’s unique atmosphere.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Pyongyang",
-      },
-      {
-        day: 9,
-        title: "Pyongyang to Seoul",
-        description:
-          "Return flight to Seoul. Enjoy a free day for shopping or optional activities in Seoul. Indian lunch and farewell dinner at the hotel.\n\nMeals: Breakfast, Lunch, Dinner\nAccommodation: 4-star hotel, Seoul",
-      },
-      {
-        day: 10,
-        title: "Seoul & Departure",
-        description:
-          "After breakfast, transfer to Incheon International Airport for your return flight. Bid farewell to an unforgettable adventure.\n\nMeals: Breakfast\nAccommodation: None",
-      },
-    ],
-    inclusions: [
-      "Economy class return flight tickets (Bangalore – Japan/South Korea/North Korea – Bangalore)",
-      "Accommodation in 4-star hotels (2 nights Tokyo, 2 nights Kyoto, 3 nights Seoul, 2 nights Pyongyang)",
-      "Daily Indian breakfast, lunch, and dinner (as specified in itinerary)",
-      "Domestic flights (Tokyo to Seoul, Seoul to Pyongyang, Pyongyang to Seoul)",
-      "Bullet train tickets (Tokyo to Kyoto)",
-      "All sightseeing and entrance fees as per itinerary",
-      "Cultural experiences: tea ceremony in Kyoto, cultural performance in Seoul",
-      "Services of an English-speaking tour manager throughout",
-      "Tourist visas for Japan, South Korea, and North Korea for all travelers",
-      "Free travel insurance (below 60 years)",
-      "All airport and hotel transfers",
-    ],
-    exclusions: [
-      "5% GST & 5% TCS (as applicable for international travel)",
-      "Tips for driver and guide (USD 5 per day per person, total USD 50 per person)",
-      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
-      "Meals not mentioned in the itinerary",
-      "Optional excursions or entrance fees not specified in the itinerary",
-      "Travel insurance charges for travelers above 60 years (if applicable)",
-      "Any other item not mentioned under “What’s Included”",
-    ],
-    singleOccupancy: 389000,
-    childPrice: 325000,
-    seoTitle: "10-Day Japan, South Korea & North Korea Tour 2025 | Flying Passport Tours",
-    seoDescription: "Join our exclusive 10-day tour from Bangalore to Japan, South Korea, and North Korea, starting November 7, 2025. Explore Tokyo, Seoul, Pyongyang, and more with Kannada-guided tours and Indian meals. Book now!",
-    keywords: ["Japan tour 2025", "South Korea tour package", "North Korea group tour", "Tokyo tour from Bangalore", "Kannada-guided Asia tour", "Kyoto tea ceremony", "Seoul cultural tour"]
-  },
-  {
     id: "12",
     title: "8-Day Ancient Egypt Adventure",
     destination: "Egypt",
@@ -911,20 +632,12 @@ export const tours = [
     ],
     duration: 8,
     groupSize: "40",
-    price: 197000,
+    price: 96000,
     status: "upcoming",
     departureDate: "February 11, 2026",
     description:
-      "Embark on an unforgettable 8-day journey through Egypt, where ancient wonders meet timeless beauty. From the majestic Pyramids of Giza and the legendary Sphinx to the historic temples of Luxor and Aswan, experience the land of pharaohs like never before. Cruise along the mystical Nile River, explore the catacombs of Alexandria, and walk through the Valley of the Kings — every moment is a step back in time. With luxurious stays, guided tours, and seamless travel, this Egypt expedition promises a perfect blend of history, culture, and comfort.",
-    highlights: [
-      "Visit the Great Pyramids & Sphinx",
-      "Explore the Grand Egyptian Museum",
-      "5-star Nile River Cruise experience",
-      "Discover Luxor & Karnak Temples",
-      "Visit the Valley of the Kings",
-      "Day trip to historic Alexandria",
-      "Explore Philae, Kom Ombo & Edfu Temples",
-    ],
+      "Discover the wonders of Ancient Egypt on this 8-day group tour. Pricing: Double Occupancy ₹96,000, Children ₹67,000.",
+    highlights: ["Cairo", "Giza Pyramids", "Alexandria", "Aswan", "Luxor"],
     itinerary: [
       {
         day: 1,
@@ -996,10 +709,105 @@ export const tours = [
       "5% GST not included in the package price",
       "5% TCS not included in the package price",
     ],
-    singleOccupancy: 245000,
-    childPrice: 139000,
+    singleOccupancy: 119000,
+    childPrice: 67000,
     seoTitle: "8-Day Ancient Egypt Adventure Tour 2026 | Flying Passport Tours",
     seoDescription: "Discover Egypt’s wonders on our 8-day tour from Bangalore, starting February 11, 2026. Visit Giza Pyramids, Nile River cruise, and more with Indian meals. Book now!",
     keywords: ["Egypt tour 2026", "Giza Pyramids tour package", "Nile River cruise", "Cairo group tour", "Kannada-guided Egypt tour", "Luxor tour from Bangalore", "Aswan adventure"]
-  }
-];
+  },
+  {
+    id: "13",
+    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    destination: "Japan",
+    image: "/images/tours/japan.webp",
+    gallery: [],
+    duration: 8,
+    groupSize: "40",
+    price: 314000,
+    status: "upcoming",
+    departureDate: "April 9, 2026",
+    description:
+      "Experience Japan's blend of tradition and modernity on this 8-day/7-night group tour, traveling from Tokyo to Osaka via bullet train, visiting Mt. Fuji, historic Kyoto, and vibrant Hiroshima.",
+    highlights: ["Tokyo", "Mt. Fuji", "Kyoto", "Nara", "Osaka", "Hiroshima"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Apr 09, 2026: Arrival in Tokyo",
+        description:
+          "Pick-up from airport and transfer to hotel. Dinner: Indian dinner included. Accommodation: Villa Fontaine Tokyo-Ueno Okachimachi (3★) or similar.",
+      },
+      {
+        day: 2,
+        title: "Apr 10, 2026: Tokyo City Tour",
+        description:
+          "City Tour: Tokyo Skytree, Asakusa Sensoji Temple & Nakamise Street. Visit Akihabara (Electric Town). Imperial Palace & Nijubashi Bridge. Breakfast: At hotel. Meals: Indian lunch & Indian dinner. Accommodation: Villa Fontaine Tokyo-Ueno Okachimachi (3★) or similar.",
+      },
+      {
+        day: 3,
+        title: "Apr 11, 2026: Mt. Fuji & Transfer to Toyohashi",
+        description:
+          "Visit Mt. Fuji 5th Station (weather permitting). Lake Kawaguchi & Oshino Hakkai Village. Evening transfer to Toyohashi. Breakfast: At hotel. Meals: Japanese lunch & Indian dinner. Accommodation: Loisir Hotel Toyohashi (4★) or similar.",
+      },
+      {
+        day: 4,
+        title: "Apr 12, 2026: Iga Ueno & Kyoto Tour",
+        description:
+          "Visit Iga Ueno Ninja Museum. Kyoto City Tour: Kiyomizu Temple, SannenZaka & NinenZaka Streets. Gion District – Geisha Culture Experience. Breakfast: At hotel. Meals: Indian lunch & Indian dinner. Accommodation: Loisir Hotel Toyohashi (4★) or similar.",
+      },
+      {
+        day: 5,
+        title: "Apr 13, 2026: Kyoto Highlights",
+        description:
+          "Check-in to The Celction Kyoto Horikawa Sanjo (3★) or similar. Fushimi Inari Shrine – Nishijin Textile Center – Golden Pavilion (Kinkaku-ji) – Arashiyama Bamboo Grove. Meals: Breakfast at hotel, Indian lunch & Indian dinner. Accommodation: The Celction Kyoto Horikawa Sanjo (3★) or similar.",
+      },
+      {
+        day: 6,
+        title: "Apr 14, 2026: Nara & Osaka",
+        description:
+          "Check-in to Hiyori Hotel Osaka SuminOE-Koen Station (3★) or similar. Nara – Todai-ji Temple – Deer Park – Osaka Castle – Dotonbori District. Meals: Breakfast at hotel, Indian lunch & Indian dinner. Accommodation: Hiyori Hotel Osaka SuminOE-Koen Station (3★) or similar.",
+      },
+      {
+        day: 7,
+        title: "Apr 15, 2026: Hiroshima Day Trip",
+        description:
+          "Check-in to Hiyori Hotel Osaka SuminOE-Koen Station (3★) or similar. Hiroshima – Miyajima Island – Itsukushima Shrine – Peace Memorial Park – Atomic Bomb Dome & A-Bomb Museum. Bullet train journey. Meals: Breakfast, Indian lunch & Indian dinner. Accommodation: Hiyori Hotel Osaka SuminOE-Koen Station (3★) or similar.",
+      },
+      {
+        day: 8,
+        title: "Apr 16, 2026: Departure from Osaka",
+        description:
+          "Free time – Shopping – Transfer to Kansai International Airport – Departure from Japan. Meals: Breakfast only.",
+      },
+    ],
+    inclusions: [
+      "Guided sightseeing and entrance fees as per the itinerary",
+      "Professional English-speaking tour guides throughout the tour",
+      "All entrance fees to attractions listed in the itinerary",
+      "Tokyo sightseeing: Tokyo Skytree, Senso-ji Temple, Akihabara, Imperial Palace",
+      "Mt. Fuji sightseeing: Mt. Fuji 5th Station (weather permitting), Lake Kawaguchi, Oshino Hakkai",
+      "Kyoto sightseeing: Iga Ninja Museum, Kiyomizu Temple, Gion District, Fushimi Inari Shrine, Nishijin Textile Center, Golden Pavilion (Kinkaku-ji), Arashiyama Bamboo Grove",
+      "Nara & Osaka sightseeing: Todai-ji Temple, Deer Park, Osaka Castle, Dotonbori District",
+      "Hiroshima sightseeing: Miyajima Island, Itsukushima Shrine, Peace Memorial Park, Atomic Bomb Dome",
+      "Two-way bullet train ticket (Osaka – Hiroshima – Osaka)",
+      "Visa fees and processing",
+      "Free travel insurance as per company policy",
+      "Tourist service charges and local taxes during the trip",
+      "All applicable taxes except GST and TCS",
+      "Miscellaneous handling charges"
+    ],
+    exclusions: [
+      "Additional meals not mentioned in the itinerary",
+      "Additional sightseeing or optional tours",
+      "Any meals not explicitly mentioned in the itinerary",
+      "Snacks, beverages, and special diet meals not pre-arranged",
+      "Personal expenses including laundry, phone calls, and minibar usage",
+      "Tips and gratuities for guides and drivers (suggested USD 1 per day)",
+      "Personal shopping, souvenirs, and anything of a personal nature",
+      "Any extra sightseeing, excursions, or entrance tickets not described in the itinerary"
+    ],    
+    singleOccupancy: 380000,
+    childPrice: 240000,
+    seoTitle: "8-Day Japan Highlights Tour 2026 | Flying Passport Tours",
+    seoDescription: "Join our 8-day Japan tour from Bangalore, April 9, 2026. Explore Tokyo, Mt. Fuji, Kyoto, Nara, Osaka, and Hiroshima with Kannada-guided tours and Indian meals. Book now!"
+  },
+]
