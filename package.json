@@ -12,5 +12,8 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0"
+  },
+  "overrides": {
+    "next": "16.0.10"
   }
 }
