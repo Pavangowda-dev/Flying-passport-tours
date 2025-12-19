@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -24,20 +24,27 @@ interface BookingFormProps {
   departureDate?: string
 }
 
+interface FormState {
+  success: boolean
+  message: string
+}
+
 export default function BookingForm({
   tourId,
   tourTitle,
   departureDate,
 }: BookingFormProps) {
-  const [state, setState] = useState({
+  const [state, setState] = useState<FormState>({
     success: false,
     message: "",
   })
-
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
 
   // Contact method
   const [contactType, setContactType] = useState("whatsapp")
+
+  // Destination (only if no tourTitle)
+  const [destination, setDestination] = useState("")
 
   const contactLabel =
     contactType === "whatsapp"
@@ -49,12 +56,28 @@ export default function BookingForm({
       ? "e.g., +919876543210"
       : "e.g., your.email@example.com"
 
-  // ✅ React 18 compatible form action
-  const formAction = (formData: FormData) => {
-    startTransition(async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    setIsPending(true)
+    setState({ success: false, message: "" })
+
+    try {
+      // Add destination to formData if no tourTitle
+      if (!tourTitle && destination) {
+        formData.set("destination", destination)
+      }
+
       const result = await submitBooking(formData)
       setState(result)
-    })
+    } catch (error: any) {
+      setState({ 
+        success: false, 
+        message: error.message || "Failed to submit booking. Please try again." 
+      })
+    } finally {
+      setIsPending(false)
+    }
   }
 
   return (
@@ -68,9 +91,11 @@ export default function BookingForm({
         </p>
       </div>
 
-      <form action={formAction} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input type="hidden" name="tourTitle" value={tourTitle || ""} />
+        <input type="hidden" name="tourId" value={tourId || ""} />
         <input type="hidden" name="contactType" value={contactType} />
+        {!tourTitle && <input type="hidden" name="destination" value={destination} />}
 
         <div className="space-y-2">
           <Label htmlFor="name">Name</Label>
@@ -118,7 +143,7 @@ export default function BookingForm({
         {!tourTitle && (
           <div className="space-y-2">
             <Label htmlFor="destination">Preferred Destination</Label>
-            <Select name="destination" required>
+            <Select value={destination} onValueChange={setDestination} required>
               <SelectTrigger id="destination">
                 <SelectValue placeholder="Select Destination" />
               </SelectTrigger>

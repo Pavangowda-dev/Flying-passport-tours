@@ -8,7 +8,6 @@ interface BookingFormState {
 }
 
 export async function submitBooking(
-  prevState: BookingFormState,
   formData: FormData
 ): Promise<BookingFormState> {
   console.log("Starting booking form submission");
@@ -27,7 +26,11 @@ export async function submitBooking(
       return { success: false, message: "All required fields must be filled." };
     }
 
-    if (!["email", "phone", "whatsapp"].includes(contactType)) {
+    if (!tourTitle && !destination) {
+      return { success: false, message: "Please select a destination." };
+    }
+
+    if (!["email", "whatsapp"].includes(contactType)) {
       return { success: false, message: "Invalid contact type." };
     }
 
@@ -35,17 +38,17 @@ export async function submitBooking(
       return { success: false, message: "Invalid email address." };
     }
 
-    if ((contactType === "phone" || contactType === "whatsapp") && !/^\+?[1-9]\d{1,14}$/.test(contactValue)) {
-      return { success: false, message: "Invalid phone/WhatsApp number (e.g., +919876543210)." };
+    if (contactType === "whatsapp" && !/^\+?[1-9]\d{1,14}$/.test(contactValue)) {
+      return { success: false, message: "Invalid WhatsApp number (e.g., +919876543210)." };
     }
 
     const insertData = {
       name,
       contact_type: contactType,
       contact_value: contactValue,
-      destination,
+      destination: tourTitle ? null : destination, // Use destination only if no tourTitle
       tour_title: tourTitle,
-      created_at: new Date().toISOString(),
+      // Do not include: id (auto), created_at (auto), verified (default false)
     };
 
     console.log("Submitting to Supabase group_tour_bookings:", insertData);
@@ -69,7 +72,7 @@ export async function submitBooking(
 
     return {
       success: true,
-      message: "Thanks for booking! We'll be in touch soon to confirm your tour.",
+      message: `Thanks for booking! We'll be in touch soon to confirm your ${tourTitle || destination} tour.`,
     };
   } catch (err: any) {
     console.error("Unexpected error in booking form submission:", err);

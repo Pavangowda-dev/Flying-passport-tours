@@ -19,7 +19,7 @@ const upcomingTours = [
     id: "10",
     title: "7-Day Vietnam Explorer: Da Nang, Hoi An & Ha Long Bay",
     destination: "Vietnam",
-    image: "/images/tours/vietnam/vietnam (1).png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170319/vietnam-1_jugc5j.png",
     duration: 7,
     price: 135000,
     description: "Discover the best of Central and Northern Vietnam in just 7 days! From the modern charm of Da Nang and the iconic Golden Bridge to the UNESCO town of Hoi An and the breathtaking Ha Long Bay cruise, this tour offers culture, adventure, and relaxation.",
@@ -30,7 +30,7 @@ const upcomingTours = [
     id: "12",
     title: "8-Day Ancient Egypt Adventure",
     destination: "Egypt",
-    image: "/images/tours/Egypt/egypt-1.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170847/egypt-1_ru5hfw.png",
     duration: 8,
     price: 197000,
     description: "Discover the wonders of Ancient Egypt with guided tours to the Giza Pyramids, Nile River cruise, and more from Bangalore.",
@@ -41,7 +41,7 @@ const upcomingTours = [
     id: "13",
     title: "8-Day Japan Highlights: Tokyo to Osaka",
     destination: "Japan",
-    image: "/images/tours/japan.webp",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171360/japan-1_hi52sb.png",
     duration: 8,
     price: 314000,
     availability: "limited",
@@ -53,7 +53,7 @@ const upcomingTours = [
     id: "6",
     title: "12-Day European Highlights",
     destination: "Europe",
-    image: "/images/tours/Europe/Europe-1.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171813/europe-1_dt95nz.png",
     duration: 12,
     price: 327000,
     description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
@@ -62,7 +62,7 @@ const upcomingTours = [
   },
 ]
 
-// Updated videos with new links, thumbnails, and shortened titles
+// Updated videos with new links, thumbnails, and shortened titles (now 8 total)
 const videos = [
   {
     thumbnail: "/images/thumbnail/japan.jpg",
@@ -71,7 +71,7 @@ const videos = [
   },
   {
     thumbnail: "/images/thumbnail/swit.jpg",
-    title: "ಸ್ವಿಟ್ಜರ್ಲ್ಯಾಂಡ್ ಕುಟುಂಬ ಸಫಾರಿ❤️",
+    title: "ಸ್ವಿಟ್ಜರ್ಲ್ಯಾಂಡ್ ಕುಟುಂಬ ಸಫಾರಿ❤️", 
     videoId: "H5hQsygf4Bc",
   },
   {
@@ -83,6 +83,26 @@ const videos = [
     thumbnail: "/images/thumbnail/europe.jpg",
     title: "ಗೋಲ್ಡನ್ ಯೂರೋಪ್ ಟೂರ್🌍 | Solo ಹುಡುಗಿಯರು",
     videoId: "NhmDvf12FsM",
+  },
+  {
+    thumbnail: "/images/thumbnail/masai-1.jpg",
+    title: "ಜೋರ್ಡಾನ್ ಸ್ಕ್ಯಾಮ್ ಅನುಭವ | Jordan🇯🇴",
+    videoId: "bjeBF0UXSpI",
+  },
+  {
+    thumbnail: "/images/thumbnail/europe-1.jpg",
+    title: "ಪೆರು ರೋಡ್ ಟ್ರಿಪ್ ಸವಾಲು | Peru🇵🇪",
+    videoId: "q0B62rCpT3k",
+  },
+  {
+    thumbnail: "/images/thumbnail/china.jpg",
+    title: "ಇಟಲಿ ಮೌಂಟೇನ್ ಕ್ಯಾಂಪಿಂಗ್ | Italy🇮🇹",
+    videoId: "JJWm6RCT-Gg",
+  },
+  {
+    thumbnail: "/images/thumbnail/petra.jpg",
+    title: "ಅಕ್ರೋಪೊಲಿಸ್ ಗ್ರೀಸ್ | Greece🇬🇷",
+    videoId: "pgl-vcopFj8",
   },
 ]
 
@@ -172,6 +192,7 @@ export default function Home() {
   // State for animated counters
   const [happyTravelers, setHappyTravelers] = useState(0)
   const [countries, setCountries] = useState(0)
+  const [visibleVideos, setVisibleVideos] = useState(4)
   const missionRef = useRef(null)
 
   // Animation logic
@@ -245,6 +266,21 @@ export default function Home() {
       if (happyInterval) clearInterval(happyInterval)
       if (countriesInterval) clearInterval(countriesInterval)
     }
+  }, [])
+
+  // Responsive video visibility (4 on mobile, 8 on larger screens)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisibleVideos(4)
+      } else {
+        setVisibleVideos(8)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
@@ -365,7 +401,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {videos.map((video) => (
+            {videos.slice(0, visibleVideos).map((video) => (
               <VideoCard key={video.title} thumbnail={video.thumbnail} title={video.title} videoId={video.videoId} />
             ))}
           </div>

@@ -13,7 +13,7 @@ import { createBrowserClientSupabase } from '@/lib/supabase/client';
 const destinations = [
   { value: 'vietnam', label: 'Vietnam Explorer (7 Days)' },
   { value: 'egypt', label: 'Ancient Egypt Adventure' },
-  { value: 'japan-south-korea-north-korea', label: 'Japan, South Korea & North Korea' },
+  { value: '8-Day Japan Highlights: Tokyo to Osaka', label: '8-Day Japan Highlights: Tokyo to Osaka' },
   { value: 'europe', label: 'European Highlights' },
 ];
 

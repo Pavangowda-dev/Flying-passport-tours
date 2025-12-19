@@ -20,9 +20,9 @@ const tours = [
     title: "8-Day Ancient Egypt Adventure",
     destination: "egypt",
     region: "africa",
-    image: "/images/tours/Egypt/egypt-1.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170847/egypt-1_ru5hfw.png",
     duration: 8,
-    price: 96000,
+    price: 197000,
     description:
       "Discover the wonders of Ancient Egypt on this 8-day group tour. Pricing: Double Occupancy ₹96,000, Children ₹67,000.",
     highlights: ["Cairo", "Giza Pyramids", "Alexandria", "Aswan", "Luxor"],
@@ -34,9 +34,9 @@ const tours = [
     title: "12-Day European Highlights",
     destination: "europe",
     region: "europe",
-    image: "/images/tours/Europe/Europe-1.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171813/europe-1_dt95nz.png",
     duration: 12,
-    price: 250000,
+    price: 327000,
     description:
       "Discover the charm of Europe's iconic cities on this 12-day, 11-night group tour. Pricing: Single Occupancy ₹3,00,000, Double Occupancy ₹2,50,000, Children ₹1,90,000.",
     highlights: [
@@ -63,9 +63,9 @@ const tours = [
     title: "7-Day Vietnam Explorer: Da Nang, Hoi An & Ha Long Bay",
     destination: "vietnam",
     region: "asia",
-    image: "/images/tours/vietnam/vietnam (1).png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170319/vietnam-1_jugc5j.png",
     duration: 7,
-    price: 98000,
+    price: 135000,
     description:
       "Discover the best of Central and Northern Vietnam in just 7 days! From the modern charm of Da Nang and the iconic Golden Bridge to the UNESCO town of Hoi An and the breathtaking Ha Long Bay cruise, this tour offers culture, adventure, and relaxation.",
     highlights: ["Da Nang", "Ba Na Hills", "Hoi An", "Ha Long Bay"],
@@ -78,7 +78,7 @@ const tours = [
     title: "8-Day Japan Highlights: Tokyo to Osaka",
     destination: "japan",
     region: "asia",
-    image: "/images/tours/japan.webp",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171360/japan-1_hi52sb.png",
     duration: 8,
     price: 314000,
     description:
@@ -108,7 +108,7 @@ const tours = [
     title: "6-Day Kenyan Safari",
     destination: "kenya",
     region: "africa",
-    image: "/images/tours/kenya/kenya-1.webp",
+    image: "/images/tours/kenya/kenya-1.jpeg",
     duration: 6,
     price: 0,
     description:
@@ -122,7 +122,7 @@ const tours = [
     title: "10-Day Japan Adventure",
     destination: "japan",
     region: "asia",
-    image: "/images/tours/japan.webp",
+    image: "/images/tours/japan.jpg",
     duration: 10,
     price: 0,
     description:
@@ -136,7 +136,7 @@ const tours = [
     title: "12-Day Italian Discovery",
     destination: "italy",
     region: "europe",
-    image: "/images/tours/italy.webp",
+    image: "/images/tours/italy.jpg",
     duration: 12,
     price: 0,
     description:
@@ -150,7 +150,7 @@ const tours = [
     title: "8-Day Turkish Delight",
     destination: "turkey",
     region: "europe",
-    image: "/images/tours/turkey.webp",
+    image: "/images/tours/turkey.jpg",
     duration: 8,
     price: 0,
     description:
@@ -164,7 +164,7 @@ const tours = [
     title: "9-Day Thailand Explorer",
     destination: "thailand",
     region: "asia",
-    image: "/images/tours/thailand.webp",
+    image: "/images/tours/thailand.jpg",
     duration: 9,
     price: 0,
     description:
@@ -178,7 +178,7 @@ const tours = [
     title: "10-Day Vietnam Journey",
     destination: "vietnam",
     region: "asia",
-    image: "/images/tours/vietnam.webp",
+    image: "/images/tours/vietnam.png",
     duration: 10,
     price: 0,
     description:
@@ -192,7 +192,7 @@ const tours = [
     title: "11-Day Greek Island Hopping",
     destination: "greece",
     region: "europe",
-    image: "/images/tours/greek.webp",
+    image: "/images/tours/greek.png",
     duration: 11,
     price: 0,
     description:

@@ -8,7 +8,6 @@ interface ContactFormState {
 }
 
 export async function submitContactForm(
-  prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
   console.log("Starting contact form submission");
@@ -31,7 +30,7 @@ export async function submitContactForm(
       return { success: false, message: "Invalid email address." };
     }
 
-    if (!["email", "phone", "whatsapp"].includes(contactMethod)) {
+    if (!["email", "phone"].includes(contactMethod)) {
       return { success: false, message: "Invalid contact method." };
     }
 
@@ -45,7 +44,7 @@ export async function submitContactForm(
       phone,
       contact_method: contactMethod,
       message,
-      created_at: new Date().toISOString(),
+      // Do not include: id (auto), created_at (auto), confirmed (default false)
     };
 
     console.log("Submitting to Supabase contact_messages:", insertData);

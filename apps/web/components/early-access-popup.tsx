@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useActionState } from "react"
+import { useState, useEffect } from "react"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -14,14 +14,17 @@ interface EarlyAccessPopupProps {
   isExpired: boolean
 }
 
+interface FormState {
+  success: boolean
+  message: string
+}
+
 export default function EarlyAccessPopup({ tourTitle, isExpired }: EarlyAccessPopupProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [isClosed, setIsClosed] = useState(false)
-
-  const [state, formAction, isPending] = useActionState(submitEarlyAccess, {
-    success: false,
-    message: "",
-  })
+  const [state, setState] = useState<FormState>({ success: false, message: "" })
+  const [isPending, setIsPending] = useState(false)
+  const [contactType, setContactType] = useState("email")
 
   useEffect(() => {
     if (isExpired) {
@@ -46,6 +49,24 @@ export default function EarlyAccessPopup({ tourTitle, isExpired }: EarlyAccessPo
   const handleClose = () => {
     setIsVisible(false)
     setIsClosed(true)
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    setIsPending(true)
+    setState({ success: false, message: "" })
+
+    try {
+      // Ensure contactType is in FormData (from state)
+      formData.set("contactType", contactType)
+      const result = await submitEarlyAccess(formData)
+      setState(result)
+    } catch (error: any) {
+      setState({ success: false, message: error.message || "An unexpected error occurred. Please try again." })
+    } finally {
+      setIsPending(false)
+    }
   }
 
   const getDestinationName = (title: string) => {
@@ -83,15 +104,16 @@ export default function EarlyAccessPopup({ tourTitle, isExpired }: EarlyAccessPo
             </p>
           </div>
 
-          <form action={formAction} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="tourTitle" value={tourTitle} />
+            <input type="hidden" name="contactType" value={contactType} />
             <div className="space-y-2">
               <Label htmlFor="early-name">Name</Label>
               <Input id="early-name" name="name" placeholder="Your Name" required />
             </div>
             <div className="space-y-2">
               <Label>Preferred Contact Method</Label>
-              <RadioGroup name="contactType" defaultValue="email" className="flex space-x-4">
+              <RadioGroup value={contactType} onValueChange={setContactType} className="flex space-x-4">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="email" id="early-email-option" />
                   <Label htmlFor="early-email-option">Email</Label>

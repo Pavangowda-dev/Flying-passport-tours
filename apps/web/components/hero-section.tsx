@@ -72,13 +72,13 @@ export default function HeroSection({
             style={{ filter: "blur(3px)" }}
           >
             <source
-              src="https://hcghunzrxpktydhukhai.supabase.co/storage/v1/object/public/Hero%20video/flying%20passport%20website%20final.mp4"
+              src="https://res.cloudinary.com/ddcacov2l/video/upload/q_auto,f_auto,w_1920/flying_passport_website_final_vp3lwo.mp4"
               type="video/mp4"
             />
           </video>
 
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-primary/40"></div>
+          <div className="absolute inset-0 bg-primary/40" />
         </div>
       )}
 
