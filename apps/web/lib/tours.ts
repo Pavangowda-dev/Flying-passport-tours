@@ -262,7 +262,7 @@ export const tours = [
     ],
     duration: 12,
     groupSize: "40",
-    price: 250000,
+    price: 327000,
     status: "upcoming",
     departureDate: "May 5, 2026",
     description:
@@ -527,7 +527,7 @@ export const tours = [
     ],
     duration: 7,
     groupSize: "40",
-    price: 98000,
+    price: 135000,
     status: "upcoming",
     departureDate: "February 01, 2026",
     description:
@@ -632,7 +632,7 @@ export const tours = [
     ],
     duration: 8,
     groupSize: "40",
-    price: 96000,
+    price: 197000,
     status: "upcoming",
     departureDate: "February 11, 2026",
     description:
