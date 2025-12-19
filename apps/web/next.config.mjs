@@ -1,30 +1,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ✅ REQUIRED for Coolify + VPS
+  output: "standalone",
+
+  // ✅ Prevent build failures in production
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  // ✅ Image optimization (Supabase + Cloudinary)
   images: {
     remotePatterns: [
-      // ✅ Allow images from your Supabase storage
       {
         protocol: "https",
-        hostname: "your-supabase-project.supabase.co",
-        port: "",
+        hostname: "*.supabase.co",
         pathname: "/**",
       },
-      // ✅ Allow images from Cloudinary
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        port: "",
         pathname: "/**",
       },
     ],
     formats: ["image/avif", "image/webp"],
   },
+
+  // ✅ Performance optimizations
   experimental: {
     optimizePackageImports: [
       "lucide-react",
@@ -34,6 +38,10 @@ const nextConfig = {
       "@radix-ui/react-accordion",
     ],
   },
+
+  // ✅ Required for Docker / VPS networking
+  poweredByHeader: false,
+  compress: true,
 };
 
 export default nextConfig;
