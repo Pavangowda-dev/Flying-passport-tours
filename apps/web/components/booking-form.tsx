@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from "react"
-import { useActionState } from "react"
+import { useState, useTransition } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -25,27 +24,45 @@ interface BookingFormProps {
   departureDate?: string
 }
 
-export default function BookingForm({ tourId, tourTitle, departureDate }: BookingFormProps) {
-  const [state, formAction, isPending] = useActionState(submitBooking, {
+export default function BookingForm({
+  tourId,
+  tourTitle,
+  departureDate,
+}: BookingFormProps) {
+  const [state, setState] = useState({
     success: false,
     message: "",
   })
-  
-  // State for contact method selection
+
+  const [isPending, startTransition] = useTransition()
+
+  // Contact method
   const [contactType, setContactType] = useState("whatsapp")
 
-  const handleContactTypeChange = (value: string) => {
-    setContactType(value)
-  }
+  const contactLabel =
+    contactType === "whatsapp"
+      ? "Your WhatsApp Number"
+      : "Your Email Address"
 
-  // Dynamic label and placeholder based on contact type
-  const contactLabel = contactType === "whatsapp" ? "Your WhatsApp Number" : "Enter your email"
-  const contactPlaceholder = contactType === "whatsapp" ? "e.g., +919876543210" : "e.g., your.email@example.com"
+  const contactPlaceholder =
+    contactType === "whatsapp"
+      ? "e.g., +919876543210"
+      : "e.g., your.email@example.com"
+
+  // ✅ React 18 compatible form action
+  const formAction = (formData: FormData) => {
+    startTransition(async () => {
+      const result = await submitBooking(formData)
+      setState(result)
+    })
+  }
 
   return (
     <div className="space-y-4">
       <div className="bg-muted p-3 rounded-lg text-center">
-        <p className="text-sm font-medium text-muted-foreground">Departure Date</p>
+        <p className="text-sm font-medium text-muted-foreground">
+          Departure Date
+        </p>
         <p className="font-serif font-bold text-lg">
           {departureDate || "Dates will be announced soon"}
         </p>
@@ -54,40 +71,39 @@ export default function BookingForm({ tourId, tourTitle, departureDate }: Bookin
       <form action={formAction} className="space-y-4">
         <input type="hidden" name="tourTitle" value={tourTitle || ""} />
         <input type="hidden" name="contactType" value={contactType} />
-        
+
         <div className="space-y-2">
           <Label htmlFor="name">Name</Label>
           <Input id="name" name="name" placeholder="Your Name" required />
         </div>
-        
+
         <div className="space-y-2">
           <Label>Contact Method</Label>
-          <RadioGroup 
-            name="contactType" 
+          <RadioGroup
             value={contactType}
-            onValueChange={handleContactTypeChange}
+            onValueChange={setContactType}
             className="flex space-x-4"
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem
                 value="whatsapp"
                 id="whatsapp-option"
-                className="!max-sm:size-3 size-4 aspect-square rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="size-4 rounded-full border border-primary"
               />
               <Label htmlFor="whatsapp-option">WhatsApp</Label>
             </div>
+
             <div className="flex items-center space-x-2">
               <RadioGroupItem
                 value="email"
                 id="email-option"
-                className="!max-sm:size-3 size-4 aspect-square rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="size-4 rounded-full border border-primary"
               />
               <Label htmlFor="email-option">Email</Label>
             </div>
-            
           </RadioGroup>
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="contactValue">{contactLabel}</Label>
           <Input
@@ -98,7 +114,7 @@ export default function BookingForm({ tourId, tourTitle, departureDate }: Bookin
             required
           />
         </div>
-        
+
         {!tourTitle && (
           <div className="space-y-2">
             <Label htmlFor="destination">Preferred Destination</Label>
@@ -116,7 +132,7 @@ export default function BookingForm({ tourId, tourTitle, departureDate }: Bookin
             </Select>
           </div>
         )}
-        
+
         <Button
           type="submit"
           className="w-full bg-secondary hover:bg-accent hover:text-primary transition-colors"
@@ -124,10 +140,14 @@ export default function BookingForm({ tourId, tourTitle, departureDate }: Bookin
         >
           {isPending ? "Submitting..." : "Book Now"}
         </Button>
-        
+
         {state.message && (
           <div
-            className={`p-3 rounded-md text-center ${state.success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+            className={`p-3 rounded-md text-center ${
+              state.success
+                ? "bg-green-100 text-green-800"
+                : "bg-red-100 text-red-800"
+            }`}
           >
             {state.message}
           </div>
