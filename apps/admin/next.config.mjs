@@ -6,6 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // ✅ IMPORTANT: disable standalone output
+  output: undefined,
 }
 
 export default nextConfig

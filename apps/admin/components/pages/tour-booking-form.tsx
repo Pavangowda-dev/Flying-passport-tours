@@ -19,7 +19,7 @@ import {
   Loader2,
   CheckCircle2,
 } from "lucide-react";
-import { createSupabaseBrowser } from "@/lib/supabase";
+import { createSupabaseBrowser } from "@/lib/supabase-browser";
 import { format, isToday, isYesterday, isThisWeek, isThisMonth } from "date-fns";
 
 type TourBooking = {

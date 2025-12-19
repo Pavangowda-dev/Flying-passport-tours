@@ -19,7 +19,8 @@ import {
   Loader2,
   CheckCircle2,
 } from "lucide-react";
-import { createSupabaseBrowser } from "@/lib/supabase";
+import { createSupabaseBrowser } from "@/lib/supabase-browser";
+
 import { ContactMessage } from "@/lib/supabase.types";
 import { format, isToday, isYesterday, isThisWeek, isThisMonth } from "date-fns";
 
