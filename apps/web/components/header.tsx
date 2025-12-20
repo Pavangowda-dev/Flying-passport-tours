@@ -54,7 +54,7 @@ export default function Header() {
         <Link href="/" className="relative z-10 flex-shrink-0">
           <div className="flex items-center">
             <Image
-              src="/images/flying-passport-logo.png"
+              src="https://res.cloudinary.com/ddcacov2l/image/upload/v1766204361/flying-passport-logo_gxr2b8.png"
               alt="Flying Passport Logo"
               width={isHomePage ? (isScrolled ? 60 : 70) : 60}
               height={isHomePage ? (isScrolled ? 60 : 70) : 60}
