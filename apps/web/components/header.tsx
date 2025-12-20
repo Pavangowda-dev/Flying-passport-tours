@@ -115,7 +115,7 @@ export default function Header() {
               <Link href="/" onClick={() => setIsOpen(false)}>
                 <div className="flex items-center">
                   <Image
-                    src="/images/flying-passport-logo.png"
+                    src="https://res.cloudinary.com/ddcacov2l/image/upload/v1766204361/flying-passport-logo_gxr2b8.png"
                     alt="Flying Passport Logo"
                     width={60}
                     height={60}

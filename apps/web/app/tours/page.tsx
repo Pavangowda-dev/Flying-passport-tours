@@ -94,7 +94,7 @@ const tours = [
     title: "12-Day China Discovery",
     destination: "china",
     region: "asia",
-    image: "/images/tours/China/china-1.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203953/china-1_btfixg.png",
     duration: 12,
     price: 0,
     description:
@@ -108,7 +108,7 @@ const tours = [
     title: "6-Day Kenyan Safari",
     destination: "kenya",
     region: "africa",
-    image: "/images/tours/kenya/kenya-1.jpeg",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203974/kenya-1_m50ngd.jpg",
     duration: 6,
     price: 0,
     description:
@@ -122,7 +122,7 @@ const tours = [
     title: "10-Day Japan Adventure",
     destination: "japan",
     region: "asia",
-    image: "/images/tours/japan.jpg",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203828/japan_xjqgay.jpg",
     duration: 10,
     price: 0,
     description:
@@ -136,7 +136,7 @@ const tours = [
     title: "12-Day Italian Discovery",
     destination: "italy",
     region: "europe",
-    image: "/images/tours/italy.jpg",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203835/italy_dyp9dp.jpg",
     duration: 12,
     price: 0,
     description:
@@ -150,7 +150,7 @@ const tours = [
     title: "8-Day Turkish Delight",
     destination: "turkey",
     region: "europe",
-    image: "/images/tours/turkey.jpg",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203822/turkey_cd1mfm.png",
     duration: 8,
     price: 0,
     description:
@@ -164,7 +164,7 @@ const tours = [
     title: "9-Day Thailand Explorer",
     destination: "thailand",
     region: "asia",
-    image: "/images/tours/thailand.jpg",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203815/thailand_o1sod7.png",
     duration: 9,
     price: 0,
     description:
@@ -174,25 +174,11 @@ const tours = [
     departureDate: "Dates will be announced soon",
   },
   {
-    id: "7",
-    title: "10-Day Vietnam Journey",
-    destination: "vietnam",
-    region: "asia",
-    image: "/images/tours/vietnam.png",
-    duration: 10,
-    price: 0,
-    description:
-      "Experience Vietnam's rich history, stunning landscapes, and vibrant culture on this immersive group tour.",
-    highlights: ["Hanoi", "Ha Long Bay", "Hoi An", "Ho Chi Minh City"],
-    status: "expired",
-    departureDate: "Dates will be announced soon",
-  },
-  {
     id: "8",
     title: "11-Day Greek Island Hopping",
     destination: "greece",
     region: "europe",
-    image: "/images/tours/greek.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203803/greek_ktuweh.png",
     duration: 11,
     price: 0,
     description:
@@ -206,7 +192,7 @@ const tours = [
     title: "9-Day Amazon Forest Adventure",
     destination: "brazil-amazon",
     region: "south-america",
-    image: "/images/tours/Amazon-forest.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203821/Amazon-forest_qpi0ka.png",
     duration: 9,
     price: 0,
     description:

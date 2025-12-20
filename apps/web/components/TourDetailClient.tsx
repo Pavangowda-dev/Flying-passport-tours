@@ -48,12 +48,12 @@ export default function TourDetailClient({ tour }: { tour: Tour }) {
   const prevImage = () => setActiveImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
 
   const packageInclusions = [
-    { icon: "/images/icons/seeing.png", text: "Sightseeing" },
-    { icon: "/images/icons/visa.png", text: "Flights & Visa" },
-    { icon: "/images/icons/food.png", text: "3 Times Meal" },
-    { icon: "/images/icons/5star.png", text: "5 Star Accommodation" },
-    { icon: "/images/icons/insurance.png", text: "Travel Insurance" },
-    { icon: "/images/icons/trans.png", text: "Transportation" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226109/seeing_plnxff.png", text: "Sightseeing" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226109/visa_lcnyjj.png", text: "Flights & Visa" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226110/food_yl7aed.png", text: "3 Times Meal" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226103/5star_es815l.png", text: "5 Star Accommodation" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226110/insurance_acsqlu.png", text: "Travel Insurance" },
+    { icon: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226101/trans_k9owa9.png", text: "Transportation" },
   ];
 
   return (

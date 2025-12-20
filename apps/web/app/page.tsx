@@ -65,43 +65,43 @@ const upcomingTours = [
 // Updated videos with new links, thumbnails, and shortened titles (now 8 total)
 const videos = [
   {
-    thumbnail: "/images/thumbnail/japan.jpg",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226435/japan_qkuk8l.jpg",
     title: "ಜಪಾನ್ ದೇಶದ ಕನ್ನಡಿಗರ ಅನುಭವ | Japan🇯🇵",
     videoId: "Na5cjnvYqCY",
   },
   {
-    thumbnail: "/images/thumbnail/swit.jpg",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226425/swit_ft86ac.jpg",
     title: "ಸ್ವಿಟ್ಜರ್ಲ್ಯಾಂಡ್ ಕುಟುಂಬ ಸಫಾರಿ❤️", 
     videoId: "H5hQsygf4Bc",
   },
   {
-    thumbnail: "/images/thumbnail/masai.jpg",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226429/masai_flttz5.jpg",
     title: "ಮಸಾಯ್ ಕಾಡಿನ ಕನ್ನಡಿಗರ ಸಫಾರಿ | Kenya🦒",
     videoId: "Ecc7mgA0cJo",
   },
   {
-    thumbnail: "/images/thumbnail/europe.jpg",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226428/europe_q4i0by.jpg",
     title: "ಗೋಲ್ಡನ್ ಯೂರೋಪ್ ಟೂರ್🌍 | Solo ಹುಡುಗಿಯರು",
     videoId: "NhmDvf12FsM",
   },
   {
-    thumbnail: "/images/thumbnail/masai-1.jpg",
-    title: "ಜೋರ್ಡಾನ್ ಸ್ಕ್ಯಾಮ್ ಅನುಭವ | Jordan🇯🇴",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226395/masai-1_pgcyam.jpg",
+    title: "ಮಸಾಯಿ ಮಾರದಲ್ಲಿ ಕನ್ನಡಿಗರ ಸಾಹಸದ ಕಥೆ",
     videoId: "bjeBF0UXSpI",
   },
   {
-    thumbnail: "/images/thumbnail/europe-1.jpg",
-    title: "ಪೆರು ರೋಡ್ ಟ್ರಿಪ್ ಸವಾಲು | Peru🇵🇪",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226420/europe-1_zuey7a.jpg",
+    title: "ತಿಂಡಿ ಗೆ ಒಂದು ದೇಶ 🍳ಊಟಕ್ಕೆ ಒಂದು ದೇಶ🥘 ಮಲಗಕ್ಕೆ ಮತ್ತೊಂದು ದೇಶ🛌🏼",
     videoId: "q0B62rCpT3k",
   },
   {
-    thumbnail: "/images/thumbnail/china.jpg",
-    title: "ಇಟಲಿ ಮೌಂಟೇನ್ ಕ್ಯಾಂಪಿಂಗ್ | Italy🇮🇹",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226389/china_aagghq.jpg",
+    title: "ನಮ್ಮ ತಂದೆಯನ್ನು ಹೊರದೇಶಕ್ಕೆ ದೇಶಕ್ಕೆ ಕರೆದುಕೊಂಡು ಹೋದ್ವಿ | China 🇨🇳",
     videoId: "JJWm6RCT-Gg",
   },
   {
-    thumbnail: "/images/thumbnail/petra.jpg",
-    title: "ಅಕ್ರೋಪೊಲಿಸ್ ಗ್ರೀಸ್ | Greece🇬🇷",
+    thumbnail: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766226404/petra_x6nocd.jpg",
+    title: "ಪ್ರಪಂಚದ ಅದ್ಬುತ ಪೆಟ್ರಾ ಜೋರ್ಡನ್ ದೇಶದಲ್ಲಿ ನಮ್ಮ ಕನ್ನಡಿಗರ ಹವಾ ನೋಡಿ",
     videoId: "pgl-vcopFj8",
   },
 ]
@@ -109,47 +109,47 @@ const videos = [
 // Updated gallery images with keyword-optimized alt text, including 5 additional images
 const galleryImages = [
   {
-    src: "/images/gallery/gallery-1.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766225942/gallery-3_pu8irz.png",
     alt: "Best travel agency in Bangalore group tour",
   },
   {
-    src: "/images/gallery/gallery-2.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766225895/gallery-11_vxqqpa.png",
     alt: "International group tours from Bangalore",
   },
   {
-    src: "/images/gallery/gallery-3.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204965/gallery-18_oc9xkq.png",
     alt: "Affordable holiday packages from Karnataka",
   },
   {
-    src: "/images/gallery/gallery-4.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204928/gallery-16_w86sjm.png",
     alt: "Cultural group tours from Bangalore",
   },
   {
-    src: "/images/gallery/gallery-5.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204803/gallery-6_agispk.png",
     alt: "Kannada-guided group tours Karnataka",
   },
   {
-    src: "/images/gallery/gallery-6.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204917/gallery-14_exalxb.png",
     alt: "Group adventures with Flying Passport",
   },
   {
-    src: "/images/gallery/gallery-7.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204696/gallery-8_e1fkyb.png",
     alt: "Travel highlights",
   },
   {
-    src: "/images/gallery/gallery-8.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204802/gallery-1_flauus.png",
     alt: "Destination visits",
   },
   {
-    src: "/images/gallery/gallery-9.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204935/gallery-17_uuayfh.png",
     alt: "Travel moments",
   },
   {
-    src: "/images/gallery/gallery-10.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204600/gallery-7_jik3yl.png",
     alt: "Group travel",
   },
   {
-    src: "/images/gallery/gallery-11.png",
+    src: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766204917/gallery-14_exalxb.png",
     alt: "Historic monuments",
   },
 ]

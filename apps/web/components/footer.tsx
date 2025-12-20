@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/flying-passport-logo.png"
+                src="https://res.cloudinary.com/ddcacov2l/image/upload/v1766204361/flying-passport-logo_gxr2b8.png"
                 alt="Flying Passport Logo"
                 width={60}
                 height={60}

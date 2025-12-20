@@ -69,7 +69,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative h-[500px] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/about/asha-kiran-story.jpg"
+                  src="https://res.cloudinary.com/ddcacov2l/image/upload/v1766226256/asha-kiran-story_akwsvm.jpg"
                   alt="Asha and Kiran - Flying Passport founders"
                   fill
                   className="object-cover object-center"
@@ -176,7 +176,7 @@ export default function AboutPage() {
             <div className="order-2 lg:order-1">
               <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/about/our-mission-new.jpg"
+                  src="https://res.cloudinary.com/ddcacov2l/image/upload/v1766226291/our-mission-new_px0dva.jpg"
                   alt="Flying Passport team in office"
                   fill
                   className="object-cover object-center"
