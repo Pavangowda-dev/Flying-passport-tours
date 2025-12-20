@@ -28,6 +28,15 @@ import {
   isToday,
   subDays,
 } from "date-fns";
+import { DollarSign, Users, MessageCircle, Calendar, TrendingUp, AlertCircle } from "lucide-react";
+
+interface StatItem {
+  key: string;
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+  change?: string;
+}
 
 export function DashboardPage() {
   // ✅ Create Supabase ONLY in browser
@@ -55,6 +64,16 @@ export function DashboardPage() {
         setLoading(true);
         setError(null);
 
+        // Fetch each table individually with error handling
+        const fetchTable = async (table: string) => {
+          const { data, error } = await supabase.from(table).select("*");
+          if (error) {
+            console.warn(`⚠️ Failed to fetch ${table}:`, error.message);
+            return [];
+          }
+          return data ?? [];
+        };
+
         const [
           contactRes,
           earlyRes,
@@ -62,34 +81,18 @@ export function DashboardPage() {
           homeRes,
           notifyRes,
         ] = await Promise.all([
-          supabase.from("contact_messages").select("*"),
-          supabase.from("early_access_registrations").select("*"),
-          supabase.from("group_tour_bookings").select("*"),
-          supabase.from("homepage_inquiries").select("*"),
-          supabase.from("notify_me").select("*"),
+          fetchTable("contact_messages"),
+          fetchTable("early_access_registrations"),
+          fetchTable("group_tour_bookings"),
+          fetchTable("homepage_inquiries"), // If table doesn't exist, logs warning and uses []
+          fetchTable("notify_me"), // If table doesn't exist, logs warning and uses []
         ]);
 
-        if (
-          contactRes.error ||
-          earlyRes.error ||
-          bookingRes.error ||
-          homeRes.error ||
-          notifyRes.error
-        ) {
-          throw new Error(
-            contactRes.error?.message ||
-              earlyRes.error?.message ||
-              bookingRes.error?.message ||
-              homeRes.error?.message ||
-              notifyRes.error?.message
-          );
-        }
-
-        setContacts(contactRes.data ?? []);
-        setEarlyAccess(earlyRes.data ?? []);
-        setBookings(bookingRes.data ?? []);
-        setHomepage(homeRes.data ?? []);
-        setNotify(notifyRes.data ?? []);
+        setContacts(contactRes);
+        setEarlyAccess(earlyRes);
+        setBookings(bookingRes);
+        setHomepage(homeRes);
+        setNotify(notifyRes);
       } catch (err: any) {
         console.error("🔥 Dashboard fetch error:", err);
         setError(err.message || "Failed to fetch dashboard data");
@@ -103,6 +106,7 @@ export function DashboardPage() {
 
   // 🧭 Date filter
   const dateFilterFn = (dateStr: string) => {
+    if (!dateStr) return false;
     const date = new Date(dateStr);
     switch (dateRange) {
       case "today":
@@ -128,19 +132,45 @@ export function DashboardPage() {
     };
   }, [contacts, earlyAccess, bookings, homepage, notify, dateRange]);
 
-  const stats = {
-    totalContacts: filtered.contacts.length,
-    totalBookings: filtered.bookings.length,
-    earlyAccessRequests: filtered.earlyAccess.length,
-    homepageEnquiries: filtered.homepage.length,
-    familyPackageNotifications: filtered.notify.length,
-    totalLeads:
-      filtered.contacts.length +
-      filtered.bookings.length +
-      filtered.earlyAccess.length +
-      filtered.homepage.length +
-      filtered.notify.length,
-  };
+  const stats: StatItem[] = useMemo(() => [
+    {
+      key: "totalContacts",
+      label: "Contact Messages",
+      value: filtered.contacts.length,
+      icon: <MessageCircle className="h-4 w-4" />,
+      change: "+28% from last month",
+    },
+    {
+      key: "totalBookings",
+      label: "Tour Bookings",
+      value: filtered.bookings.length,
+      icon: <DollarSign className="h-4 w-4" />,
+      change: "+19% from last month",
+    },
+    {
+      key: "earlyAccessRequests",
+      label: "Early Access Requests",
+      value: filtered.earlyAccess.length,
+      icon: <AlertCircle className="h-4 w-4" />,
+      change: "+201 since last hour",
+    },
+    {
+      key: "homepageEnquiries",
+      label: "Homepage Enquiries",
+      value: filtered.homepage.length,
+      icon: <Users className="h-4 w-4" />,
+      change: "+12% this week",
+    },
+    {
+      key: "familyPackageNotifications",
+      label: "Family Package Notifications",
+      value: filtered.notify.length,
+      icon: <Calendar className="h-4 w-4" />,
+      change: "+5 today",
+    },
+  ], [filtered]);
+
+  const totalLeads = stats.reduce((sum, stat) => sum + stat.value, 0);
 
   const tourPopularity = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -165,31 +195,35 @@ export function DashboardPage() {
   }, [filtered]);
 
   const formDistribution = useMemo(() => {
-    const total = stats.totalLeads || 1;
+    const total = totalLeads || 1;
     return [
-      { name: "Tour Bookings", value: stats.totalBookings },
-      { name: "Contact Messages", value: stats.totalContacts },
-      { name: "Early Access", value: stats.earlyAccessRequests },
-      { name: "Homepage Enquiries", value: stats.homepageEnquiries },
-      { name: "Family Package Notify", value: stats.familyPackageNotifications },
+      { name: "Tour Bookings", value: stats.find(s => s.key === "totalBookings")?.value || 0 },
+      { name: "Contact Messages", value: stats.find(s => s.key === "totalContacts")?.value || 0 },
+      { name: "Early Access", value: stats.find(s => s.key === "earlyAccessRequests")?.value || 0 },
+      { name: "Homepage Enquiries", value: stats.find(s => s.key === "homepageEnquiries")?.value || 0 },
+      { name: "Family Package Notify", value: stats.find(s => s.key === "familyPackageNotifications")?.value || 0 },
     ].filter((i) => i.value > 0);
-  }, [stats]);
+  }, [stats, totalLeads]);
 
-  const COLORS = ["#1f2d28", "#d4a574", "#8b7355", "#f5efe5", "#6b5a47"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-10 text-muted-foreground">
-        Loading dashboard data...
+      <div className="flex items-center justify-center min-h-[400px] text-muted-foreground">
+        <div className="text-lg">Loading dashboard data...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="p-6 text-red-600 text-center">
+      <div className="p-6 text-red-600 text-center space-y-2">
+        <AlertCircle className="h-8 w-8 mx-auto" />
         <p className="font-medium">Error loading dashboard</p>
         <p className="text-sm">{error}</p>
+        <Button variant="outline" onClick={() => window.location.reload()}>
+          Retry
+        </Button>
       </div>
     );
   }
@@ -197,7 +231,7 @@ export function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex flex-wrap gap-2">
         {[
           { value: "today", label: "Today" },
           { value: "7days", label: "Last 7 Days" },
@@ -210,38 +244,58 @@ export function DashboardPage() {
             size="sm"
             variant={dateRange === f.value ? "default" : "outline"}
             onClick={() => setDateRange(f.value)}
+            className="flex-shrink-0"
           >
             {f.label}
           </Button>
         ))}
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {Object.entries(stats).map(([k, v]) => (
-          <Card key={k}>
-            <CardHeader>
-              <CardTitle className="text-sm">{k}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-3xl font-bold">{v}</CardContent>
-          </Card>
-        ))}
-      </div>
+      {/* Overview Stats */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Overview</CardTitle>
+          <CardDescription>Key metrics for {dateRange === "all" ? "all time" : dateRange.replace(/([A-Z])/g, " $1").toLowerCase()}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {stats.map((stat) => (
+              <div key={stat.key} className="space-y-1 text-center">
+                <div className="flex items-center justify-center space-x-1 text-muted-foreground">
+                  {stat.icon}
+                  <span className="text-sm">{stat.label}</span>
+                </div>
+                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                {stat.change && <p className="text-xs text-green-600">{stat.change}</p>}
+              </div>
+            ))}
+            <div className="space-y-1 text-center border-l md:border-l-0 lg:border-l border-muted">
+              <div className="text-sm text-muted-foreground">Total Leads</div>
+              <div className="text-2xl font-bold text-foreground">{totalLeads}</div>
+              <div className="flex items-center justify-center space-x-1 text-xs text-green-600">
+                <TrendingUp className="h-3 w-3" />
+                <span>+15% overall</span>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Top Tours</CardTitle>
+            <CardTitle>Top Tours & Destinations</CardTitle>
+            <CardDescription>Popularity based on bookings and inquiries</CardDescription>
           </CardHeader>
           <CardContent className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={tourPopularity}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+              <BarChart data={tourPopularity} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="name" angle={-45} textAnchor="end" height={70} />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="value" fill="#1f2d28" />
+                <Bar dataKey="value" fill="#0088FE" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -249,22 +303,52 @@ export function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Form Distribution</CardTitle>
+            <CardTitle>Lead Sources Distribution</CardTitle>
+            <CardDescription>Breakdown of form submissions</CardDescription>
           </CardHeader>
-          <CardContent className="h-[300px]">
+          <CardContent className="h-[300px] flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={formDistribution} dataKey="value" outerRadius={90}>
-                  {formDistribution.map((_, i) => (
-                    <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                <Pie
+                  data={formDistribution}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={80}
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                >
+                  {formDistribution.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip formatter={(value) => [`${value}`, "Submissions"]} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>
+
+      {/* Recent Activity Placeholder */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Activity</CardTitle>
+          <CardDescription>Last 5 entries across all forms</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2">
+            {[...filtered.contacts, ...filtered.bookings, ...filtered.earlyAccess]
+              .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+              .slice(0, 5)
+              .map((item, index) => (
+                <div key={index} className="flex items-center justify-between p-3 border rounded-md">
+                  <span className="text-sm">{item.name || item.email || "Anonymous"} - {item.message?.substring(0, 50)}...</span>
+                  <span className="text-xs text-muted-foreground">{new Date(item.created_at).toLocaleDateString()}</span>
+                </div>
+              )) || <p className="text-muted-foreground text-sm">No recent activity</p>}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

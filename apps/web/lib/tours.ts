@@ -1,7 +1,7 @@
 export const tours = [
   {
     id: "1",
-    title: "10-Day Japan Adventure",
+    title: "Japan Cherry Blossom",
     destination: "Japan",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203828/japan_xjqgay.jpg",
     gallery: [],
@@ -46,7 +46,7 @@ export const tours = [
   },
   {
     id: "2",
-    title: "12-Day Italian Discovery",
+    title: "Italian Discovery",
     destination: "Italy",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203835/italy_dyp9dp.jpg",
     gallery: [],
@@ -92,7 +92,7 @@ export const tours = [
   },
   {
     id: "3",
-    title: "8-Day Turkish Delight",
+    title: "Turkish Delight",
     destination: "Turkey",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203822/turkey_cd1mfm.png",
     gallery: [],
@@ -138,7 +138,7 @@ export const tours = [
   },
   {
     id: "4",
-    title: "6-Day Kenyan Safari",
+    title: "Kenyan Safari",
     destination: "Kenya",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203974/kenya-1_m50ngd.jpg",
     gallery: [],
@@ -190,7 +190,7 @@ export const tours = [
   },
   {
     id: "5",
-    title: "9-Day Thailand Explorer",
+    title: "Thailand Explorer",
     destination: "Thailand",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203815/thailand_o1sod7.png",
     gallery: [],
@@ -433,7 +433,7 @@ export const tours = [
   },
   {
     id: "8",
-    title: "11-Day Greek Island Hopping",
+    title: "Greek Island Hopping",
     destination: "Greece",
     image: "/images/tours/greek.png",
     gallery: [],
@@ -471,7 +471,7 @@ export const tours = [
   },
   {
     id: "9",
-    title: "9-Day Amazon Forest Adventure",
+    title: "Amazon Forest Adventure",
     destination: "brazil-amazon",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203821/Amazon-forest_qpi0ka.png",
     gallery: [],
@@ -718,7 +718,7 @@ export const tours = [
   },
   {
     id: "13",
-    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    title: "8-Day Japan Highlights Tokyo to Osaka",
     destination: "Japan",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171360/japan-1_hi52sb.png",
     gallery: [

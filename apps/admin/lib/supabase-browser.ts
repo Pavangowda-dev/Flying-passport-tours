@@ -1,16 +1,11 @@
-import { createBrowserClient } from "@supabase/ssr";
+// apps/admin/lib/supabase-browser.ts (confirmed - use auth-helpers for session)
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Database } from './supabase.types'
 
 export function createSupabaseBrowser() {
   if (typeof window === "undefined") {
     throw new Error("❌ Supabase browser client called on server");
   }
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-  if (!url || !key) {
-    throw new Error("❌ Missing Supabase env vars");
-  }
-
-  return createBrowserClient(url, key);
+  return createClientComponentClient<Database>()
 }

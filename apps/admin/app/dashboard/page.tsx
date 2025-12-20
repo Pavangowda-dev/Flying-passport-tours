@@ -1,3 +1,4 @@
+// apps/admin/app/dashboard/page.tsx (unchanged - keep server directives here)
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 

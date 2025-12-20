@@ -1,3 +1,4 @@
+// apps/admin/components/dashboard-layout.tsx (ensure this is clean - no stats code here)
 "use client";
 
 import { useEffect, useState } from "react";
