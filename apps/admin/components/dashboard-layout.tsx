@@ -1,85 +1,95 @@
-// apps/admin/components/dashboard-layout.tsx (ensure this is clean - no stats code here)
+// apps/admin/components/dashboard-layout.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import { Sidebar } from "./sidebar";
 import { TopNav } from "./top-nav";
-import { Menu, X, ChevronsLeft, ChevronsRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function DashboardLayout({
   children,
   currentPage,
-  onPageChange,
 }: {
   children: React.ReactNode;
   currentPage: string;
-  onPageChange: (page: string) => void;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
-  // ✅ Lock body scroll on mobile when sidebar is open
+  // Lock body scroll on mobile when sidebar is open
   useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    if (sidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
   }, [sidebarOpen]);
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden relative">
-      {/* Mobile hamburger menu (top-left) */}
-      <div className="fixed top-4 left-4 z-50 lg:hidden">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={() => setSidebarOpen(true)}
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-        >
-          <Menu size={20} />
-        </Button>
-      </div>
-
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* Sidebar */}
       <Sidebar
-        currentPage={currentPage}
-        onPageChange={(page) => {
-          onPageChange(page);
-          setSidebarOpen(false);
-        }}
         isOpen={sidebarOpen}
         collapsed={collapsed}
-        onCollapseToggle={() => setCollapsed(!collapsed)}
+        onClose={() => setSidebarOpen(false)}
+        onToggleCollapse={() => setCollapsed(!collapsed)}
       />
 
-      {/* Backdrop for mobile */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
+        {/* Top Navigation */}
+        <TopNav
+          currentPage={currentPage}
+          hideTitle={false}
+          onMenuClick={() => setSidebarOpen(true)}
         />
-      )}
 
-      {/* Collapse toggle for desktop */}
-      <button
-        onClick={() => setCollapsed(!collapsed)}
-        className={`hidden lg:flex items-center justify-center absolute top-20 z-40 transition-all duration-300 ${
-          collapsed ? "left-16" : "left-64"
-        }`}
-      >
-        <div className="bg-secondary text-secondary-foreground rounded-full p-1.5 shadow hover:bg-secondary/90 transition">
-          {collapsed ? <ChevronsRight size={18} /> : <ChevronsLeft size={18} />}
-        </div>
-      </button>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden transition-all duration-300">
-        <TopNav currentPage={currentPage} hideTitle />
-        <main className="flex-1 overflow-y-auto scrollbar-hide">
-          <div className="p-4 md:p-6 lg:p-8">{children}</div>
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto bg-gray-50">
+          <div className="p-4 md:p-6 lg:p-8 max-w-[1920px] mx-auto w-full">
+            {children}
+          </div>
         </main>
       </div>
+
+      <style jsx global>{`
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #a8a8a8;
+        }
+
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

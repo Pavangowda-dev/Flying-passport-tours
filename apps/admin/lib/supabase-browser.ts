@@ -1,11 +1,14 @@
-// apps/admin/lib/supabase-browser.ts (confirmed - use auth-helpers for session)
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+// apps/admin/lib/supabase-browser.ts
+import { createBrowserClient } from '@supabase/ssr'
 import { Database } from './supabase.types'
 
 export function createSupabaseBrowser() {
-  if (typeof window === "undefined") {
-    throw new Error("❌ Supabase browser client called on server");
+  if (typeof window === 'undefined') {
+    throw new Error('Supabase browser client called on server')
   }
 
-  return createClientComponentClient<Database>()
+  return createBrowserClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
 }

@@ -1,19 +1,21 @@
-"use client";
+"use client"
 
-import { useEffect, useMemo, useState } from "react";
+import { useState, useMemo } from "react"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import {
   LineChart,
   Line,
   PieChart,
   Pie,
+  Cell,
   BarChart,
   Bar,
   XAxis,
@@ -22,410 +24,452 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Cell,
-} from "recharts";
-import { createSupabaseBrowser } from "@/lib/supabase-browser";
+} from "recharts"
 import {
   isToday,
   isThisMonth,
   isThisYear,
   subDays,
   format,
-  startOfDay,
-} from "date-fns";
+} from "date-fns"
+import {
+  TrendingUp,
+  BarChart3,
+  PieChartIcon,
+  Activity,
+  Calendar,
+  Target,
+  CheckCircle2,
+} from "lucide-react"
 
-export function AnalyticsPage() {
-  const supabase = useMemo(() => createSupabaseBrowser(), []);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [dateRange, setDateRange] = useState("7days");
+interface AnalyticsData {
+  contacts: any[]
+  earlyAccess: any[]
+  bookings: any[]
+  homepage: any[]
+  notify: any[]
+}
 
-  const [contacts, setContacts] = useState<any[]>([]);
-  const [earlyAccess, setEarlyAccess] = useState<any[]>([]);
-  const [bookings, setBookings] = useState<any[]>([]);
-  const [homepage, setHomepage] = useState<any[]>([]);
-  const [notify, setNotify] = useState<any[]>([]);
+interface AnalyticsPageProps {
+  initialData: AnalyticsData
+}
 
-  // 🧩 Fetch data from Supabase
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        setError(null);
+export function AnalyticsPage({ initialData }: AnalyticsPageProps) {
+  const [dateRange, setDateRange] = useState<"today" | "7days" | "month" | "year" | "all">("7days")
 
-        const [c, e, b, h, n] = await Promise.all([
-          supabase.from("contact_messages").select("*"),
-          supabase.from("early_access_registrations").select("*"),
-          supabase.from("group_tour_bookings").select("*"),
-          supabase.from("homepage_inquiries").select("*"),
-          supabase.from("notify_me").select("*"),
-        ]);
+  const { contacts, earlyAccess, bookings, homepage, notify } = initialData
 
-        if (c.error || e.error || b.error || h.error || n.error)
-          throw new Error(
-            c.error?.message ||
-              e.error?.message ||
-              b.error?.message ||
-              h.error?.message ||
-              n.error?.message
-          );
-
-        setContacts(c.data || []);
-        setEarlyAccess(e.data || []);
-        setBookings(b.data || []);
-        setHomepage(h.data || []);
-        setNotify(n.data || []);
-      } catch (err: any) {
-        console.error("🔥 Analytics fetch error:", err);
-        setError(err.message || "Failed to fetch analytics data");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, [supabase]);
-
-  // 🧭 Date filtering logic
-  const filterDate = (dateStr: string) => {
-    const date = new Date(dateStr);
+  const filterByRange = (item: any) => {
+    const date = new Date(item.created_at)
     switch (dateRange) {
       case "today":
-        return isToday(date);
+        return isToday(date)
       case "7days":
-        return date >= subDays(new Date(), 7);
+        return date >= subDays(new Date(), 7)
       case "month":
-        return isThisMonth(date);
+        return isThisMonth(date)
       case "year":
-        return isThisYear(date);
+        return isThisYear(date)
+      case "all":
       default:
-        return true;
+        return true
     }
-  };
+  }
 
-  // 🧠 Combine and filter
-  const filtered = useMemo(() => {
-    return {
-      contacts: contacts.filter((d) => filterDate(d.created_at)),
-      earlyAccess: earlyAccess.filter((d) => filterDate(d.created_at)),
-      bookings: bookings.filter((d) => filterDate(d.created_at)),
-      homepage: homepage.filter((d) => filterDate(d.created_at)),
-      notify: notify.filter((d) => filterDate(d.created_at)),
-    };
-  }, [contacts, earlyAccess, bookings, homepage, notify, dateRange]);
+  const filtered = useMemo(() => ({
+    contacts: contacts.filter(filterByRange),
+    earlyAccess: earlyAccess.filter(filterByRange),
+    bookings: bookings.filter(filterByRange),
+    homepage: homepage.filter(filterByRange),
+    notify: notify.filter(filterByRange),
+  }), [contacts, earlyAccess, bookings, homepage, notify, dateRange])
 
-  const allData = [
+  const allSubmissions = [
     ...filtered.contacts,
     ...filtered.earlyAccess,
     ...filtered.bookings,
     ...filtered.homepage,
     ...filtered.notify,
-  ];
+  ]
 
-  // 📈 Submission trend (by day)
-  const submissionTrendData = useMemo(() => {
-    const counts: Record<string, number> = {};
-    allData.forEach((d) => {
-      const day = format(startOfDay(new Date(d.created_at)), "MMM dd");
-      counts[day] = (counts[day] || 0) + 1;
-    });
-    return Object.entries(counts)
-      .map(([date, submissions]) => ({ date, submissions }))
-      .sort(
-        (a, b) =>
-          new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
-  }, [allData]);
+  const dailyTrend = useMemo(() => {
+    const map = new Map<string, number>()
+    allSubmissions.forEach(item => {
+      const day = format(new Date(item.created_at), "MMM dd")
+      map.set(day, (map.get(day) || 0) + 1)
+    })
+    return Array.from(map)
+      .map(([date, count]) => ({ date, submissions: count }))
+      .sort((a, b) => {
+        const dateA = new Date(a.date + ", 2024")
+        const dateB = new Date(b.date + ", 2024")
+        return dateA.getTime() - dateB.getTime()
+      })
+      .slice(-30)
+  }, [allSubmissions])
 
-  // 🥧 Form Distribution
-  const formDistributionData = useMemo(() => {
-    const totals = {
-      "Booking Enquiry": filtered.bookings.length,
-      Contact: filtered.contacts.length,
+  const formDistribution = useMemo(() => {
+    const counts = {
+      "Contact Form": filtered.contacts.length,
       "Early Access": filtered.earlyAccess.length,
-      Enquiry: filtered.homepage.length,
-      Notify: filtered.notify.length,
-    };
+      "Tour Booking": filtered.bookings.length,
+      "Homepage Enquiry": filtered.homepage.length,
+      "Family Package": filtered.notify.length,
+    }
 
-    const total = Object.values(totals).reduce((a, b) => a + b, 0) || 1;
-    const colors = ["#1f2d28", "#8b7355", "#d4a574", "#c9a470", "#e8d4c0"];
+    const total = Object.values(counts).reduce((a, b) => a + b, 0) || 1
+    const colors = ["#1f2d28", "#16a34a", "#2563eb", "#9333ea", "#ea580c"]
 
-    return Object.entries(totals).map(([name, value], i) => ({
+    return Object.entries(counts).map(([name, count], i) => ({
       name,
-      value: ((value / total) * 100).toFixed(1),
-      count: value,
-      color: colors[i % colors.length],
-    }));
-  }, [filtered]);
+      value: count,
+      percentage: ((count / total) * 100).toFixed(1),
+      color: colors[i],
+    }))
+  }, [filtered])
 
-  // 🧭 Top Tours by Enquiry
-  const topToursData = useMemo(() => {
-    const tourCounts: Record<string, number> = {};
-    filtered.earlyAccess.forEach(
-      (d) => d.tour_title && (tourCounts[d.tour_title] = (tourCounts[d.tour_title] || 0) + 1)
-    );
-    filtered.bookings.forEach(
-      (d) => d.tour_title && (tourCounts[d.tour_title] = (tourCounts[d.tour_title] || 0) + 1)
-    );
-    filtered.homepage.forEach(
-      (d) =>
-        d.preferred_destination &&
-        (tourCounts[d.preferred_destination] =
-          (tourCounts[d.preferred_destination] || 0) + 1)
-    );
+  const topTours = useMemo(() => {
+    const tourMap = new Map<string, number>()
 
-    return Object.entries(tourCounts)
-      .map(([tour, enquiries]) => ({ tour, enquiries }))
+    filtered.earlyAccess.forEach(item => {
+      if (item.tour_title) {
+        tourMap.set(item.tour_title, (tourMap.get(item.tour_title) || 0) + 1)
+      }
+    })
+    filtered.bookings.forEach(item => {
+      if (item.tour_title) {
+        tourMap.set(item.tour_title, (tourMap.get(item.tour_title) || 0) + 1)
+      }
+    })
+    filtered.homepage.forEach(item => {
+      if (item.preferred_destination) {
+        tourMap.set(item.preferred_destination, (tourMap.get(item.preferred_destination) || 0) + 1)
+      }
+    })
+
+    return Array.from(tourMap)
+      .map(([tour, count]) => ({ tour, enquiries: count }))
       .sort((a, b) => b.enquiries - a.enquiries)
-      .slice(0, 8);
-  }, [filtered]);
+      .slice(0, 10)
+  }, [filtered])
 
-  // 🔍 Conversion Insights
-  const avgDailySubmissions = (
-    allData.length /
-    Math.max(submissionTrendData.length || 1, 1)
-  ).toFixed(1);
-  const peakDay = submissionTrendData.reduce(
-    (max, cur) => (cur.submissions > (max?.submissions || 0) ? cur : max),
-    null as any
-  );
+  const totalSubmissions = allSubmissions.length
+  const avgDaily = totalSubmissions / Math.max(dailyTrend.length || 1, 1)
+  const peakDay = dailyTrend.reduce((max, day) => day.submissions > (max?.submissions || 0) ? day : max, dailyTrend[0])
 
-  const conversionInsights = [
-    {
-      title: "Average Daily Submissions",
-      value: avgDailySubmissions,
-      unit: "submissions/day",
-      color: "bg-blue-50 text-blue-700",
-    },
-    {
-      title: "Peak Submission Day",
-      value: peakDay ? peakDay.date : "N/A",
-      unit: peakDay ? `${peakDay.submissions} submissions` : "",
-      color: "bg-green-50 text-green-700",
-    },
-    {
-      title: "Most Active Period",
-      value:
-        dateRange === "today"
-          ? "Today"
-          : dateRange === "7days"
-          ? "Last 7 Days"
-          : dateRange === "month"
-          ? "This Month"
-          : "All Time",
-      unit: "Activity Window",
-      color: "bg-purple-50 text-purple-700",
-    },
-  ];
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-3 rounded-lg shadow-lg border-2 border-gray-200">
+          <p className="font-semibold text-[#1f2d28]">{label}</p>
+          <p className="text-sm text-gray-600">
+            Submissions: <span className="font-bold text-[#1f2d28]">{payload[0].value}</span>
+          </p>
+        </div>
+      )
+    }
+    return null
+  }
 
-  // 🧮 Form Performance Table
-  const formPerformanceData = [
-    {
-      formType: "Booking Enquiry",
-      submissions: filtered.bookings.length,
-      responseRate: "94%",
-      avgResponseTime: "1.2h",
-    },
-    {
-      formType: "Contact",
-      submissions: filtered.contacts.length,
-      responseRate: "87%",
-      avgResponseTime: "2.4h",
-    },
-    {
-      formType: "Homepage Enquiry",
-      submissions: filtered.homepage.length,
-      responseRate: "92%",
-      avgResponseTime: "1.8h",
-    },
-    {
-      formType: "Early Access",
-      submissions: filtered.earlyAccess.length,
-      responseRate: "98%",
-      avgResponseTime: "0.9h",
-    },
-    {
-      formType: "Notify",
-      submissions: filtered.notify.length,
-      responseRate: "100%",
-      avgResponseTime: "0.5h",
-    },
-  ];
-
-  // 🧠 Loading / Error states
-  if (loading)
-    return (
-      <div className="flex justify-center items-center p-8 text-muted-foreground">
-        Loading analytics data...
-      </div>
-    );
-
-  if (error)
-    return (
-      <div className="text-center p-6 text-red-600">
-        <p>Error loading analytics: {error}</p>
-      </div>
-    );
-
-  // ✅ MAIN ANALYTICS PAGE
   return (
-    <div className="space-y-6">
-      {/* Date Range Filters */}
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="text-sm font-medium text-foreground">Date Range:</span>
-        {[
-          { value: "today", label: "Today" },
-          { value: "7days", label: "Last 7 Days" },
-          { value: "month", label: "This Month" },
-          { value: "year", label: "This Year" },
-          { value: "all", label: "All Time" },
-        ].map((option) => (
-          <Button
-            key={option.value}
-            onClick={() => setDateRange(option.value)}
-            variant={dateRange === option.value ? "default" : "outline"}
-            className={`text-xs ${
-              dateRange === option.value
-                ? "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                : "border-border hover:bg-muted"
-            }`}
-          >
-            {option.label}
-          </Button>
-        ))}
+    <div className="w-full space-y-6 animate-fadeIn">
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-gradient-to-r from-[#1f2d28] to-[#2a3d35] p-6 rounded-xl shadow-lg">
+        <div className="text-white">
+          <h1 className="text-3xl font-bold flex items-center gap-3">
+            <BarChart3 className="h-8 w-8" />
+            Analytics Dashboard
+          </h1>
+          <p className="text-white/80 mt-1">Track form submissions and user engagement</p>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          {[
+            { value: "today", label: "Today" },
+            { value: "7days", label: "Last 7 Days" },
+            { value: "month", label: "This Month" },
+            { value: "year", label: "This Year" },
+            { value: "all", label: "All Time" },
+          ].map((opt) => (
+            <Button
+              key={opt.value}
+              variant={dateRange === opt.value ? "secondary" : "outline"}
+              size="sm"
+              onClick={() => setDateRange(opt.value as any)}
+              className={dateRange === opt.value 
+                ? "bg-white text-[#1f2d28] hover:bg-white/90 font-semibold" 
+                : "bg-white/10 text-white border-white/30 hover:bg-white/20"
+              }
+            >
+              {opt.label}
+            </Button>
+          ))}
+        </div>
       </div>
 
-      {/* Charts */}
+      {/* Key Metrics Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="border-[#1f2d28]/20 hover:shadow-lg transition-all duration-300 bg-white">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Submissions</p>
+                <p className="text-3xl font-bold text-[#1f2d28] mt-1">{totalSubmissions}</p>
+                <p className="text-xs text-gray-500 mt-1">In selected period</p>
+              </div>
+              <div className="p-3 bg-[#1f2d28] rounded-xl">
+                <Activity className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-blue-200 hover:shadow-lg transition-all duration-300 bg-white">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Avg Daily</p>
+                <p className="text-3xl font-bold text-blue-700 mt-1">{avgDaily.toFixed(1)}</p>
+                <p className="text-xs text-gray-500 mt-1">Submissions per day</p>
+              </div>
+              <div className="p-3 bg-blue-600 rounded-xl">
+                <TrendingUp className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-purple-200 hover:shadow-lg transition-all duration-300 bg-white">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Peak Day</p>
+                <p className="text-xl font-bold text-purple-700 mt-1">{peakDay?.date || "—"}</p>
+                <p className="text-xs text-gray-500 mt-1">{peakDay?.submissions || 0} submissions</p>
+              </div>
+              <div className="p-3 bg-purple-600 rounded-xl">
+                <Calendar className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-green-200 hover:shadow-lg transition-all duration-300 bg-white">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Active Forms</p>
+                <p className="text-3xl font-bold text-green-700 mt-1">5</p>
+                <p className="text-xs text-gray-500 mt-1">All operational</p>
+              </div>
+              <div className="p-3 bg-green-600 rounded-xl">
+                <CheckCircle2 className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Submission Trend */}
-        <Card className="border-border">
-          <CardHeader>
-            <CardTitle>Submission Trend Over Time</CardTitle>
-            <CardDescription>Daily submissions for selected period</CardDescription>
+        {/* Daily Trend Line Chart */}
+        <Card className="border-[#1f2d28]/20 shadow-lg bg-white">
+          <CardHeader className="border-b bg-gradient-to-r from-[#1f2d28]/5 to-white">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-[#1f2d28]" />
+              <CardTitle className="text-[#1f2d28]">Daily Submission Trend</CardTitle>
+            </div>
+            <CardDescription className="text-gray-600">Total submissions per day over time</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="w-full h-80">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={submissionTrendData}>
+          <CardContent className="pt-6 bg-white">
+            {dailyTrend.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={dailyTrend}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="date" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="submissions"
-                    stroke="#1f2d28"
-                    strokeWidth={2}
-                    dot={{ r: 3 }}
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px' }}
+                  />
+                  <YAxis 
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px' }}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Line 
+                    type="monotone" 
+                    dataKey="submissions" 
+                    stroke="#1f2d28" 
+                    strokeWidth={3} 
+                    dot={{ fill: "#1f2d28", r: 5 }}
+                    activeDot={{ r: 7, fill: "#2a3d35" }}
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
+            ) : (
+              <div className="h-[300px] flex items-center justify-center text-gray-500">
+                <div className="text-center">
+                  <Activity className="h-12 w-12 mx-auto mb-2 opacity-30" />
+                  <p className="text-sm">No data available for selected period</p>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
-        {/* Form Type Distribution */}
-        <Card className="border-border">
-          <CardHeader>
-            <CardTitle>Form Type Distribution</CardTitle>
-            <CardDescription>Percentage breakdown of total submissions</CardDescription>
+        {/* Form Distribution Pie Chart */}
+        <Card className="border-[#1f2d28]/20 shadow-lg bg-white">
+          <CardHeader className="border-b bg-gradient-to-r from-[#1f2d28]/5 to-white">
+            <div className="flex items-center gap-2">
+              <PieChartIcon className="h-5 w-5 text-[#1f2d28]" />
+              <CardTitle className="text-[#1f2d28]">Form Distribution</CardTitle>
+            </div>
+            <CardDescription className="text-gray-600">Breakdown by form type</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="w-full h-80">
-              <ResponsiveContainer width="100%" height="100%">
+          <CardContent className="pt-6 bg-white">
+            {totalSubmissions > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
-                    data={formDistributionData}
+                    data={formDistribution}
+                    dataKey="value"
+                    nameKey="name"
                     cx="50%"
                     cy="50%"
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}%`}
-                    outerRadius={100}
-                    dataKey="value"
+                    outerRadius={90}
+                    label={({ name, percentage }) => `${name}: ${percentage}%`}
+                    labelLine={{ stroke: '#6b7280', strokeWidth: 1 }}
+                    style={{ fontSize: '11px', fontWeight: 500 }}
                   >
-                    {formDistributionData.map((entry, i) => (
+                    {formDistribution.map((entry, i) => (
                       <Cell key={i} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value) => `${value}%`} />
+                  <Tooltip 
+                    formatter={(value: number) => `${value} submissions`}
+                    contentStyle={{ 
+                      backgroundColor: 'white', 
+                      border: '2px solid #e5e7eb',
+                      borderRadius: '8px',
+                      padding: '8px 12px'
+                    }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
-            </div>
+            ) : (
+              <div className="h-[300px] flex items-center justify-center text-gray-500">
+                <div className="text-center">
+                  <PieChartIcon className="h-12 w-12 mx-auto mb-2 opacity-30" />
+                  <p className="text-sm">No data available</p>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
 
-      {/* Top Tours */}
-      <Card className="border-border">
-        <CardHeader>
-          <CardTitle>Top Tours by Enquiry</CardTitle>
-          <CardDescription>Most requested tour destinations</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="w-full h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={topToursData}>
+      {/* Top Tours Bar Chart */}
+      {topTours.length > 0 && (
+        <Card className="border-[#1f2d28]/20 shadow-lg bg-white">
+          <CardHeader className="border-b bg-gradient-to-r from-[#1f2d28]/5 to-white">
+            <div className="flex items-center gap-2">
+              <Target className="h-5 w-5 text-[#1f2d28]" />
+              <CardTitle className="text-[#1f2d28]">Top Requested Tours & Destinations</CardTitle>
+            </div>
+            <CardDescription className="text-gray-600">Most popular from all form submissions</CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6 bg-white">
+            <ResponsiveContainer width="100%" height={Math.max(350, topTours.length * 40)}>
+              <BarChart data={topTours} layout="horizontal" margin={{ left: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="tour" angle={-45} textAnchor="end" height={90} stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="enquiries" fill="#1f2d28" radius={[8, 8, 0, 0]} />
+                <XAxis 
+                  type="number" 
+                  stroke="#6b7280"
+                  style={{ fontSize: '12px' }}
+                />
+                <YAxis 
+                  dataKey="tour" 
+                  type="category" 
+                  width={180}
+                  stroke="#6b7280"
+                  style={{ fontSize: '12px' }}
+                />
+                <Tooltip 
+                  formatter={(value: number) => [`${value} enquiries`, 'Total']}
+                  contentStyle={{ 
+                    backgroundColor: 'white', 
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    padding: '8px 12px'
+                  }}
+                />
+                <Bar 
+                  dataKey="enquiries" 
+                  fill="#1f2d28" 
+                  radius={[0, 8, 8, 0]}
+                  animationDuration={800}
+                />
               </BarChart>
             </ResponsiveContainer>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Key Insights */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {conversionInsights.map((insight, i) => (
-          <Card key={i} className="border-border">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
-                {insight.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={`p-4 rounded-lg ${insight.color}`}>
-                <div className="text-3xl font-bold">{insight.value}</div>
-                <p className="text-xs mt-2 opacity-80">{insight.unit}</p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Form Performance Table */}
-      <Card className="border-border">
-        <CardHeader>
-          <CardTitle>Form Performance Comparison</CardTitle>
-          <CardDescription>Metrics for all form types</CardDescription>
+      <Card className="border-[#1f2d28]/20 shadow-lg bg-white">
+        <CardHeader className="border-b bg-gradient-to-r from-[#1f2d28]/5 to-white">
+          <CardTitle className="text-[#1f2d28]">Form Performance Overview</CardTitle>
+          <CardDescription className="text-gray-600">Detailed breakdown of each form</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0 bg-white">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="border-b border-border bg-muted/50">
+              <thead className="bg-[#1f2d28] text-white">
                 <tr>
-                  <th className="text-left px-4 py-3 font-medium">Form Type</th>
-                  <th className="text-left px-4 py-3 font-medium">Total Submissions</th>
-                  <th className="text-left px-4 py-3 font-medium">Response Rate</th>
-                  <th className="text-left px-4 py-3 font-medium">Avg Response Time</th>
-                  <th className="text-left px-4 py-3 font-medium">Status</th>
+                  <th className="text-left px-6 py-4 font-semibold">Form Name</th>
+                  <th className="text-left px-6 py-4 font-semibold">Submissions</th>
+                  <th className="text-left px-6 py-4 font-semibold">Percentage</th>
+                  <th className="text-left px-6 py-4 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody>
-                {formPerformanceData.map((form, i) => (
-                  <tr key={i} className="border-b border-border hover:bg-muted/30 transition">
-                    <td className="px-4 py-3 font-medium">{form.formType}</td>
-                    <td className="px-4 py-3">{form.submissions}</td>
-                    <td className="px-4 py-3">{form.responseRate}</td>
-                    <td className="px-4 py-3">{form.avgResponseTime}</td>
-                    <td className="px-4 py-3">
-                      <span className="text-xs font-medium px-2 py-1 rounded bg-green-100 text-green-700">
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {formDistribution.map((form, index) => (
+                  <tr 
+                    key={form.name} 
+                    className="hover:bg-gray-50 transition-colors"
+                    style={{ animation: `slideIn 0.3s ease-out ${index * 0.1}s both` }}
+                  >
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div 
+                          className="w-3 h-3 rounded-full" 
+                          style={{ backgroundColor: form.color }}
+                        />
+                        <span className="font-semibold text-gray-900">{form.name}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="text-gray-900 font-medium">{form.value}</span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-24 bg-gray-200 rounded-full h-2 overflow-hidden">
+                          <div 
+                            className="h-full rounded-full transition-all duration-500"
+                            style={{ 
+                              width: `${form.percentage}%`,
+                              backgroundColor: form.color
+                            }}
+                          />
+                        </div>
+                        <span className="text-sm font-semibold text-gray-700">{form.percentage}%</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <Badge className="bg-green-600 text-white hover:bg-green-700">
+                        <CheckCircle2 className="h-3 w-3 mr-1" />
                         Active
-                      </span>
+                      </Badge>
                     </td>
                   </tr>
                 ))}
@@ -434,6 +478,34 @@ export function AnalyticsPage() {
           </div>
         </CardContent>
       </Card>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-out;
+        }
+      `}</style>
     </div>
-  );
+  )
 }
