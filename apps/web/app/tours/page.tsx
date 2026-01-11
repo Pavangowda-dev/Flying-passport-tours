@@ -13,11 +13,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/compon
 import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 
-// Updated tours array: Removed 10-Day Japan/SK/NK, Added 8-Day Japan, Updated Egypt/Europe prices & Europe date
+// Updated tours array with China tour moved to upcoming
 const tours = [
   {
     id: "12",
-    title: "8-Day Ancient Egypt Adventure",
+    title: "Ancient Egypt in 8 Days – Pyramids, Nile River Cruise & Alexandria",
     destination: "egypt",
     region: "africa",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170847/egypt-1_ru5hfw.png",
@@ -31,7 +31,7 @@ const tours = [
   },
   {
     id: "6",
-    title: "12-Day European Highlights",
+    title: "12-Day Best of Europe Tour – Paris, Amsterdam, Venice & Rome",
     destination: "europe",
     region: "europe",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171813/europe-1_dt95nz.png",
@@ -57,10 +57,9 @@ const tours = [
     status: "upcoming",
     departureDate: "May 5, 2026",
   },
-  // NEW: 7-Day Vietnam - Upcoming with ₹98,000
   {
     id: "10",
-    title: "7-Day Vietnam Explorer: Da Nang, Hoi An & Ha Long Bay",
+    title: "7-Day Vietnam Tour Package – Da Nang, Ba Na Hills, Hoi An & Ha Long Bay",
     destination: "vietnam",
     region: "asia",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170319/vietnam-1_jugc5j.png",
@@ -72,10 +71,9 @@ const tours = [
     status: "upcoming",
     departureDate: "February 01, 2026",
   },
-  // NEW: 8-Day Japan - Upcoming with ₹3,14,000
   {
     id: "13",
-    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    title: "Japan Tour Package (8 Days) – Tokyo to Osaka with Kyoto & Hiroshima",
     destination: "japan",
     region: "asia",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171360/japan-1_hi52sb.png",
@@ -88,20 +86,29 @@ const tours = [
     departureDate: "April 9, 2026",
     availability: "limited",
   },
-  // China moved to Coming Back Soon
+  // UPDATED: China tour now in upcoming with full details
   {
-    id: "10",
-    title: "12-Day China Discovery",
+    id: "11",
+    title: "9-Day China Discovery Tour – Shanghai, Zhangjiajie & Beijing",
     destination: "china",
     region: "asia",
-    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203953/china-1_btfixg.png",
-    duration: 12,
-    price: 0,
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076171/1_yyuojw.png",
+    duration: 9,
+    price: 257000,
     description:
-      "Explore China's rich history and modern marvels, from the Great Wall to vibrant Shanghai, on this immersive group tour.",
-    highlights: ["Beijing", "Great Wall", "Xi'an", "Shanghai"],
-    status: "expired",
-    departureDate: "Dates will be announced soon",
+      "Explore China's rich history and modern marvels on this immersive 9-day journey. From Shanghai's vibrant skyline to Zhangjiajie's Avatar mountains and Beijing's ancient wonders including the Great Wall.",
+    highlights: [
+      "Shanghai",
+      "Zhujiajiao Water Town",
+      "Zhangjiajie National Forest",
+      "Avatar Mountains",
+      "Tianmen Mountain",
+      "Great Wall of China",
+      "Forbidden City",
+      "Beijing"
+    ],
+    status: "upcoming",
+    departureDate: "April 21, 2026",
   },
   {
     id: "4",
@@ -225,23 +232,19 @@ export default function ToursPage() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isAutoScrolling, setIsAutoScrolling] = useState(false)
 
-  // Ensure page loads from the top
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
   const filteredTours = tours.filter((tour) => {
-    // Filter by price - include tours with price 0 (coming soon tours)
     if (tour.price > 0 && (tour.price < priceRange[0] || tour.price > priceRange[1])) return false
 
-    // Filter by duration
     if (durationFilter.length > 0) {
       if (durationFilter.includes("short") && tour.duration > 7) return false
       if (durationFilter.includes("medium") && (tour.duration <= 7 || tour.duration > 12)) return false
       if (durationFilter.includes("long") && tour.duration <= 12) return false
     }
 
-    // Filter by continent
     if (continentFilter.length > 0) {
       if (!continentFilter.includes(tour.region)) return false
     }
@@ -249,19 +252,18 @@ export default function ToursPage() {
     return true
   })
 
-  // Separate upcoming and coming back soon tours
   const upcomingTours = filteredTours.filter((tour) => tour.status === "upcoming" || tour.status === "closed")
-  // Sort upcoming tours: New 7-Day Vietnam → Egypt → New 8-Day Japan → Europe
+  // Sort: Vietnam → Egypt → Japan → China → Europe
   const sortedUpcomingTours = [
-    upcomingTours.find(tour => tour.id === "10"), // New 7-Day Vietnam
+    upcomingTours.find(tour => tour.id === "10"), // Vietnam
     upcomingTours.find(tour => tour.id === "12"), // Egypt
-    upcomingTours.find(tour => tour.id === "13"), // New 8-Day Japan
+    upcomingTours.find(tour => tour.id === "13"), // Japan
+    upcomingTours.find(tour => tour.id === "11"), // China (NEW)
     upcomingTours.find(tour => tour.id === "6"),  // Europe
   ].filter(Boolean) as typeof upcomingTours
 
   const comingBackSoonTours = filteredTours.filter((tour) => tour.status === "expired")
 
-  // Auto-scroll for mobile Coming Back Soon section
   useEffect(() => {
     if (window.innerWidth >= 768 || comingBackSoonTours.length <= 1) return
 
@@ -273,7 +275,7 @@ export default function ToursPage() {
           setIsAutoScrolling(true)
           const containerWidth = scrollContainerRef.current.offsetWidth
           const gap = 12
-          const cardWidth = containerWidth - 24 // Account for padding
+          const cardWidth = containerWidth - 24
           const maxSlide = comingBackSoonTours.length - 1
           const currentScrollLeft = scrollContainerRef.current.scrollLeft
           const currentSlide = Math.round(currentScrollLeft / (cardWidth + gap))
@@ -287,10 +289,9 @@ export default function ToursPage() {
           
           setTimeout(() => setIsAutoScrolling(false), 800)
         }
-      }, 4000) // Auto-scroll every 4 seconds
+      }, 4000)
     }
 
-    // Start auto-scroll after a delay to allow user to read first card
     const delayStart = setTimeout(() => {
       startAutoScroll()
     }, 3000)
@@ -346,13 +347,9 @@ export default function ToursPage() {
 
   return (
     <div className="pt-24 sm:pt-20 md:pt-24 pb-6 sm:pb-8 md:pb-16 min-h-screen">
-      {/* WhatsApp Button */}
       <WhatsAppButton alwaysVisible={true} />
-
-      {/* Popup Form */}
       <PopupForm isOpen={isPopupOpen} setIsOpen={setIsPopupOpen} tourTitle={selectedTourTitle} />
 
-      {/* JSON-LD Schema for Tours */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -385,16 +382,12 @@ export default function ToursPage() {
           </h1>
         </div>
 
-        {/* Mobile: Filters stacked layout */}
+        {/* Mobile Filters */}
         <div className="md:hidden mb-4 md:mb-6 px-2">
-          {/* Price Range - Full width on mobile */}
           <div className="w-full mb-3">
             <DropdownMenu open={isPriceDropdownOpen} onOpenChange={setIsPriceDropdownOpen}>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-                >
+                <Button variant="outline" className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                   <span className="truncate">
                     Price Range: ₹{(priceRange[0] / 100000).toFixed(1)}L - ₹{(priceRange[1] / 100000).toFixed(1)}L
                   </span>
@@ -422,16 +415,11 @@ export default function ToursPage() {
             </DropdownMenu>
           </div>
 
-          {/* Continents and Duration - Side by side on mobile */}
           <div className="flex gap-3">
-            {/* Continent Filter Dropdown */}
             <div className="flex-1">
               <DropdownMenu open={isContinentDropdownOpen} onOpenChange={setIsContinentDropdownOpen}>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-                  >
+                  <Button variant="outline" className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                     <span className="truncate">
                       {continentFilter.length === 0 ? "All Continents" : 
                        continentFilter.map(c => continents.find(cont => cont.value === c)?.label || c).join(", ")}
@@ -467,14 +455,10 @@ export default function ToursPage() {
               </DropdownMenu>
             </div>
 
-            {/* Duration Filter Dropdown */}
             <div className="flex-1">
               <DropdownMenu open={isDurationDropdownOpen} onOpenChange={setIsDurationDropdownOpen}>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-                  >
+                  <Button variant="outline" className="w-full flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                     <span className="truncate">
                       Duration:{' '}
                       {durationFilter.length === 0
@@ -500,9 +484,7 @@ export default function ToursPage() {
                         }}
                         className="max-sm:h-3 max-sm:w-3 h-4 w-4"
                       />
-                      <Label htmlFor="short" className="text-sm">
-                        Short (1-7 days)
-                      </Label>
+                      <Label htmlFor="short" className="text-sm">Short (1-7 days)</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Checkbox
@@ -517,9 +499,7 @@ export default function ToursPage() {
                         }}
                         className="max-sm:h-3 max-sm:w-3 h-4 w-4"
                       />
-                      <Label htmlFor="medium" className="text-sm">
-                        Medium (8-12 days)
-                      </Label>
+                      <Label htmlFor="medium" className="text-sm">Medium (8-12 days)</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Checkbox
@@ -534,9 +514,7 @@ export default function ToursPage() {
                         }}
                         className="max-sm:h-3 max-sm:w-3 h-4 w-4"
                       />
-                      <Label htmlFor="long" className="text-sm">
-                        Long (13+ days)
-                      </Label>
+                      <Label htmlFor="long" className="text-sm">Long (13+ days)</Label>
                     </div>
                   </div>
                 </DropdownMenuContent>
@@ -545,15 +523,11 @@ export default function ToursPage() {
           </div>
         </div>
 
-        {/* Desktop: Filters horizontal layout */}
+        {/* Desktop Filters */}
         <div className="hidden md:flex justify-center gap-3 md:gap-4 mb-4 md:mb-6 px-2">
-          {/* Continent Filter Dropdown */}
           <DropdownMenu open={isContinentDropdownOpen} onOpenChange={setIsContinentDropdownOpen}>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-              >
+              <Button variant="outline" className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                 <span className="truncate">
                   {continentFilter.length === 0 ? "All Continents" : 
                    continentFilter.map(c => continents.find(cont => cont.value === c)?.label || c).join(", ")}
@@ -588,13 +562,9 @@ export default function ToursPage() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Price Range Filter Dropdown */}
           <DropdownMenu open={isPriceDropdownOpen} onOpenChange={setIsPriceDropdownOpen}>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-              >
+              <Button variant="outline" className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                 <span className="truncate">
                   Price Range: ₹{(priceRange[0] / 100000).toFixed(1)}L - ₹{(priceRange[1] / 100000).toFixed(1)}L
                 </span>
@@ -621,13 +591,9 @@ export default function ToursPage() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Duration Filter Dropdown */}
           <DropdownMenu open={isDurationDropdownOpen} onOpenChange={setIsDurationDropdownOpen}>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]"
-              >
+              <Button variant="outline" className="w-auto flex justify-between items-center text-sm bg-transparent min-h-[44px]">
                 <span className="truncate">
                   Duration:{' '}
                   {durationFilter.length === 0
@@ -653,9 +619,7 @@ export default function ToursPage() {
                     }}
                     className="h-4 w-4"
                   />
-                  <Label htmlFor="short" className="text-sm">
-                    Short (1-7 days)
-                  </Label>
+                  <Label htmlFor="short" className="text-sm">Short (1-7 days)</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Checkbox
@@ -670,9 +634,7 @@ export default function ToursPage() {
                     }}
                     className="h-4 w-4"
                   />
-                  <Label htmlFor="medium" className="text-sm">
-                    Medium (8-12 days)
-                  </Label>
+                  <Label htmlFor="medium" className="text-sm">Medium (8-12 days)</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Checkbox
@@ -687,9 +649,7 @@ export default function ToursPage() {
                     }}
                     className="h-4 w-4"
                   />
-                  <Label htmlFor="long" className="text-sm">
-                    Long (13+ days)
-                  </Label>
+                  <Label htmlFor="long" className="text-sm">Long (13+ days)</Label>
                 </div>
               </div>
             </DropdownMenuContent>
@@ -719,7 +679,6 @@ export default function ToursPage() {
                       <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-secondary text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                         {tour.departureDate}
                       </div>
-                      {/* Status Badge */}
                       {tour.status === "closed" && (
                         <div className="absolute inset-0 bg-black/40 z-10 rounded-lg flex items-center justify-center">
                           <div className="bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
@@ -727,7 +686,6 @@ export default function ToursPage() {
                           </div>
                         </div>
                       )}
-                      {/* Continent Badge */}
                       <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-primary/20 text-primary px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                         <MapPin size={12} className="inline mr-1" />
                         {continents.find(c => c.value === tour.region)?.label}
@@ -793,10 +751,8 @@ export default function ToursPage() {
             <h2 className="font-serif font-bold text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 text-center">
               Coming Back Soon
             </h2>
-            {/* Mobile: Horizontal scrolling with simple arrow navigation */}
             <div className="md:hidden">
               <div className="relative">
-                {/* Cards Container */}
                 <div 
                   ref={scrollContainerRef}
                   className="flex gap-3 sm:gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide touch-pan-x"
@@ -828,7 +784,6 @@ export default function ToursPage() {
                               Coming Back Soon
                             </div>
                           </div>
-                          {/* Continent Badge for mobile */}
                           <div className="absolute top-2 right-2 bg-primary/20 text-primary px-1.5 py-0.5 rounded text-xs">
                             {continents.find(c => c.value === tour.region)?.label}
                           </div>
@@ -877,7 +832,6 @@ export default function ToursPage() {
                   ))}
                 </div>
 
-                {/* Simple Arrow Navigation - Below the cards with reduced spacing */}
                 <div className="flex justify-center items-center space-x-4 mt-2 pb-4">
                   <button
                     onClick={handlePrevSlide}
@@ -904,7 +858,6 @@ export default function ToursPage() {
               </div>
             </div>
 
-            {/* Desktop: Regular grid */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
               {comingBackSoonTours.map((tour) => (
                 <Link
@@ -929,7 +882,6 @@ export default function ToursPage() {
                           Coming Back Soon
                         </div>
                       </div>
-                      {/* Continent Badge for desktop */}
                       <div className="absolute top-3 right-3 bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">
                         <MapPin size={14} className="inline mr-1" />
                         {continents.find(c => c.value === tour.region)?.label}
@@ -979,7 +931,6 @@ export default function ToursPage() {
           </div>
         )}
 
-        {/* No tours message */}
         {filteredTours.length === 0 && (
           <div className="text-center py-8 md:py-12">
             <p className="text-base md:text-lg text-muted-foreground mb-4">

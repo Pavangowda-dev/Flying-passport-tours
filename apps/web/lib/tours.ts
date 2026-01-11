@@ -21,23 +21,14 @@ export const tours = [
       "Stay in a traditional Japanese ryokan",
     ],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Stay tuned for an exciting journey through Japan!" }
     ],
     inclusions: [
-      "9 nights accommodation (3★ and 4★ hotels, 1 night in traditional ryokan)",
-      "Daily breakfast, 3 lunches, and 5 dinners including welcome and farewell dinners",
-      "All transportation within Japan including bullet train tickets",
-      "English-speaking local guide throughout",
-      "All entrance fees to attractions mentioned in the itinerary",
-      "Cultural experiences: tea ceremony, kimono wearing",
-      "Airport transfers on arrival and departure",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will feature handpicked experiences showcasing the best of Japan.",
     ],
     exclusions: [
-      "International flights to/from Japan",
-      "Travel insurance",
-      "Meals not mentioned in the inclusions",
-      "Personal expenses and souvenirs",
-      "Optional activities not mentioned in the itinerary",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
@@ -66,29 +57,19 @@ export const tours = [
       "Visit the stunning Amalfi Coast",
     ],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Get ready to explore Italy's magnificent heritage!" }
     ],
     inclusions: [
-      "11 nights accommodation in 3★ and 4★ hotels",
-      "Daily breakfast and 6 dinners",
-      "All transportation including high-speed trains",
-      "English-speaking local guides",
-      "All entrance fees to attractions",
-      "Cooking class in Florence",
-      "Gondola ride in Venice",
-      "Airport transfers",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will include Italy's most iconic landmarks and experiences.",
     ],
     exclusions: [
-      "International flights to/from Italy",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "12-Day Italian Discovery | Flying Passport Tours",
-    seoDescription: "Explore Italy’s iconic destinations with our 12-day tour from Bangalore. Visit Rome, Florence, Venice, and the Amalfi Coast. Book now!"
+    seoDescription: "Explore Italy's iconic destinations with our 12-day tour from Bangalore. Visit Rome, Florence, Venice, and the Amalfi Coast. Book now!"
   },
   {
     id: "3",
@@ -112,29 +93,19 @@ export const tours = [
       "Shop at the Grand Bazaar",
     ],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Prepare for an unforgettable Turkish adventure!" }
     ],
     inclusions: [
-      "7 nights accommodation in 3★ and 4★ hotels",
-      "Daily breakfast and 4 dinners",
-      "Domestic flights within Turkey",
-      "English-speaking local guide",
-      "All entrance fees",
-      "Hot air balloon ride",
-      "Bosphorus cruise",
-      "Airport transfers",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will showcase Turkey's rich cultural heritage and natural wonders.",
     ],
     exclusions: [
-      "International flights to/from Turkey",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "8-Day Turkish Delight | Flying Passport Tours",
-    seoDescription: "Discover Turkey’s history and landscapes on our 8-day tour from Bangalore. Visit Istanbul, Cappadocia, and Ephesus. Book now!"
+    seoDescription: "Discover Turkey's history and landscapes on our 8-day tour from Bangalore. Visit Istanbul, Cappadocia, and Ephesus. Book now!"
   },
   {
     id: "4",
@@ -148,7 +119,7 @@ export const tours = [
     status: "expired",
     departureDate: "Dates will be announced soon",
     description:
-      "Explore Kenya like never before with our 6-day all-inclusive group tour covering Nairobi, Masai Mara, Naivasha & Hell’s Gate, guided by a Kannada tour manager. Enjoy luxury stays, thrilling safaris, and rich cultural experiences—all with Indian meals and seamless travel arrangements.",
+      "Explore Kenya like never before with our 6-day all-inclusive group tour covering Nairobi, Masai Mara, Naivasha & Hell's Gate, guided by a Kannada tour manager. Enjoy luxury stays, thrilling safaris, and rich cultural experiences—all with Indian meals and seamless travel arrangements.",
     highlights: [
       "Nairobi city tour with shopping at the vibrant Masai Market.",
       "Thrilling game drives in Masai Mara National Reserve.",
@@ -158,35 +129,19 @@ export const tours = [
       "Travel in luxury 4x4 Land Cruisers with a dedicated Kannada tour manager.",
     ],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Experience the wild beauty of Kenya soon!" }
     ],
     inclusions: [
-      "Economy class return flight tickets (Bangalore – Nairobi – Bangalore)",
-      "Accommodation in 4-star hotels (2 nights Nairobi, 2 nights Masai Mara, 1 night Naivasha)",
-      "Daily Indian meals: Breakfast, Lunch & Dinner",
-      "Luxury 4x4 Land Cruiser for all transfers and safaris",
-      "All sightseeing and national park entry tickets as per itinerary",
-      "Boat ride safari on Lake Naivasha",
-      "Guided walking/cycling experience at Hell's Gate National Park",
-      "Visit to Masai tribal village",
-      "Free travel insurance (below 60 years)",
-      "Kenya tourist visa for all travelers",
-      "Services of an experienced Kannada-speaking tour manager throughout the trip",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This safari will include thrilling wildlife encounters and cultural experiences.",
     ],
     exclusions: [
-      "5% GST & 5% TCS (as applicable for international travel)",
-      "Tips for driver and guide (USD 5 per day per person, total USD 25 per person)",
-      "Personal expenses: laundry, porterage, telephone, minibar, drinks not part of the regular menu",
-      "Meals not mentioned in the itinerary",
-      "Additional excursions or entrance fees not specified in the itinerary",
-      "Cost for any individual sightseeing or activity not part of the group tour",
-      "Travel insurance charges for travelers above 60 years (if applicable)",
-      "Any other item not mentioned under “What’s Included”",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "6-Day Kenyan Safari | Flying Passport Tours",
-    seoDescription: "Join our 6-day Kenyan safari from Bangalore. Explore Masai Mara, Naivasha, and Hell’s Gate with Kannada-guided tours and Indian meals. Book now!"
+    seoDescription: "Join our 6-day Kenyan safari from Bangalore. Explore Masai Mara, Naivasha, and Hell's Gate with Kannada-guided tours and Indian meals. Book now!"
   },
   {
     id: "5",
@@ -210,29 +165,19 @@ export const tours = [
       "Enjoy authentic Thai cuisine and cooking classes",
     ],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Get ready to explore the Land of Smiles!" }
     ],
     inclusions: [
-      "8 nights accommodation in 3★ and 4★ hotels",
-      "Daily breakfast and 5 dinners",
-      "Domestic flights within Thailand",
-      "English-speaking local guides",
-      "All entrance fees",
-      "Cooking class",
-      "Island hopping tour",
-      "Airport transfers",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will feature Thailand's cultural treasures and tropical paradise.",
     ],
     exclusions: [
-      "International flights to/from Thailand",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "9-Day Thailand Explorer | Flying Passport Tours",
-    seoDescription: "Discover Thailand’s culture and beaches on our 9-day tour from Bangalore. Visit Bangkok, Chiang Mai, and Phuket. Book now!"
+    seoDescription: "Discover Thailand's culture and beaches on our 9-day tour from Bangalore. Visit Bangkok, Chiang Mai, and Phuket. Book now!"
   },
   {
     id: "6",
@@ -262,7 +207,6 @@ export const tours = [
       "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171888/europe-21_a9clhk.png",
       "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171917/europe-22_jekvle.png",
       "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171880/europe-23_put57k.png",
-
     ],
     duration: 12,
     groupSize: "40",
@@ -321,7 +265,7 @@ export const tours = [
         day: 6,
         title: "Black Forest & Rhine Falls",
         description:
-          "Drive through Germany’s Black Forest, visit Lake Titisee, and watch a cuckoo clock-making demonstration. Later, travel to Switzerland and experience the breathtaking Rhine Falls with a thrilling boat ride.",
+          "Drive through Germany's Black Forest, visit Lake Titisee, and watch a cuckoo clock-making demonstration. Later, travel to Switzerland and experience the breathtaking Rhine Falls with a thrilling boat ride.",
       },
       {
         day: 7,
@@ -339,19 +283,19 @@ export const tours = [
         day: 9,
         title: "Romantic Venice",
         description:
-          "Cruise by boat to St. Mark’s Square in Venice. Visit St. Mark’s Basilica, the Doge’s Palace, the Bridge of Sighs, and enjoy a magical gondola ride through the canals.",
+          "Cruise by boat to St. Mark's Square in Venice. Visit St. Mark's Basilica, the Doge's Palace, the Bridge of Sighs, and enjoy a magical gondola ride through the canals.",
       },
       {
         day: 10,
         title: "Square of Miracles",
         description:
-          "Visit Pisa’s famous Square of Miracles to see the Leaning Tower, the Cathedral, the Baptistry, and the Monumental Cemetery – one of Italy’s most iconic landmarks.",
+          "Visit Pisa's famous Square of Miracles to see the Leaning Tower, the Cathedral, the Baptistry, and the Monumental Cemetery – one of Italy's most iconic landmarks.",
       },
       {
         day: 11,
         title: "Vatican & Rome City",
         description:
-          "Explore Vatican City with a visit to St. Peter’s Basilica, home to masterpieces by Michelangelo and Bernini. Continue to Rome for a city tour including Victor Emmanuel Monument, the Roman Forum, and a photostop at the Colosseum.",
+          "Explore Vatican City with a visit to St. Peter's Basilica, home to masterpieces by Michelangelo and Bernini. Continue to Rome for a city tour including Victor Emmanuel Monument, the Roman Forum, and a photostop at the Colosseum.",
       },
       {
         day: 12,
@@ -388,9 +332,9 @@ export const tours = [
     ],
     singleOccupancy: 300000,
     childPrice: 190000,
-    seoTitle: "12-Day European Highlights Tour 2026 | Flying Passport Tours",
-    seoDescription: "Join our 12-day Europe tour from Bangalore, May 5, 2026. Explore Paris, Amsterdam, Rome, Switzerland, and more with Kannada-guided tours and Indian meals. Book now for an unforgettable adventure!",
-    keywords: ["Europe tour 2026", "Paris tour package", "Switzerland group tour", "Italy travel from Bangalore", "Kannada-guided Europe tour", "Eiffel Tower tour", "Venice gondola ride", "Swiss Alps tour"]
+    seoTitle: "Europe Group Tour from Bangalore 2026 | 12-Day Paris Switzerland Italy Package | Karnataka Travellers",
+    seoDescription: "Best Europe group tour from Bangalore, Karnataka departing May 5, 2026. Visit Paris, Switzerland, Italy, Amsterdam with Kannada tour manager. All-inclusive 12-day package with flights, visa, Indian meals & sightseeing. Book your Europe tour from Karnataka now!",
+    keywords: ["Europe tour from Bangalore", "Europe package from Karnataka", "Paris Switzerland tour Bangalore", "Europe group tour Karnataka 2026", "Kannada tour manager Europe", "Italy tour from Bangalore", "Best Europe package Bangalore", "International tour from Karnataka"]
   },
   {
     id: "7",
@@ -407,35 +351,25 @@ export const tours = [
       "Experience Vietnam's rich history, stunning landscapes, and vibrant culture on this immersive group tour.",
     highlights: ["Hanoi", "Ha Long Bay", "Hoi An", "Ho Chi Minh City"],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Discover Vietnam's beauty and culture soon!" }
     ],
     inclusions: [
-      "9 nights accommodation including 1 night on Ha Long Bay cruise",
-      "Daily breakfast and 6 dinners",
-      "Domestic flights within Vietnam",
-      "English-speaking local guides",
-      "All entrance fees",
-      "Ha Long Bay cruise",
-      "Mekong Delta tour",
-      "Airport transfers",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will showcase Vietnam's rich heritage and natural wonders.",
     ],
     exclusions: [
-      "International flights to/from Vietnam",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "10-Day Vietnam Journey | Flying Passport Tours",
-    seoDescription: "Explore Vietnam’s rich history and beauty on our 10-day tour from Bangalore. Visit Hanoi, Ha Long Bay, and Ho Chi Minh City. Book now!"
+    seoDescription: "Explore Vietnam's rich history and beauty on our 10-day tour from Bangalore. Visit Hanoi, Ha Long Bay, and Ho Chi Minh City. Book now!"
   },
   {
     id: "8",
     title: "Greek Island Hopping",
     destination: "Greece",
-    image: "/images/tours/greek.png",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766203803/greek_ktuweh.png",
     gallery: [],
     duration: 11,
     groupSize: "40",
@@ -446,28 +380,19 @@ export const tours = [
       "Sail through Greece's stunning islands, from the whitewashed cliffs of Santorini to the historic ruins of Athens.",
     highlights: ["Athens", "Mykonos", "Santorini", "Crete"],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Experience Greek islands paradise soon!" }
     ],
     inclusions: [
-      "10 nights accommodation in 3★ and 4★ hotels",
-      "Daily breakfast and 5 dinners",
-      "Inter-island ferries and domestic flight",
-      "English-speaking local guides",
-      "All entrance fees",
-      "Wine tasting in Santorini",
-      "Airport and port transfers",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will feature Greece's most beautiful islands and ancient wonders.",
     ],
     exclusions: [
-      "International flights to/from Greece",
-      "Travel insurance",
-      "Meals not mentioned",
-      "Personal expenses",
-      "Optional activities",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
     seoTitle: "11-Day Greek Island Hopping | Flying Passport Tours",
-    seoDescription: "Discover Greece’s stunning islands on our 11-day tour from Bangalore. Visit Athens, Santorini, Mykonos, and Crete. Book now!"
+    seoDescription: "Discover Greece's stunning islands on our 11-day tour from Bangalore. Visit Athens, Santorini, Mykonos, and Crete. Book now!"
   },
   {
     id: "9",
@@ -484,26 +409,14 @@ export const tours = [
       "Embark on an unforgettable journey into the heart of the Amazon rainforest, experiencing incredible biodiversity, indigenous cultures, and thrilling wildlife encounters.",
     highlights: ["Amazon Rainforest", "Manaus", "Piraha Tribe", "Pink River Dolphins", "Canopy Walkways"],
     itinerary: [
-      { day: 0, title: "Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced." }
+      { day: 0, title: "Tour Details Coming Soon", description: "Detailed itinerary will be available once the tour dates are announced. Adventure into the Amazon awaits!" }
     ],
     inclusions: [
-      "Economy class return flight tickets (Bangalore – Manaus – Bangalore)",
-      "7 nights accommodation (2 nights in 4-star hotel, 5 nights in Amazon lodge)",
-      "Daily Indian breakfast, lunch, and dinner",
-      "All transfers and boat trips",
-      "Guided jungle treks and wildlife tours",
-      "Visit to indigenous community",
-      "Nighttime canoe safari",
-      "Free travel insurance (below 60 years)",
-      "Brazil tourist visa",
+      "Complete tour details including accommodations, meals, and activities will be announced once the departure dates are confirmed.",
+      "This tour will include thrilling Amazon jungle experiences and wildlife encounters.",
     ],
     exclusions: [
-      "5% GST & 5% TCS (as applicable)",
-      "Tips for guides (USD 5 per day per person, total USD 40 per person)",
-      "Personal expenses: laundry, drinks, minibar",
-      "Meals not mentioned in the itinerary",
-      "Optional activities",
-      "Travel insurance for above 60 years",
+      "Specific exclusions will be listed once the tour itinerary is finalized.",
     ],
     singleOccupancy: 0,
     childPrice: 0,
@@ -532,7 +445,7 @@ export const tours = [
     status: "upcoming",
     departureDate: "February 01, 2026",
     description:
-      "Experience Vietnam’s most iconic destinations in one unforgettable 7-day journey — exploring Da Nang, Ba Na Hills, Hoi An, Hanoi and the world-famous Ha Long Bay. Discover cultural landmarks, charming ancient towns, golden beaches, night markets and the stunning Golden Bridge. Enjoy a luxury overnight cruise on Ha Long Bay with activities like kayaking, Titop Island, and cave exploration. Perfect for travellers seeking a beautiful mix of nature, culture, adventure and sightseeing — in one complete Vietnam holiday.",
+      "Experience Vietnam's most iconic destinations in one unforgettable 7-day journey — exploring Da Nang, Ba Na Hills, Hoi An, Hanoi and the world-famous Ha Long Bay. Discover cultural landmarks, charming ancient towns, golden beaches, night markets and the stunning Golden Bridge. Enjoy a luxury overnight cruise on Ha Long Bay with activities like kayaking, Titop Island, and cave exploration. Perfect for travellers seeking a beautiful mix of nature, culture, adventure and sightseeing — in one complete Vietnam holiday.",
     highlights: [
       "Da Nang city tour with Dragon Bridge, Pink Church & Han Market",
       "Ba Na Hills Cable Car + Golden Bridge + French Village experience",
@@ -610,9 +523,136 @@ export const tours = [
     ],
     singleOccupancy: 158000,
     childPrice: 110000,
-    seoTitle: "Vietnam Group Tour Package from Bangalore – 7 Days | Karnataka Travellers Special",
-    seoDescription: "Book our 7-day Vietnam group tour from Bangalore designed specially for Karnataka travellers. Includes flights from BLR, Da Nang, Hoi An, Hanoi & Ha Long Bay cruise. Visa, hotels, meals, transfers & sightseeing included. Best international holiday package from India for 2026 departures.",
-    keywords: ["Vietnam tour from Bangalore", "Vietnam package for Karnataka travellers", "Vietnam group tour India", "International packages from Bangalore", "Vietnam holiday package", "Da Nang Hoi An Hanoi tour package India", "Best international tours from India", "Vietnam February 2026 group tour India"]
+    seoTitle: "Vietnam Group Tour Package from Bangalore Karnataka – 7 Days Da Nang Hoi An Ha Long Bay | February 2026",
+    seoDescription: "Best Vietnam group tour from Bangalore, Karnataka departing February 1, 2026. Explore Da Nang, Golden Bridge, Hoi An Ancient Town & Ha Long Bay cruise with Kannada tour manager. All-inclusive 7-day package with flights from BLR, visa, Indian meals & sightseeing. Book your Vietnam holiday from Karnataka now!",
+    keywords: ["Vietnam tour from Bangalore", "Vietnam package Karnataka", "Da Nang tour Bangalore", "Vietnam group tour Karnataka 2026", "Kannada tour manager Vietnam", "Ha Long Bay cruise from Bangalore", "Best Vietnam package Bangalore", "International tour from Karnataka", "Hoi An tour package India"]
+  },
+  {
+    id: "11",
+    title: "9-Day China Discovery: Shanghai, Zhangjiajie & Beijing",
+    destination: "China",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076171/1_yyuojw.png",
+    gallery: [
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076158/2_e5khdf.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076159/3_og9ugj.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076162/4_ir7x8y.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076162/5_anq85l.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076160/6_qz4y9q.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076168/7_vwwc5d.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076158/8_pafstz.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076164/9_u8snjs.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076165/10_ifiu0d.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076157/11_jzctay.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076160/12_lynr1p.png",
+      "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076173/13_anlz9g.png",
+    ],
+    duration: 9,
+    groupSize: "40",
+    price: 257000,
+    status: "upcoming",
+    departureDate: "April 21, 2026",
+    description:
+      "Explore China's rich history and modern marvels on this immersive 9-day journey from Bangalore. Experience Shanghai's vibrant skyline and cultural landmarks, witness the breathtaking Avatar-inspired mountains of Zhangjiajie National Forest Park, and discover Beijing's ancient wonders including the Great Wall, Forbidden City, and Temple of Heaven. This complete China adventure combines natural beauty, cultural heritage, and unforgettable experiences with Indian meals throughout.",
+    highlights: [
+      "Shanghai: Jade Buddha Temple, Yuyuan Garden & Bund waterfront",
+      "Zhujiajiao Water Town – 1,700-year-old 'Venice of Shanghai'",
+      "Zhangjiajie National Forest Park – Avatar Hallelujah Mountains",
+      "Tianmen Mountain – Heaven's Gate, Glass Skywalk & Cable Car",
+      "Great Wall of China at Juyongguan Pass – UNESCO World Heritage",
+      "Beijing: Forbidden City, Tiananmen Square & Temple of Heaven",
+      "Hutong Walking Tour & traditional Acrobatic Show",
+      "Huangpu River Night Cruise with stunning city views",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Shanghai",
+        description:
+          "Arrival in Shanghai by flight CX380, arriving at 17:50. Arrive in Shanghai, the financial center of China. Upon arrival, pick up by your local guide at Shanghai Pudong Airport (PVG). Drive to downtown and have dinner. Then transfer to hotel and stay overnight in Shanghai. Meals: Indian dinner. Accommodation: Madison Hotel Shanghai Kongkang (4-star), or similar.",
+      },
+      {
+        day: 2,
+        title: "Explore Shanghai City",
+        description:
+          "Today, the full day city tour takes you to the Jade Buddha Temple, which was built to keep two jade Buddha statues brought from Burma. Next, visit the Yuyuan Garden, a classical garden, and explore the Old Town Quarter where various local snack shops and streets are scattered around. Then wander on the Nanjing Road Walking Street, which is considered to be the 'No. 1 Commercial Street in China'. At last, visit the famous waterfront Bund. It is regarded as the symbol of Shanghai. In the evening, take a cruise on the Huangpu River. Transfer back to hotel and stay overnight in Shanghai. Meals: Breakfast at hotel, Indian lunch, Indian dinner. Accommodation: Madison Hotel Shanghai Kongkang (4-star), or similar.",
+      },
+      {
+        day: 3,
+        title: "Zhujiajiao Water Town",
+        description:
+          "Go to visit the Zhujiajiao Water Town, a well-known and best-preserved water town with a history of more than 1700 years. It is regarded as Shanghai's Venice. After the tour, go back to the city and visit local shopping mall/market. After having dinner, transfer back to hotel. Stay overnight in Shanghai. Meals: Breakfast at hotel, Indian lunch, Indian dinner. Accommodation: Madison Hotel Shanghai Kongkang (4-star), or similar.",
+      },
+      {
+        day: 4,
+        title: "Zhangjiajie - Avatar Mountains",
+        description:
+          "By bullet train G469 (07:04 – 14:18) in the early morning, transfer to Shanghai Hongqiao Railway Station and board the bullet train to Zhangjiajie. Upon arrival, pick up by your local guide at Zhangjiajie Xi Railway Station. Drive to Wulingyuan District and visit the Golden Whip Stream, a breathtaking 5.7 km walking trail and creek that runs through the heart of Zhangjiajie National Forest Park. After having dinner, transfer to hotel and stay overnight in Wulingyuan. Meals: Breakfast at hotel, vegetarian dinner. Accommodation: Renjoy Hotel, Zhangjiajie (4-star), or similar.",
+      },
+      {
+        day: 5,
+        title: "Avatar Mountain Experience",
+        description:
+          "Spend the day to explore the Zhangjiajie National Forest Park. Up to Yuanjiajie Scenic Area by Bailong Elevator, for sightseeing of Back Garden, Mihun Stage, the First Bridge in the World, and Hallelujah Mountains. Then take a shuttle bus to Tianzi Mountain for sightseeing of Helong Park, Fairy Maiden Present Flowers etc. Descend by cable car and go back to hotel. Stay overnight in Wulingyuan. Meals: Breakfast at hotel, vegetarian lunch, vegetarian dinner. Accommodation: Renjoy Hotel, Zhangjiajie (4-star), or similar.",
+      },
+      {
+        day: 6,
+        title: "Heaven Gate Mountain & Fly to Beijing",
+        description:
+          "Drive back to Zhangjiajie and visit Tianmen Mountain, including the Tianmen Cave, the Guigu Wooden Walkways, and the Glass Skywalk. In the afternoon, transfer to Zhangjiajie Airport and board flight CA8610 to Beijing (17:10 – 19:45). Upon arrival, meet your local guide at Beijing Daxing Airport (PKX). Transfer to hotel, collect your packed dinner, and check in. Stay overnight in Beijing. Meals: Breakfast at hotel, vegetarian lunch, vegetarian dinner. Accommodation: Shanxi Hotel, Beijing (4-star), or similar.",
+      },
+      {
+        day: 7,
+        title: "Great Wall of China",
+        description:
+          "In the morning, go to visit the Juyongguan Great Wall, which has been known as the 'Most Powerful Pass Under Heaven'. After hiking on the wall for about 1 to 2 hours, go back to the city. Visit the Beijing Olympic Park to take some pictures of the world-famous Bird's Nest and Water Cube from the outside. Then have a stop at the Pearl Factory. In the evening, enjoy the Acrobatic Show (seats on both sides of the first floor). Transfer back to hotel and stay overnight in Beijing. Meals: Breakfast at hotel, vegetarian lunch, Indian dinner. Accommodation: Shanxi Hotel, Beijing (4-star), or similar.",
+      },
+      {
+        day: 8,
+        title: "Beijing City Tour",
+        description:
+          "Spend the day to visit the highlights in Beijing city. You will visit Tiananmen Square, the biggest square in the world. Then head to the Forbidden City (closed every Monday), the largest and best-preserved ancient palace complex in the world. In the afternoon, visit the Temple of Heaven, where emperors of Ming and Qing would perform rituals essential to the well-being of the country, praying to heaven for good harvests. At last, explore Qianmen Street, a famous commercial street with a history of more than 500 years. Transfer back to hotel and stay overnight in Beijing. Meals: Breakfast at hotel, Indian lunch, Indian dinner. Accommodation: Shanxi Hotel, Beijing (4-star), or similar.",
+      },
+      {
+        day: 9,
+        title: "Departure from Beijing",
+        description:
+          "Departure from Beijing by flight CX335, leaving at 12:05. In the morning, transfer you to Beijing Capital Airport (PEK) for your departure flight. Service ends. Meals: Breakfast at hotel.",
+      },
+    ],
+    inclusions: [
+      "International flights: Bengaluru to Shanghai and return from Beijing (PEK) to Bengaluru",
+      "Internal flight: Economy class airfare from Zhangjiajie to Beijing",
+      "Train travel: Second-class high-speed train tickets from Shanghai to Zhangjiajie",
+      "Ground transport: One experienced driver with air-conditioned coach/bus for all transfers and sightseeing in each city",
+      "Standard twin-sharing rooms at local 4-star hotels as mentioned in the itinerary, with daily breakfast",
+      "All entrance fees to scenic spots and attractions as specified in the itinerary",
+      "Tour guide: One professional English-speaking local guide in each city during sightseeing",
+      "Meals in Shanghai: 02 Indian lunches and 03 Indian dinners (as per itinerary)",
+      "Meals in Zhangjiajie: 02 vegetarian lunches and 02 vegetarian dinners (as per itinerary)",
+      "Meals in Beijing: 01 Indian lunch, 01 vegetarian lunch, 02 Indian dinners, and 01 packed dinner (as per itinerary)",
+      "Tips: Included for local guides and drivers in Shanghai, Zhangjiajie, and Beijing",
+      "Drinking water: Complimentary 2 bottles of drinking water per person per day throughout the tour",
+      "Travel insurance",
+      "5% GST included",
+    ],
+    exclusions: [
+      "Personal expenses: Laundry, telephone calls, minibar, pay channels, and mineral water",
+      "Beverages: Wines, specialty drinks, and snacks not included in the regular menu",
+      "Miscellaneous: Personal shopping, souvenirs, and any items of a personal nature",
+      "Gratuities: Tips of any nature for drivers, local guides, and tour managers (suggested: $3–$5 per person per day)",
+      "Unscheduled meals: Any meals not explicitly mentioned in the itinerary",
+      "Extra items: Snacks, beverages, and special diet meals not prearranged or included in the fixed menu",
+      "Excursions: Any extra sightseeing, city tours, or excursions not described in the inclusions section",
+      "Entry fees: Entrance tickets and local guide fees for optional or self-explored sites",
+      "Mandatory taxes: 5% TCS are not included in the package price",
+      "Visa fees: Any additional costs associated with visa processing",
+      "Visa logistics: In the event the Chinese consulate requires an in-person visit (e.g., to Mumbai), all travel and accommodation expenses must be borne by the customer",
+    ],
+    singleOccupancy: 295000,
+    childPrice: 210000,
+    seoTitle: "China Group Tour Package from Bangalore Karnataka – 9 Days Shanghai Zhangjiajie Beijing | April 2026",
+    seoDescription: "Best China group tour from Bangalore, Karnataka departing April 21, 2026. Visit Shanghai, Avatar Mountains Zhangjiajie & Great Wall Beijing with English-speaking guides. All-inclusive 9-day package with flights from BLR, visa, Indian meals & all sightseeing. Experience Forbidden City, Temple of Heaven & Bund waterfront. Book your China holiday from Karnataka now!",
+    keywords: ["China tour from Bangalore", "China package Karnataka", "Shanghai tour Bangalore", "China group tour Karnataka 2026", "Great Wall tour from Bangalore", "Zhangjiajie Avatar mountains tour", "Best China package Bangalore", "International tour from Karnataka", "Beijing tour package India", "Forbidden City tour Bangalore"]
   },
   {
     id: "12",
@@ -656,7 +696,7 @@ export const tours = [
         day: 3,
         title: "Excursion to Alexandria",
         description:
-          "Travel to Alexandria to explore the Catacombs, Pompey’s Pillar, and Bibliotheca Alexandrina. Stroll along the Corniche before returning to Cairo.",
+          "Travel to Alexandria to explore the Catacombs, Pompey's Pillar, and Bibliotheca Alexandrina. Stroll along the Corniche before returning to Cairo.",
       },
       {
         day: 4,
@@ -668,7 +708,7 @@ export const tours = [
         day: 5,
         title: "Kom Ombo & Edfu Temples",
         description:
-          "Sail to Kom Ombo to visit the Crocodile Temple and Museum. Continue to Edfu to see the Temple of Horus, one of Egypt’s best-preserved temples.",
+          "Sail to Kom Ombo to visit the Crocodile Temple and Museum. Continue to Edfu to see the Temple of Horus, one of Egypt's best-preserved temples.",
       },
       {
         day: 6,
@@ -680,7 +720,7 @@ export const tours = [
         day: 7,
         title: "Valley of the Kings & Hatshepsut Temple – Fly to Cairo",
         description:
-          "Visit the Valley of the Kings and Queen Hatshepsut’s Temple. Stop at the Colossi of Memnon before flying back to Cairo.",
+          "Visit the Valley of the Kings and Queen Hatshepsut's Temple. Stop at the Colossi of Memnon before flying back to Cairo.",
       },
       {
         day: 8,
@@ -712,9 +752,9 @@ export const tours = [
     ],
     singleOccupancy: 119000,
     childPrice: 67000,
-    seoTitle: "8-Day Ancient Egypt Adventure Tour 2026 | Flying Passport Tours",
-    seoDescription: "Discover Egypt’s wonders on our 8-day tour from Bangalore, starting February 11, 2026. Visit Giza Pyramids, Nile River cruise, and more with Indian meals. Book now!",
-    keywords: ["Egypt tour 2026", "Giza Pyramids tour package", "Nile River cruise", "Cairo group tour", "Kannada-guided Egypt tour", "Luxor tour from Bangalore", "Aswan adventure"]
+    seoTitle: "Egypt Group Tour Package from Bangalore Karnataka – 8 Days Cairo Nile Cruise Luxor | February 2026",
+    seoDescription: "Best Egypt group tour from Bangalore, Karnataka departing February 11, 2026. Visit Giza Pyramids, Nile River cruise, Cairo & Luxor with Kannada tour manager. All-inclusive 8-day package with flights from BLR, visa, Indian meals & sightseeing. Book your Egypt holiday from Karnataka now!",
+    keywords: ["Egypt tour from Bangalore", "Egypt package Karnataka", "Pyramids tour Bangalore", "Egypt group tour Karnataka 2026", "Kannada tour manager Egypt", "Nile cruise from Bangalore", "Best Egypt package Bangalore", "International tour from Karnataka", "Cairo tour package India"]
   },
   {
     id: "13",
@@ -818,7 +858,8 @@ export const tours = [
     ],    
     singleOccupancy: 380000,
     childPrice: 240000,
-    seoTitle: "8-Day Japan Highlights Tour 2026 | Flying Passport Tours",
-    seoDescription: "Join our 8-day Japan tour from Bangalore, April 9, 2026. Explore Tokyo, Mt. Fuji, Kyoto, Nara, Osaka, and Hiroshima with Kannada-guided tours and Indian meals. Book now!"
+    seoTitle: "Japan Group Tour Package from Bangalore Karnataka – 8 Days Tokyo Mt Fuji Kyoto Osaka | April 2026",
+    seoDescription: "Best Japan group tour from Bangalore, Karnataka departing April 9, 2026. Visit Tokyo, Mt Fuji, Kyoto temples, Osaka & Hiroshima with English-speaking guides. All-inclusive 8-day package with flights from BLR, visa, Indian meals & bullet train experience. Book your Japan holiday from Karnataka now!",
+    keywords: ["Japan tour from Bangalore", "Japan package Karnataka", "Tokyo tour Bangalore", "Japan group tour Karnataka 2026", "Mt Fuji tour from Bangalore", "Kyoto temple tour", "Best Japan package Bangalore", "International tour from Karnataka", "Osaka tour package India", "Bullet train Japan tour Bangalore"]
   },
 ]

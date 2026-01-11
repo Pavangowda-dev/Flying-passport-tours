@@ -13,11 +13,11 @@ import WhatsAppButton from "@/components/whatsapp-button"
 import PopupForm from "@/components/popup-form"
 import { useState, useEffect, useRef } from "react"
 
-// Updated tour data: Vietnam → Egypt → New 8-Day Japan → Europe
+// Updated tour data: Vietnam → Egypt → Japan → China → Europe
 const upcomingTours = [
   {
     id: "10",
-    title: "7-Day Vietnam Explorer: Da Nang, Hoi An & Ha Long Bay",
+    title: "7-Day Vietnam Tour Package – Da Nang, Ba Na Hills, Hoi An & Ha Long Bay",
     destination: "Vietnam",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170319/vietnam-1_jugc5j.png",
     duration: 7,
@@ -28,7 +28,7 @@ const upcomingTours = [
   },
   {
     id: "12",
-    title: "8-Day Ancient Egypt Adventure",
+    title: "Ancient Egypt in 8 Days – Pyramids, Nile River Cruise & Alexandria",
     destination: "Egypt",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766170847/egypt-1_ru5hfw.png",
     duration: 8,
@@ -39,7 +39,7 @@ const upcomingTours = [
   },
   {
     id: "13",
-    title: "8-Day Japan Highlights: Tokyo to Osaka",
+    title: "Japan Tour Package (8 Days) – Tokyo to Osaka with Kyoto & Hiroshima",
     destination: "Japan",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171360/japan-1_hi52sb.png",
     duration: 8,
@@ -50,13 +50,24 @@ const upcomingTours = [
     departureDate: "April 9, 2026",
   },
   {
+    id: "11",
+    title: "9-Day China Discovery Tour – Shanghai, Zhangjiajie & Beijing",
+    destination: "China",
+    image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1768076171/1_yyuojw.png",
+    duration: 9,
+    price: 257000,
+    description: "Explore China's rich history and modern marvels on this immersive 9-day journey. Experience Shanghai's vibrant skyline, Zhangjiajie's Avatar mountains, and Beijing's ancient wonders including the Great Wall.",
+    highlights: ["Shanghai", "Zhujiajiao Water Town", "Avatar Mountains", "Tianmen Mountain", "Great Wall", "Forbidden City", "Beijing"],
+    departureDate: "April 21, 2026",
+  },
+  {
     id: "6",
-    title: "12-Day European Highlights",
+    title: "12-Day Best of Europe Tour – Paris, Amsterdam, Venice & Rome",
     destination: "Europe",
     image: "https://res.cloudinary.com/ddcacov2l/image/upload/v1766171813/europe-1_dt95nz.png",
     duration: 12,
     price: 327000,
-    description: "Discover the charm of Europe’s iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
+    description: "Discover the charm of Europe's iconic cities with guided tours, Indian meals, and seamless travel arrangements from Bangalore.",
     highlights: ["Paris", "Amsterdam", "Venice", "Rome", "Mt. Titlis"],
     departureDate: "May 5, 2026",
   },
@@ -285,10 +296,37 @@ export default function Home() {
 
   return (
     <div>
+      {/* Enhanced SEO Meta Tags via Next.js Metadata */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          "name": "Flying Passport",
+          "description": "Best travel agency in Bangalore offering international group tours from Karnataka to Vietnam, Egypt, Japan, China, Europe and more with Kannada-guided experiences.",
+          "url": "https://flyingpassports.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "areaServed": ["Bangalore", "Karnataka", "India"],
+          "offers": upcomingTours.map(tour => ({
+            "@type": "Offer",
+            "name": tour.title,
+            "description": tour.description,
+            "price": tour.price,
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "validFrom": tour.departureDate
+          }))
+        })}
+      </script>
+
       {/* Hero Section with Video Background */}
       <HeroSection
         title="Explore the World with Flying Passport"
-        subtitle="Join our unforgettable group tours from Bangalore to Japan, Europe, Kenya, and beyond with Kannada-guided experiences."
+        subtitle="Join our unforgettable group tours from Bangalore to Vietnam, Egypt, Japan, China, Europe and beyond with expert-guided experiences."
         ctaText="Discover Our Tours"
         ctaLink="#upcoming-tours"
         useVideo={true}
@@ -304,9 +342,9 @@ export default function Home() {
       <section id="upcoming-tours" className="py-12 md:py-16 mb-8 md:mb-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Upcoming Group Tours</h2>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Upcoming Group Tours from Bangalore</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Join the best travel agency in Bangalore for budget-friendly international group tours from Karnataka
+              Join the best travel agency in Bangalore for budget-friendly international group tours from Karnataka with Indian meals and seamless travel arrangements
             </p>
           </div>
 
@@ -317,7 +355,7 @@ export default function Home() {
                   <div className="relative h-48">
                     <Image
                       src={tour.image || "/placeholder.svg"}
-                      alt={`${tour.title} from Bangalore with Flying Passport`}
+                      alt={`${tour.destination} group tour from Bangalore Karnataka - ${tour.title} with Flying Passport`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -385,7 +423,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-10">
             <Button asChild className="bg-secondary hover:bg-accent hover:text-primary transition-colors">
-              <Link href="/tours">See All Group Tours</Link>
+              <Link href="/tours">See All Group Tours from Karnataka</Link>
             </Button>
           </div>
         </div>
@@ -397,7 +435,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Our Group Tour Adventures</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Experience our tours through our videos
+              Experience our international tours from Bangalore through our travelers' videos
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -421,7 +459,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Travelers Gallery</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Memories from our international group tours with Flying Passport.
+              Memories from our international group tours with Flying Passport from Bangalore, Karnataka.
             </p>
           </div>
           <div className="flex flex-row overflow-x-auto overflow-y-hidden gap-4 snap-x snap-mandatory pb-4">
@@ -445,7 +483,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">What Our Travelers Say</h2>
             <p className="text-white/80 max-w-2xl mx-auto">
-              Hear from travelers who traveled with us for us
+              Hear from Karnataka travelers who explored the world with Flying Passport
             </p>
           </div>
           <TestimonialSlider testimonials={testimonials} />
@@ -486,7 +524,7 @@ export default function Home() {
               </div>
               <h3 className="font-serif font-bold text-xl mb-2">Authentic Experiences</h3>
               <p className="text-sm text-muted-foreground">
-                Our <strong>Kannada-guided group tours</strong> deliver immersive experiences beyond typical tourist spots.
+                Our <strong>expert-guided group tours</strong> deliver immersive experiences beyond typical tourist spots.
               </p>
             </div>
           </div>

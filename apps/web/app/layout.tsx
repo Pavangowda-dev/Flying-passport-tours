@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Flying Passport" }],
   robots: "index, follow",
   openGraph: {
-    title: "Flying Passport | Best Travel Agency in Bangalore",
+    title: "Flying Passport | Best Travel Agency in Karnataka",
     description: "Join affordable group tours from Bangalore to Japan, Europe, Kenya, and more with Flying Passport.",
     type: "website",
     url: "https://flyingpassports.com",
