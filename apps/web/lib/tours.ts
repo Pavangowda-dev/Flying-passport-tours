@@ -89,7 +89,6 @@ export const tours = [
       "Hot air balloon ride over Cappadocia",
       "Visit the ancient city of Ephesus",
       "Relax at Pamukkale's thermal pools",
-      "Experience Turkish baths and cuisine",
       "Shop at the Grand Bazaar",
     ],
     itinerary: [
