@@ -6,9 +6,7 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
-import { getAssetUrl } from "@/lib/image-url"
 
-// Update the navLinks array to the correct order
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Group Tours", href: "/tours" },
@@ -34,11 +32,7 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    document.body.style.overflow = isOpen ? "hidden" : ""
     return () => {
       document.body.style.overflow = ""
     }
@@ -48,53 +42,48 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full",
-        isHomePage ? (isScrolled ? "bg-primary shadow-md py-2" : "bg-transparent py-3") : "bg-primary shadow-md py-2",
+        isHomePage
+          ? isScrolled
+            ? "bg-primary shadow-md py-5"
+            : "bg-transparent py-8"
+          : "bg-primary shadow-md py-5",
       )}
     >
-      <div className="container mx-auto px-3 sm:px-4 flex items-center justify-between max-w-7xl">
-        <Link href="/" className="relative z-10 flex-shrink-0">
-          <div className="flex items-center">
-            <Image
-              src={getAssetUrl("logo/flying-passport-logo.png")}
-              alt="Flying Passport Logo"
-              width={isHomePage ? (isScrolled ? 60 : 70) : 60}
-              height={isHomePage ? (isScrolled ? 60 : 70) : 60}
-              className="transition-all duration-300"
-              priority
-              quality={95}
-            />
-            <span
-              className={cn(
-                "ml-3 sm:ml-4 text-white font-serif font-bold transition-all duration-300",
-                "text-base sm:text-lg lg:text-xl xl:text-2xl",
-              )}
-            >
-              Flying Passport Tours
-            </span>
-          </div>
+      <div className="container mx-auto px-6 flex items-center justify-between max-w-7xl">
+
+        {/* 🔥 BIG LOGO FIX */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="https://pub-74c3db65b54e468b90a9796527e32c3d.r2.dev/logo/flying-passport%20tours-logo.png"
+            alt="Flying Passport Logo"
+            width={isHomePage ? (isScrolled ? 140 : 180) : 140}
+            height={isHomePage ? (isScrolled ? 140 : 180) : 140}
+            className="h-auto w-auto max-h-[90px] md:max-h-[120px] transition-all duration-300 object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="relative text-white hover:text-secondary transition-colors duration-200 text-sm lg:text-base font-medium whitespace-nowrap group"
+              className="relative text-white hover:text-secondary transition-colors duration-200 text-lg font-medium group"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-[-6px] left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-white z-10 p-2 flex-shrink-0"
+          className="lg:hidden text-white p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
         {/* Mobile Navigation */}
@@ -107,35 +96,31 @@ export default function Header() {
         >
           <div
             className={cn(
-              "absolute top-0 right-0 w-64 max-w-[80vw] bg-background flex flex-col h-full overflow-y-auto shadow-lg transition-transform duration-300",
+              "absolute top-0 right-0 w-72 max-w-[85vw] bg-background flex flex-col h-full shadow-lg transition-transform duration-300",
               isOpen ? "translate-x-0" : "translate-x-full",
             )}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center p-4 mb-4">
-              <Link href="/" onClick={() => setIsOpen(false)}>
-                <div className="flex items-center">
-                  <Image
-                    src={getAssetUrl("logo/flying-passport-logo.png")}
-                    alt="Flying Passport Logo"
-                    width={60}
-                    height={60}
-                    quality={95}
-                  />
-                  <span className="ml-4 text-primary font-serif font-bold text-xl">Flying Passport</span>
-                </div>
-              </Link>
-              <button onClick={() => setIsOpen(false)} aria-label="Close menu" className="p-2">
-                <X size={24} className="text-primary" />
+            <div className="flex justify-between items-center p-5 mb-4">
+              <Image
+                src="https://pub-74c3db65b54e468b90a9796527e32c3d.r2.dev/logo/flying-passport%20tours-logo.png"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="object-contain"
+              />
+              <button onClick={() => setIsOpen(false)}>
+                <X size={28} />
               </button>
             </div>
-            <nav className="flex flex-col space-y-2 px-4 pb-4">
+
+            <nav className="flex flex-col space-y-4 px-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-primary hover:text-secondary transition-colors duration-200 text-lg font-medium py-2 border-b border-muted last:border-b-0"
                   onClick={() => setIsOpen(false)}
+                  className="text-primary text-lg font-medium border-b pb-2"
                 >
                   {link.name}
                 </Link>

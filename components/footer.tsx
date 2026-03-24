@@ -100,7 +100,7 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 mt-0.5 text-secondary flex-shrink-0" />
                 <address className="text-sm not-italic leading-relaxed">
-                  Flying Passport, 1st Floor, MD Plaza near CBI office, Ganganagar, Bengaluru, Karnataka 560024
+                  Flying Passport, No 89, RK Arcade, Muddinapalya Rd, Yashaswini Layout, Lakshmayya Layout, Vishveshvaraiah Nagar, Ganganagar, Bengaluru, Karnataka 560091
                 </address>
               </li>
             </ul>
