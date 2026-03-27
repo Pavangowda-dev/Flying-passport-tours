@@ -200,8 +200,8 @@ export default function ContactPage() {
                     <h3 className="font-bold">Office Address</h3>
                     <address className="text-muted-foreground not-italic">
                       Flying Passport <br />
-                      1st Floor, MD Plaza near CBI office <br />
-                      Ganganagar, Bengaluru, Karnataka 560024
+                      No 89, RK Arcade, Muddinapalya Rd, Yashaswini Layout, <br />
+                      Lakshmayya Layout, Vishveshvaraiah Nagar, Ganganagar, Bengaluru, Karnataka 560091
                     </address>
                   </div>
                 </div>

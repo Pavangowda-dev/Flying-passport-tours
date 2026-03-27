@@ -6,15 +6,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { createBrowserClientSupabase } from '@/lib/supabase/client';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { supabase } from '@/lib/supabase/client';
 
-// Updated destinations list with Vietnam added
+// ✅ Updated real tours
 const destinations = [
-  { value: 'vietnam', label: 'Vietnam Explorer (7 Days)' },
-  { value: 'egypt', label: 'Ancient Egypt Adventure' },
-  { value: '8-Day Japan Highlights: Tokyo to Osaka', label: '8-Day Japan Highlights: Tokyo to Osaka' },
-  { value: 'europe', label: 'European Highlights' },
+  { value: 'vietnam_7_days', label: '7 Days Vietnam Tour' },
+  { value: 'scandinavia_10_days', label: '10 Days Scandinavia Tour' },
+  { value: 'kenya_6_days', label: '6 Days Kenya Safari' },
 ];
 
 export default function PopupForm() {
@@ -23,188 +28,175 @@ export default function PopupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     mobile_number: '',
     preferred_destination: '',
   });
 
+  // ✅ Show popup after 2 interactions
   useEffect(() => {
     const hasClosed = sessionStorage.getItem('popupClosed');
-    console.log('Initial state - popupClosed:', hasClosed, 'isClosed:', isClosed, 'isVisible:', isVisible);
     if (hasClosed === 'true') {
       setIsClosed(true);
       return;
     }
 
     const handleInteraction = (e: MouseEvent) => {
-      // Don't count interactions within the popup itself
-      if (e.target && (e.target as Element).closest('.popup-form')) {
-        return;
-      }
+      if ((e.target as Element)?.closest('.popup-form')) return;
 
-      // Get current interaction count
-      let interactionCount = parseInt(sessionStorage.getItem('popupInteractions') || '0', 10);
+      let interactionCount = parseInt(
+        sessionStorage.getItem('popupInteractions') || '0',
+        10
+      );
+
       interactionCount += 1;
       sessionStorage.setItem('popupInteractions', interactionCount.toString());
-      
-      console.log('Interaction detected - Count:', interactionCount, 'isClosed:', isClosed);
-      
-      // Show popup on second interaction (count >= 2) and if not closed
+
       if (interactionCount >= 2 && !isClosed) {
-        console.log('Second interaction detected - showing popup');
-        // Add a small delay for smooth appearance
-        setTimeout(() => {
-          setIsVisible(true);
-        }, 500);
+        setTimeout(() => setIsVisible(true), 400);
       }
     };
 
-    // Add global click listener
     document.addEventListener('click', handleInteraction);
-
-    // Cleanup listener
-    return () => {
-      document.removeEventListener('click', handleInteraction);
-    };
+    return () => document.removeEventListener('click', handleInteraction);
   }, [isClosed]);
 
+  // ✅ Close popup
   const handleClose = () => {
     setIsVisible(false);
     setIsClosed(true);
     setError(null);
     sessionStorage.setItem('popupClosed', 'true');
-    console.log('Popup closed, sessionStorage set to true');
   };
 
+  // ✅ Submit handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
-    const mobileRegex = /^\+?[1-9]\d{1,14}$/;
+    // Validation
+    if (!formData.name.trim()) {
+      setError('Name is required');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const mobileRegex = /^\+?[1-9]\d{7,14}$/;
     if (!mobileRegex.test(formData.mobile_number)) {
-      setError('Please enter a valid mobile number (e.g., +919876543210)');
+      setError('Enter valid mobile number (e.g., +919876543210)');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.preferred_destination) {
+      setError('Please select a destination');
       setIsSubmitting(false);
       return;
     }
 
     try {
-      const supabase = createBrowserClientSupabase();
-      const { error } = await supabase
-        .from('homepage_inquiries')
-        .insert([
-          {
-            name: formData.name.trim(),
-            mobile_number: formData.mobile_number.trim(),
-            preferred_destination: formData.preferred_destination,
-            created_at: new Date().toISOString(),
-          },
-        ]);
+      const { error } = await supabase.from('homepage_inquiries').insert([
+        {
+          name: formData.name.trim(),
+          mobile_number: formData.mobile_number.trim(),
+          preferred_destination: formData.preferred_destination,
+        },
+      ]);
 
       if (error) {
+        console.error(error);
         throw new Error(error.message);
       }
 
-      setIsSubmitting(false);
+      // ✅ Success flow
       setIsSuccess(true);
+      setFormData({
+        name: '',
+        mobile_number: '',
+        preferred_destination: '',
+      });
 
       setTimeout(() => {
         setIsSuccess(false);
         handleClose();
-        setFormData({ name: '', mobile_number: '', preferred_destination: '' });
       }, 2000);
     } catch (err: any) {
+      console.error(err);
+      setError('Failed to submit. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setError('Failed to submit form. Please try again.');
-      console.error('Submission error:', err.message || err);
     }
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('Name input change:', e.target.value);
-    setFormData({ ...formData, name: e.target.value });
-  };
-
-  const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('Mobile input change:', e.target.value);
-    setFormData({ ...formData, mobile_number: e.target.value });
-  };
-
-  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    console.log('Input focused:', e.target.id);
-  };
-
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    console.log('Input blurred:', e.target.id);
-  };
-
-  if (!isVisible) {
-    return null;
-  }
+  if (!isVisible) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 popup-form">
       <Card className="w-full max-w-md relative animate-in fade-in zoom-in duration-300">
         <button
           onClick={handleClose}
-          className="absolute max-sm:top-0 max-sm:right-0 max-sm:p-2 top-3 right-3 p-1 rounded-full hover:bg-muted transition-colors z-10"
-          aria-label="Close"
+          className="absolute top-3 right-3 p-1 rounded-full hover:bg-muted"
         >
-          <X size={18} className="max-sm:size-5" />
+          <X size={18} />
         </button>
+
         <CardContent className="p-6">
           <div className="text-center mb-6">
-            <h2 className="font-serif font-bold text-2xl mb-2">Ready to Explore with Flying Passport?</h2>
-            <p className="text-muted-foreground">Fill out this form and we'll contact you soon</p>
+            <h2 className="font-serif font-bold text-2xl mb-2">
+              Plan Your Next Trip ✈️
+            </h2>
+            <p className="text-muted-foreground text-sm">
+              Tell us your interest & we’ll call you shortly
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Name */}
             <div className="space-y-2">
-              <Label htmlFor="popup-name">Name</Label>
+              <Label>Name</Label>
               <Input
-                key="name-input"
-                id="popup-name"
                 placeholder="Your Name"
-                required
                 value={formData.name}
-                onChange={handleNameChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
               />
             </div>
 
+            {/* Mobile */}
             <div className="space-y-2">
-              <Label htmlFor="popup-mobile">Mobile Number</Label>
+              <Label>Mobile Number</Label>
               <Input
-                key="mobile-input"
-                id="popup-mobile"
                 type="tel"
-                placeholder="e.g., +919876543210"
-                required
+                placeholder="+919876543210"
                 value={formData.mobile_number}
-                onChange={handleMobileChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    mobile_number: e.target.value,
+                  })
+                }
                 disabled={isSubmitting}
-                readOnly={false}
-                autoComplete="tel"
-                className="focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
               />
             </div>
 
+            {/* Destination */}
             <div className="space-y-2">
-              <Label htmlFor="popup-destination">Preferred Destination</Label>
+              <Label>Preferred Destination</Label>
               <Select
-                required
                 value={formData.preferred_destination}
-                onValueChange={(value) => {
-                  console.log('Selected destination:', value);
-                  setFormData({ ...formData, preferred_destination: value });
-                }}
+                onValueChange={(value) =>
+                  setFormData({
+                    ...formData,
+                    preferred_destination: value,
+                  })
+                }
               >
-                <SelectTrigger id="popup-destination">
-                  <SelectValue placeholder="Select Destination" />
+                <SelectTrigger>
+                  <SelectValue placeholder="Select destination" />
                 </SelectTrigger>
                 <SelectContent>
                   {destinations.map((dest) => (
@@ -216,21 +208,25 @@ export default function PopupForm() {
               </Select>
             </div>
 
+            {/* Submit */}
             <Button
               type="submit"
-              className="w-full bg-secondary hover:bg-accent hover:text-primary transition-colors"
+              className="w-full bg-secondary hover:bg-accent hover:text-primary"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : "Let's Go"}
+              {isSubmitting ? 'Submitting...' : 'Get a Call Back'}
             </Button>
 
+            {/* Success */}
             {isSuccess && (
-              <div className="p-3 bg-green-100 text-green-800 rounded-md text-center">
-                Thanks for reaching out! One of our travel experts will be in touch within 12 hours.
+              <div className="p-3 bg-green-100 text-green-800 rounded-md text-center text-sm">
+                Submitted! Our team will contact you soon.
               </div>
             )}
+
+            {/* Error */}
             {error && (
-              <div className="p-3 bg-red-100 text-red-800 rounded-md text-center">
+              <div className="p-3 bg-red-100 text-red-800 rounded-md text-center text-sm">
                 {error}
               </div>
             )}

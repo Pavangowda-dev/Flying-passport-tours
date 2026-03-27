@@ -1,28 +1,34 @@
 'use client';
 
-import { useState, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { submitBooking } from "@/actions/booking"
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { submitBooking } from "@/actions/booking";
 
 const destinations = [
-  { value: "kenya", label: "Kenya" },
-  { value: "vietnam", label: "Vietnam" },
-  { value: "scandinavia", label: "Scandinavia" },
-]
+  { value: "vietnam_7_days", label: "7 Days Vietnam Tour" },
+  { value: "scandinavia_10_days", label: "10 Days Scandinavia Tour" },
+  { value: "kenya_6_days", label: "6 Days Kenya Safari" },
+];
 
 interface BookingFormProps {
-  tourId?: string
-  tourTitle?: string
-  departureDate?: string
+  tourId?: string;
+  tourTitle?: string;
+  departureDate?: string;
 }
 
 interface FormState {
-  success: boolean
-  message: string
+  success: boolean;
+  message: string;
 }
 
 export default function BookingForm({
@@ -33,64 +39,58 @@ export default function BookingForm({
   const [state, setState] = useState<FormState>({
     success: false,
     message: "",
-  })
+  });
 
-  const [isPending, setIsPending] = useState(false)
-  const [contactType, setContactType] = useState("whatsapp")
-  const [destination, setDestination] = useState("")
+  const [isPending, setIsPending] = useState(false);
+  const [contactType, setContactType] = useState("whatsapp");
+  const [destination, setDestination] = useState("");
 
-  const formRef = useRef<HTMLFormElement>(null)
-
-  const contactLabel =
-    contactType === "whatsapp"
-      ? "Your WhatsApp Number"
-      : "Your Email Address"
-
-  const contactPlaceholder =
-    contactType === "whatsapp"
-      ? "e.g., +919876543210"
-      : "e.g., your.email@example.com"
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
 
-    setIsPending(true)
-    setState({ success: false, message: "" })
+    setIsPending(true);
+    setState({ success: false, message: "" });
 
     try {
       if (!tourTitle && destination) {
-        formData.set("destination", destination)
+        formData.set("destination", destination);
       }
 
-      const result = await submitBooking(formData)
+      const result = await submitBooking(formData);
 
-      setState(result)
+      setState(result);
 
       if (result.success) {
-        formRef.current?.reset()
-        setDestination("")
-        setContactType("whatsapp")
+        formRef.current?.reset();
+        setDestination("");
+        setContactType("whatsapp");
       }
     } catch (error: any) {
       setState({
         success: false,
-        message: error.message || "Failed to submit booking. Please try again.",
-      })
+        message: "Failed to submit booking.",
+      });
     } finally {
-      setIsPending(false)
+      setIsPending(false);
     }
-  }
+  };
+
+  const contactLabel =
+    contactType === "whatsapp"
+      ? "WhatsApp Number"
+      : "Email Address";
 
   return (
     <div className="space-y-4">
+      {/* Departure */}
       <div className="bg-muted p-3 rounded-lg text-center">
-        <p className="text-sm font-medium text-muted-foreground">
-          Departure Date
-        </p>
-        <p className="font-serif font-bold text-lg">
-          {departureDate || "Dates will be announced soon"}
+        <p className="text-sm text-muted-foreground">Departure</p>
+        <p className="font-bold">
+          {departureDate || "Dates coming soon"}
         </p>
       </div>
 
@@ -98,54 +98,59 @@ export default function BookingForm({
         <input type="hidden" name="tourTitle" value={tourTitle || ""} />
         <input type="hidden" name="tourId" value={tourId || ""} />
         <input type="hidden" name="contactType" value={contactType} />
-        {!tourTitle && <input type="hidden" name="destination" value={destination} />}
 
+        {!tourTitle && (
+          <input type="hidden" name="destination" value={destination} />
+        )}
+
+        {/* Name */}
         <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" placeholder="Your Name" required />
+          <Label>Name</Label>
+          <Input name="name" placeholder="Your Name" required />
         </div>
 
+        {/* Contact Type */}
         <div className="space-y-2">
           <Label>Contact Method</Label>
           <RadioGroup
             value={contactType}
             onValueChange={setContactType}
-            className="flex space-x-4"
+            className="flex gap-4"
           >
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="whatsapp" id="whatsapp-option" />
-              <Label htmlFor="whatsapp-option">WhatsApp</Label>
+              <RadioGroupItem value="whatsapp" id="whatsapp" />
+              <Label htmlFor="whatsapp">WhatsApp</Label>
             </div>
 
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="email" id="email-option" />
-              <Label htmlFor="email-option">Email</Label>
+              <RadioGroupItem value="email" id="email" />
+              <Label htmlFor="email">Email</Label>
             </div>
           </RadioGroup>
         </div>
 
+        {/* Contact Input */}
         <div className="space-y-2">
-          <Label htmlFor="contactValue">{contactLabel}</Label>
+          <Label>{contactLabel}</Label>
           <Input
-            id="contactValue"
             name="contactValue"
             type={contactType === "email" ? "email" : "tel"}
-            placeholder={contactPlaceholder}
-            required
-            pattern={
-              contactType === "whatsapp"
-                ? "^[0-9+\\-\\s]{8,15}$"
-                : undefined
+            placeholder={
+              contactType === "email"
+                ? "your@email.com"
+                : "+919876543210"
             }
+            required
           />
         </div>
 
+        {/* Destination */}
         {!tourTitle && (
           <div className="space-y-2">
-            <Label htmlFor="destination">Preferred Destination</Label>
-            <Select value={destination} onValueChange={setDestination} required>
-              <SelectTrigger id="destination">
-                <SelectValue placeholder="Select Destination" />
+            <Label>Destination</Label>
+            <Select value={destination} onValueChange={setDestination}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select Tour" />
               </SelectTrigger>
               <SelectContent>
                 {destinations.map((dest) => (
@@ -158,17 +163,19 @@ export default function BookingForm({
           </div>
         )}
 
+        {/* Submit */}
         <Button
           type="submit"
-          className="w-full bg-secondary hover:bg-accent hover:text-primary transition-colors"
+          className="w-full bg-secondary hover:bg-accent hover:text-primary"
           disabled={isPending}
         >
           {isPending ? "Submitting..." : "Book Now"}
         </Button>
 
+        {/* Result */}
         {state.message && (
           <div
-            className={`p-3 rounded-md text-center ${
+            className={`p-3 rounded-md text-center text-sm ${
               state.success
                 ? "bg-green-100 text-green-800"
                 : "bg-red-100 text-red-800"
@@ -179,5 +186,5 @@ export default function BookingForm({
         )}
       </form>
     </div>
-  )
+  );
 }

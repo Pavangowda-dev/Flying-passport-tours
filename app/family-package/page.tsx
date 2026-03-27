@@ -6,95 +6,217 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Toast from "@radix-ui/react-toast";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { useFormState, useFormStatus } from "react-dom";
 import { submitNotifyMe } from "@/actions/notify-me";
 
-interface NotifyMeFormState {
-  success: boolean;
-  message: string;
-}
+const TOUR_TYPES = ["Family", "Couple", "Friends", "Solo", "Corporate", "Honeymoon", "Other"];
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button
-      type="submit"
-      className="bg-secondary hover:bg-accent hover:text-primary"
-      disabled={pending}
-    >
-      {pending ? "Submitting..." : "Submit"}
-    </Button>
-  );
-}
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
 
 function NotifyMeForm({ setIsModalOpen }: { setIsModalOpen: (open: boolean) => void }) {
-  const initialState: NotifyMeFormState = { success: false, message: "" };
-  const [state, formAction] = useFormState(submitNotifyMe, initialState);
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    mobileNumber: "",
+    tourType: "",
+    preferredDestination: "",
+    preferredMonth: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [state, setState] = useState<{ success: boolean; message: string }>({
+    success: false,
+    message: "",
+  });
 
-  // Close dialog after successful submission
-  useEffect(() => {
-    if (state.success) {
-      const timer = setTimeout(() => {
-        setIsModalOpen(false);
-        setMobileNumber("");
-        setError("");
-      }, 2000); // Close after 2 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [state.success, setIsModalOpen]);
+  const validateMobileNumber = (number: string) =>
+    /^\+?[1-9]\d{7,14}$/.test(number);
 
-  const validateMobileNumber = (number: string) => {
-    return /^\+?[1-9]\d{1,14}$/.test(number);
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMobileNumber(e.target.value);
-    setError("");
-  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setState({ success: false, message: "" });
 
-  const handleSubmit = (formData: FormData) => {
-    if (!validateMobileNumber(mobileNumber)) {
-      setError("Please enter a valid mobile number (e.g., +919876543210)");
+    if (!formData.name.trim()) {
+      setState({ success: false, message: "Please enter your name." });
+      setIsSubmitting(false);
       return;
     }
-    formAction(formData);
+
+    if (!validateMobileNumber(formData.mobileNumber)) {
+      setState({
+        success: false,
+        message: "Please enter a valid mobile number (e.g., +919876543210)",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("mobileNumber", formData.mobileNumber);
+      data.append("tourType", formData.tourType);
+      data.append("preferredDestination", formData.preferredDestination);
+      data.append("preferredMonth", formData.preferredMonth);
+
+      const result = await submitNotifyMe(data);
+      setState(result);
+
+      if (result.success) {
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setFormData({
+            name: "",
+            mobileNumber: "",
+            tourType: "",
+            preferredDestination: "",
+            preferredMonth: "",
+          });
+          setState({ success: false, message: "" });
+        }, 2000);
+      }
+    } catch {
+      setState({ success: false, message: "Failed to submit. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <form action={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Name */}
       <div>
-        <Label htmlFor="mobileNumber">Mobile Number</Label>
+        <Label htmlFor="name">
+          Full Name <span className="text-red-500">*</span>
+        </Label>
+        <Input
+          id="name"
+          type="text"
+          placeholder="Rahul"
+          value={formData.name}
+          onChange={(e) => handleChange("name", e.target.value)}
+          disabled={isSubmitting}
+        />
+      </div>
+
+      {/* Mobile Number */}
+      <div>
+        <Label htmlFor="mobileNumber">
+          Mobile Number <span className="text-red-500">*</span>
+        </Label>
         <Input
           id="mobileNumber"
-          name="mobileNumber"
           type="tel"
           placeholder="+919876543210"
-          value={mobileNumber}
-          onChange={handleChange}
-          className={error || state.success === false ? "border-red-500" : ""}
-          disabled={state.success}
+          value={formData.mobileNumber}
+          onChange={(e) => handleChange("mobileNumber", e.target.value)}
+          disabled={isSubmitting}
+          className={
+            state.message && !state.success && state.message.includes("mobile")
+              ? "border-red-500"
+              : ""
+          }
         />
-        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-        {state.message && !error && (
-          <p className={cn("text-sm mt-1", state.success ? "text-green-500" : "text-red-500")}>
-            {state.message}
-          </p>
-        )}
       </div>
-      <div className="flex justify-end space-x-2">
+
+      {/* Tour Type */}
+      <div>
+        <Label htmlFor="tourType">Tour Type</Label>
+        <Select
+          value={formData.tourType}
+          onValueChange={(val) => handleChange("tourType", val)}
+          disabled={isSubmitting}
+        >
+          <SelectTrigger id="tourType">
+            <SelectValue placeholder="Select tour type" />
+          </SelectTrigger>
+          <SelectContent>
+            {TOUR_TYPES.map((type) => (
+              <SelectItem key={type} value={type}>
+                {type}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Preferred Destination */}
+      <div>
+        <Label htmlFor="preferredDestination">Preferred Destination</Label>
+        <Input
+          id="preferredDestination"
+          type="text"
+          placeholder="e.g. Bali, Europe, Japan..."
+          value={formData.preferredDestination}
+          onChange={(e) => handleChange("preferredDestination", e.target.value)}
+          disabled={isSubmitting}
+        />
+      </div>
+
+      {/* Preferred Month */}
+      <div>
+        <Label htmlFor="preferredMonth">Preferred Month</Label>
+        <Select
+          value={formData.preferredMonth}
+          onValueChange={(val) => handleChange("preferredMonth", val)}
+          disabled={isSubmitting}
+        >
+          <SelectTrigger id="preferredMonth">
+            <SelectValue placeholder="Select a month" />
+          </SelectTrigger>
+          <SelectContent>
+            {MONTHS.map((month) => (
+              <SelectItem key={month} value={month}>
+                {month}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Feedback Message */}
+      {state.message && (
+        <p
+          className={cn(
+            "text-sm mt-1",
+            state.success ? "text-green-500" : "text-red-500"
+          )}
+        >
+          {state.message}
+        </p>
+      )}
+
+      {/* Actions */}
+      <div className="flex justify-end space-x-2 pt-2">
         <Dialog.Close asChild>
-          <Button variant="outline" disabled={state.success}>
+          <Button variant="outline" type="button" disabled={isSubmitting}>
             Cancel
           </Button>
         </Dialog.Close>
-        <SubmitButton />
+        <Button
+          type="submit"
+          className="bg-secondary hover:bg-accent hover:text-primary"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </Button>
       </div>
     </form>
   );
@@ -111,33 +233,42 @@ export default function FamilyPackagePage() {
   const [toastType, setToastType] = useState<"success" | "error">("success");
 
   useEffect(() => {
-    if (toastMessage) {
-      setToastOpen(true);
-    }
+    if (toastMessage) setToastOpen(true);
   }, [toastMessage]);
 
   return (
     <div className="pt-28 md:pt-32 pb-8 md:pb-16">
       <WhatsAppButton alwaysVisible={true} />
+
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-6">Family Package</h1>
+          <h1 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
+            Family Package
+          </h1>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg md:text-xl">
             Special travel packages designed for families to create unforgettable memories together
           </p>
         </div>
+
+        {/* Main Card */}
         <div className="max-w-4xl mx-auto">
           <Card className="text-center p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-accent/10">
             <CardContent className="space-y-8">
               <div className="w-24 h-24 mx-auto bg-secondary/20 rounded-full flex items-center justify-center">
                 <Heart size={48} className="text-secondary" />
               </div>
+
               <div>
-                <h2 className="font-serif font-bold text-2xl md:text-3xl mb-4">Coming Soon!</h2>
+                <h2 className="font-serif font-bold text-2xl md:text-3xl mb-4">
+                  Coming Soon!
+                </h2>
                 <p className="text-muted-foreground text-lg mb-6">
                   We're working on something special for families. Our family packages will include:
                 </p>
               </div>
+
+              {/* Features */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                 <div className="flex items-start space-x-3">
                   <Users size={24} className="text-secondary mt-1 flex-shrink-0" />
@@ -148,6 +279,7 @@ export default function FamilyPackagePage() {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex items-start space-x-3">
                   <Clock size={24} className="text-secondary mt-1 flex-shrink-0" />
                   <div>
@@ -157,6 +289,7 @@ export default function FamilyPackagePage() {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex items-start space-x-3">
                   <Heart size={24} className="text-secondary mt-1 flex-shrink-0" />
                   <div>
@@ -167,37 +300,46 @@ export default function FamilyPackagePage() {
                   </div>
                 </div>
               </div>
+
+              {/* Notify Section */}
               <div className="bg-white/50 rounded-lg p-6">
                 <h3 className="font-serif font-bold text-xl mb-4">Stay Updated</h3>
                 <p className="text-muted-foreground mb-4">
-                  Be the first to know when our family packages are available. We'll notify you as soon as we launch!
+                  Be the first to know when our family packages are available.
+                  We'll notify you as soon as we launch!
                 </p>
+
                 <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
                   <Dialog.Trigger asChild>
                     <Button className="bg-secondary hover:bg-accent hover:text-primary transition-colors">
                       Notify Me When Available
                     </Button>
                   </Dialog.Trigger>
+
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-background rounded-lg p-6 w-full max-w-md z-50">
-                      <Dialog.Title className="font-serif font-bold text-xl mb-4">
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-background rounded-lg p-6 w-full max-w-md z-50 max-h-[90vh] overflow-y-auto">
+                      <Dialog.Title className="font-serif font-bold text-xl mb-2">
                         Get Notified
                       </Dialog.Title>
                       <Dialog.Description className="text-muted-foreground mb-4">
-                        Enter your mobile number to receive updates on family package availability.
+                        Fill in your details to receive updates on family package availability.
                       </Dialog.Description>
+
                       <NotifyMeForm setIsModalOpen={setIsModalOpen} />
                     </Dialog.Content>
                   </Dialog.Portal>
                 </Dialog.Root>
               </div>
+
               <div className="text-sm text-muted-foreground">
-                <p>Expected Launch: Q2 2025</p>
+                <p>Expected Launch: Q2 2026</p>
               </div>
             </CardContent>
           </Card>
         </div>
+
+        {/* Contact Section */}
         <div className="text-center mt-12 md:mt-16">
           <h3 className="font-serif font-bold text-xl md:text-2xl mb-4">Have Questions?</h3>
           <p className="text-muted-foreground mb-6">
@@ -205,11 +347,13 @@ export default function FamilyPackagePage() {
           </p>
           <div className="flex justify-center">
             <Button variant="outline" asChild>
-              <Link href="/contact">Call Us</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Toast Notification */}
       <Toast.Provider swipeDirection="right">
         <Toast.Root
           open={toastOpen}

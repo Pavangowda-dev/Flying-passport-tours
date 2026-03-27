@@ -10,8 +10,6 @@ interface ContactFormState {
 export async function submitContactForm(
   formData: FormData
 ): Promise<ContactFormState> {
-  console.log("Starting contact form submission");
-
   try {
     const supabase = createServerSupabaseClient();
 
@@ -21,59 +19,52 @@ export async function submitContactForm(
     const contactMethod = formData.get("contactMethod")?.toString();
     const message = formData.get("message")?.toString().trim();
 
-    // Validation
+    // ✅ Validation
     if (!name || !email || !contactMethod || !message) {
-      return { success: false, message: "Please fill in all required fields." };
+      return { success: false, message: "Please fill all required fields." };
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return { success: false, message: "Invalid email address." };
     }
 
-    if (!["email", "phone"].includes(contactMethod)) {
+    if (!["email", "phone"].includes(contactMethod!)) {
       return { success: false, message: "Invalid contact method." };
     }
 
     if (phone && !/^\+?[1-9]\d{1,14}$/.test(phone)) {
-      return { success: false, message: "Invalid phone number (e.g., +919876543210)." };
+      return { success: false, message: "Invalid phone number." };
     }
 
-    const insertData = {
-      name,
-      email,
-      phone,
-      contact_method: contactMethod,
-      message,
-      // Do not include: id (auto), created_at (auto), confirmed (default false)
-    };
-
-    console.log("Submitting to Supabase contact_messages:", insertData);
-
-    const { error } = await supabase.from("contact_messages").insert([insertData]);
+    // ✅ Insert into DB
+    const { error } = await supabase.from("contact_messages").insert([
+      {
+        name,
+        email,
+        phone,
+        contact_method: contactMethod,
+        message,
+      },
+    ]);
 
     if (error) {
-      console.error("Supabase insert error:", error);
-
-      if (error.code === "42501") {
-        return { success: false, message: "Permission denied: Check RLS policies." };
-      }
-
-      if (error.code === "23514") {
-        return { success: false, message: "Invalid data: Check field values." };
-      }
-
-      return { success: false, message: `Message failed to send: ${error.message}` };
+      console.error("Supabase Error:", error);
+      return {
+        success: false,
+        message: "Failed to send message. Please try again.",
+      };
     }
-
-    console.log("Insert successful for contact_messages");
 
     return {
       success: true,
       message:
-        "Thank you for getting in touch! We’ve received your message and will respond within 14 hours.",
+        "Message sent successfully! Our team will contact you within 14 hours.",
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Unexpected error:", error);
-    return { success: false, message: "An unexpected error occurred." };
+    return {
+      success: false,
+      message: "Something went wrong. Please try again.",
+    };
   }
 }

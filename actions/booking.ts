@@ -16,15 +16,20 @@ export async function submitBooking(
     const name = formData.get("name")?.toString().trim();
     const contactType = formData.get("contactType")?.toString();
     const rawContactValue = formData.get("contactValue")?.toString().trim();
-    const destination = formData.get("destination")?.toString()?.trim() || null;
-    const tourTitle = formData.get("tourTitle")?.toString()?.trim() || null;
+
+    const destination =
+      formData.get("destination")?.toString()?.trim() || null;
+
+    const tourTitle =
+      formData.get("tourTitle")?.toString()?.trim() || null;
+
     const tourId = formData.get("tourId")?.toString()?.trim() || null;
 
     // ===== VALIDATION =====
     if (!name || !contactType || !rawContactValue) {
       return {
         success: false,
-        message: "All required fields must be filled.",
+        message: "Please fill all required fields.",
       };
     }
 
@@ -38,16 +43,17 @@ export async function submitBooking(
     if (!["email", "whatsapp"].includes(contactType)) {
       return {
         success: false,
-        message: "Invalid contact type.",
+        message: "Invalid contact method.",
       };
     }
 
-    // Normalize WhatsApp number
+    // Normalize value
     const contactValue =
       contactType === "whatsapp"
         ? rawContactValue.replace(/\s|-/g, "")
         : rawContactValue;
 
+    // Email validation
     if (
       contactType === "email" &&
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactValue)
@@ -58,46 +64,31 @@ export async function submitBooking(
       };
     }
 
+    // Phone validation
     if (
       contactType === "whatsapp" &&
       !/^\+?[1-9]\d{7,14}$/.test(contactValue)
     ) {
       return {
         success: false,
-        message: "Invalid WhatsApp number (e.g., +919876543210).",
+        message: "Invalid WhatsApp number.",
       };
     }
 
     // ===== INSERT =====
-    const insertData = {
-      name,
-      contact_type: contactType,
-      contact_value: contactValue,
-      destination: tourTitle ? null : destination,
-      tour_title: tourTitle,
-      tour_id: tourId,
-    };
-
-    const { error } = await supabase
-      .from("group_tour_bookings")
-      .insert([insertData]);
+    const { error } = await supabase.from("group_tour_bookings").insert([
+      {
+        name,
+        contact_type: contactType,
+        contact_value: contactValue,
+        destination: tourTitle ? null : destination,
+        tour_title: tourTitle,
+        tour_id: tourId,
+      },
+    ]);
 
     if (error) {
-      console.error("Supabase booking insert error:", error);
-
-      if (error.code === "42501") {
-        return {
-          success: false,
-          message: "Permission denied. Please contact support.",
-        };
-      }
-
-      if (error.code === "23514") {
-        return {
-          success: false,
-          message: "Invalid booking data submitted.",
-        };
-      }
+      console.error("Booking insert error:", error);
 
       return {
         success: false,
@@ -107,14 +98,16 @@ export async function submitBooking(
 
     return {
       success: true,
-      message: `Thanks for booking! We'll contact you soon regarding ${tourTitle || destination}.`,
+      message: `Booking received! We'll contact you shortly regarding ${
+        tourTitle || destination
+      }.`,
     };
   } catch (err) {
     console.error("Unexpected booking error:", err);
 
     return {
       success: false,
-      message: "Failed to submit booking. Please try again.",
+      message: "Something went wrong. Please try again.",
     };
   }
 }
